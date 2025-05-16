@@ -11,18 +11,16 @@ x-airflow-common:
     - /var/run/docker.sock:/var/run/docker.sock
 
     # Mount Minikube certificates and kubeconfig (entire .minikube folder for easier access)
-    # - ~/.minikube:/home/airflow/.minikube:ro
-    # - ${AIRFLOW_PROJ_DIR:-.}/airflow/config/kubeconfig:/home/airflow/.kube/config:ro
+    - ~/.minikube:/home/airflow/.minikube:ro
+    - ${AIRFLOW_PROJ_DIR:-.}/airflow/config/kubeconfig:/home/airflow/.kube/config:ro
 
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
     postgres:
       condition: service_healthy
-  # environment:
-  #   - KUBECONFIG=/home/airflow/.kube/config
-
-
+  environment:
+    - KUBECONFIG=/home/airflow/.kube/config
 
 services:
   postgres:

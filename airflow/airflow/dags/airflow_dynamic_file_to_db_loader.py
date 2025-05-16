@@ -173,8 +173,8 @@ with DAG(
         cmds=["sh", "-c"],
         arguments=[
             (
-                "mc alias set s3-prod http://minio.default.svc.cluster.local:9000 adminic adminic123 && "
-                "mc cp s3-prod/ahajiyev/dynamic_file_to_db_transfer.py /tmp/dynamic_file_to_db_transfer.py && "
+                "mc alias set s3-local http://minio-external.default.svc.cluster.local:9000 adminic adminic123 && "
+                "mc cp s3-local/ahajiyev/dynamic_file_to_db_transfer.py /tmp/dynamic_file_to_db_transfer.py && "
                 "python /tmp/dynamic_file_to_db_transfer.py --source {{ params.source_file_name }} --target ahajiyev/{{ params.target_table_name }}"
             )
         ],

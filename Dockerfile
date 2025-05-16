@@ -13,5 +13,3 @@ RUN apt-get update && \
 
 USER airflow
 RUN pip install --no-cache-dir -r /requirements.txt
-
-# docker build -t my-airflow-image2:2.10.5 .
