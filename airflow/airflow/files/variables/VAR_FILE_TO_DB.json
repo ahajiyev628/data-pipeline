@@ -1,0 +1,15 @@
+[
+    {
+        "source_file_name": "abc.xlsx",
+        "target_table_name": "public.abc"
+    },
+    {
+        "source_file_name": "xyz.xlsx",
+        "target_table_name": "public.xyz"
+    }
+]
+
+{
+    "endpoint_url": "http://minio:9000",
+    "region_name": "us-east-1"
+}

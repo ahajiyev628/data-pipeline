@@ -1,0 +1,22 @@
+[2025-05-16T08:52:51.256+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-16T08:52:51.263+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.clone_repo scheduled__2025-05-16T08:20:00+00:00 [queued]>
+[2025-05-16T08:52:51.266+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.clone_repo scheduled__2025-05-16T08:20:00+00:00 [queued]>
+[2025-05-16T08:52:51.266+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-05-16T08:52:51.270+0000] {taskinstance.py:2890} INFO - Executing <Task(BashOperator): clone_repo> on 2025-05-16 08:20:00+00:00
+[2025-05-16T08:52:51.275+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=11700) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-16T08:52:51.276+0000] {standard_task_runner.py:72} INFO - Started process 11701 to run task
+[2025-05-16T08:52:51.276+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'DYNAMIC_FILE_TO_DB_LOADER', 'clone_repo', 'scheduled__2025-05-16T08:20:00+00:00', '--job-id', '1544', '--raw', '--subdir', 'DAGS_FOLDER/***_dynamic_file_to_db_loader.py', '--cfg-path', '/tmp/tmpvle099ys']
+[2025-05-16T08:52:51.277+0000] {standard_task_runner.py:105} INFO - Job 1544: Subtask clone_repo
+[2025-05-16T08:52:51.306+0000] {task_command.py:467} INFO - Running <TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.clone_repo scheduled__2025-05-16T08:20:00+00:00 [running]> on host 65a84f9e3a41
+[2025-05-16T08:52:51.355+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='DYNAMIC_FILE_TO_DB_LOADER' AIRFLOW_CTX_TASK_ID='clone_repo' AIRFLOW_CTX_EXECUTION_DATE='2025-05-16T08:20:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-16T08:20:00+00:00'
+[2025-05-16T08:52:51.357+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-05-16T08:52:51.358+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2025-05-16T08:52:51.358+0000] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', 'rm -rf /opt/***/files/repo && git clone https://github.com/ahajiyev628/***_dynamic_file_to_db_loader.git /opt/***/files/repo']
+[2025-05-16T08:52:51.363+0000] {subprocess.py:99} INFO - Output:
+[2025-05-16T08:52:51.388+0000] {subprocess.py:106} INFO - Cloning into '/opt/***/files/repo'...
+[2025-05-16T08:52:52.385+0000] {subprocess.py:110} INFO - Command exited with return code 0
+[2025-05-16T08:52:52.400+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-05-16T08:52:52.400+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=DYNAMIC_FILE_TO_DB_LOADER, task_id=clone_repo, run_id=scheduled__2025-05-16T08:20:00+00:00, execution_date=20250516T082000, start_date=20250516T085251, end_date=20250516T085252
+[2025-05-16T08:52:52.445+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-05-16T08:52:52.464+0000] {taskinstance.py:3901} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-05-16T08:52:52.465+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

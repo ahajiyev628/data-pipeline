@@ -1,0 +1,393 @@
+[2025-05-16T00:08:18.463+0000] {processor.py:186} INFO - Started process (PID=10545) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T00:08:18.463+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T00:08:18.466+0000] {logging_mixin.py:190} INFO - [2025-05-16T00:08:18.465+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T00:08:18.480+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T00:08:18.505+0000] {logging_mixin.py:190} INFO - [2025-05-16T00:08:18.504+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T00:08:18.526+0000] {logging_mixin.py:190} INFO - [2025-05-16T00:08:18.526+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 00:00:00+00:00, run_after=2025-05-16 00:20:00+00:00
+[2025-05-16T00:08:18.545+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.088 seconds
+[2025-05-16T00:21:46.113+0000] {processor.py:186} INFO - Started process (PID=10595) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T00:21:46.114+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T00:21:46.117+0000] {logging_mixin.py:190} INFO - [2025-05-16T00:21:46.117+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T00:21:46.135+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T00:21:46.168+0000] {logging_mixin.py:190} INFO - [2025-05-16T00:21:46.167+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T00:21:46.190+0000] {logging_mixin.py:190} INFO - [2025-05-16T00:21:46.190+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 00:20:00+00:00, run_after=2025-05-16 00:40:00+00:00
+[2025-05-16T00:21:46.200+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.094 seconds
+[2025-05-16T00:43:15.267+0000] {processor.py:186} INFO - Started process (PID=10643) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T00:43:15.268+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T00:43:15.270+0000] {logging_mixin.py:190} INFO - [2025-05-16T00:43:15.270+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T00:43:15.281+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T00:43:15.300+0000] {logging_mixin.py:190} INFO - [2025-05-16T00:43:15.300+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T00:43:15.316+0000] {logging_mixin.py:190} INFO - [2025-05-16T00:43:15.315+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 00:20:00+00:00, run_after=2025-05-16 00:40:00+00:00
+[2025-05-16T00:43:15.326+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.064 seconds
+[2025-05-16T00:57:13.683+0000] {processor.py:186} INFO - Started process (PID=10692) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T00:57:13.684+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T00:57:13.686+0000] {logging_mixin.py:190} INFO - [2025-05-16T00:57:13.686+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T00:57:13.699+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T00:57:13.727+0000] {logging_mixin.py:190} INFO - [2025-05-16T00:57:13.727+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T00:57:13.743+0000] {logging_mixin.py:190} INFO - [2025-05-16T00:57:13.742+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 00:40:00+00:00, run_after=2025-05-16 01:00:00+00:00
+[2025-05-16T00:57:13.752+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.074 seconds
+[2025-05-16T01:14:17.688+0000] {processor.py:186} INFO - Started process (PID=10704) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T01:14:17.692+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T01:14:17.700+0000] {logging_mixin.py:190} INFO - [2025-05-16T01:14:17.700+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T01:14:17.716+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T01:14:17.743+0000] {logging_mixin.py:190} INFO - [2025-05-16T01:14:17.743+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T01:14:17.761+0000] {logging_mixin.py:190} INFO - [2025-05-16T01:14:17.761+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 01:00:00+00:00, run_after=2025-05-16 01:20:00+00:00
+[2025-05-16T01:14:17.777+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.098 seconds
+[2025-05-16T01:22:13.745+0000] {processor.py:186} INFO - Started process (PID=10751) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T01:22:13.746+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T01:22:13.749+0000] {logging_mixin.py:190} INFO - [2025-05-16T01:22:13.749+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T01:22:13.765+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T01:22:13.796+0000] {logging_mixin.py:190} INFO - [2025-05-16T01:22:13.796+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T01:22:13.815+0000] {logging_mixin.py:190} INFO - [2025-05-16T01:22:13.815+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 01:00:00+00:00, run_after=2025-05-16 01:20:00+00:00
+[2025-05-16T01:22:13.826+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.097 seconds
+[2025-05-16T01:43:01.144+0000] {processor.py:186} INFO - Started process (PID=10770) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T01:43:01.145+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T01:43:01.149+0000] {logging_mixin.py:190} INFO - [2025-05-16T01:43:01.149+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T01:43:01.169+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T01:43:01.200+0000] {logging_mixin.py:190} INFO - [2025-05-16T01:43:01.200+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T01:43:01.223+0000] {logging_mixin.py:190} INFO - [2025-05-16T01:43:01.223+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 01:40:00+00:00, run_after=2025-05-16 02:00:00+00:00
+[2025-05-16T01:43:01.236+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.099 seconds
+[2025-05-16T01:56:53.898+0000] {processor.py:186} INFO - Started process (PID=10819) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T01:56:53.903+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T01:56:53.912+0000] {logging_mixin.py:190} INFO - [2025-05-16T01:56:53.911+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T01:56:53.929+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T01:56:53.964+0000] {logging_mixin.py:190} INFO - [2025-05-16T01:56:53.964+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T01:56:53.979+0000] {logging_mixin.py:190} INFO - [2025-05-16T01:56:53.979+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 01:40:00+00:00, run_after=2025-05-16 02:00:00+00:00
+[2025-05-16T01:56:53.988+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.097 seconds
+[2025-05-16T02:16:52.380+0000] {processor.py:186} INFO - Started process (PID=10830) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T02:16:52.380+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T02:16:52.381+0000] {logging_mixin.py:190} INFO - [2025-05-16T02:16:52.381+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T02:16:52.388+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T02:16:52.401+0000] {logging_mixin.py:190} INFO - [2025-05-16T02:16:52.401+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T02:16:52.412+0000] {logging_mixin.py:190} INFO - [2025-05-16T02:16:52.412+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 01:40:00+00:00, run_after=2025-05-16 02:00:00+00:00
+[2025-05-16T02:16:52.420+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.045 seconds
+[2025-05-16T02:37:07.409+0000] {processor.py:186} INFO - Started process (PID=10849) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T02:37:07.410+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T02:37:07.416+0000] {logging_mixin.py:190} INFO - [2025-05-16T02:37:07.415+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T02:37:07.440+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T02:37:07.474+0000] {logging_mixin.py:190} INFO - [2025-05-16T02:37:07.473+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T02:37:07.502+0000] {logging_mixin.py:190} INFO - [2025-05-16T02:37:07.502+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 02:20:00+00:00, run_after=2025-05-16 02:40:00+00:00
+[2025-05-16T02:37:07.515+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.120 seconds
+[2025-05-16T03:10:31.481+0000] {processor.py:186} INFO - Started process (PID=10868) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T03:10:31.482+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T03:10:31.484+0000] {logging_mixin.py:190} INFO - [2025-05-16T03:10:31.484+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T03:10:31.499+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T03:10:31.517+0000] {logging_mixin.py:190} INFO - [2025-05-16T03:10:31.517+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T03:10:31.531+0000] {logging_mixin.py:190} INFO - [2025-05-16T03:10:31.531+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 02:40:00+00:00, run_after=2025-05-16 03:00:00+00:00
+[2025-05-16T03:10:31.540+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.067 seconds
+[2025-05-16T03:15:25.208+0000] {processor.py:186} INFO - Started process (PID=10917) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T03:15:25.209+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T03:15:25.211+0000] {logging_mixin.py:190} INFO - [2025-05-16T03:15:25.211+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T03:15:25.225+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T03:15:25.245+0000] {logging_mixin.py:190} INFO - [2025-05-16T03:15:25.245+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T03:15:25.260+0000] {logging_mixin.py:190} INFO - [2025-05-16T03:15:25.260+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 03:00:00+00:00, run_after=2025-05-16 03:20:00+00:00
+[2025-05-16T03:15:25.269+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.068 seconds
+[2025-05-16T03:32:47.189+0000] {processor.py:186} INFO - Started process (PID=10928) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T03:32:47.190+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T03:32:47.191+0000] {logging_mixin.py:190} INFO - [2025-05-16T03:32:47.191+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T03:32:47.198+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T03:32:47.213+0000] {logging_mixin.py:190} INFO - [2025-05-16T03:32:47.213+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T03:32:47.229+0000] {logging_mixin.py:190} INFO - [2025-05-16T03:32:47.229+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 03:20:00+00:00, run_after=2025-05-16 03:40:00+00:00
+[2025-05-16T03:32:47.240+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.053 seconds
+[2025-05-16T03:46:54.336+0000] {processor.py:186} INFO - Started process (PID=10977) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T03:46:54.337+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T03:46:54.339+0000] {logging_mixin.py:190} INFO - [2025-05-16T03:46:54.339+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T03:46:54.350+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T03:46:54.375+0000] {logging_mixin.py:190} INFO - [2025-05-16T03:46:54.375+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T03:46:54.389+0000] {logging_mixin.py:190} INFO - [2025-05-16T03:46:54.389+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 03:20:00+00:00, run_after=2025-05-16 03:40:00+00:00
+[2025-05-16T03:46:54.397+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.065 seconds
+[2025-05-16T04:02:31.123+0000] {processor.py:186} INFO - Started process (PID=11027) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T04:02:31.124+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T04:02:31.127+0000] {logging_mixin.py:190} INFO - [2025-05-16T04:02:31.127+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T04:02:31.142+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T04:02:31.178+0000] {logging_mixin.py:190} INFO - [2025-05-16T04:02:31.178+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T04:02:31.196+0000] {logging_mixin.py:190} INFO - [2025-05-16T04:02:31.196+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 04:00:00+00:00, run_after=2025-05-16 04:20:00+00:00
+[2025-05-16T04:02:31.205+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.088 seconds
+[2025-05-16T04:17:17.920+0000] {processor.py:186} INFO - Started process (PID=11075) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T04:17:17.921+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T04:17:17.923+0000] {logging_mixin.py:190} INFO - [2025-05-16T04:17:17.923+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T04:17:17.943+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T04:17:17.976+0000] {logging_mixin.py:190} INFO - [2025-05-16T04:17:17.976+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T04:17:17.992+0000] {logging_mixin.py:190} INFO - [2025-05-16T04:17:17.992+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 04:00:00+00:00, run_after=2025-05-16 04:20:00+00:00
+[2025-05-16T04:17:18.002+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.088 seconds
+[2025-05-16T04:31:50.996+0000] {processor.py:186} INFO - Started process (PID=11087) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T04:31:50.997+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T04:31:50.999+0000] {logging_mixin.py:190} INFO - [2025-05-16T04:31:50.999+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T04:31:51.007+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T04:31:51.023+0000] {logging_mixin.py:190} INFO - [2025-05-16T04:31:51.023+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T04:31:51.036+0000] {logging_mixin.py:190} INFO - [2025-05-16T04:31:51.035+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 04:20:00+00:00, run_after=2025-05-16 04:40:00+00:00
+[2025-05-16T04:31:51.043+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.053 seconds
+[2025-05-16T04:46:34.027+0000] {processor.py:186} INFO - Started process (PID=11136) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T04:46:34.031+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T04:46:34.040+0000] {logging_mixin.py:190} INFO - [2025-05-16T04:46:34.039+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T04:46:34.059+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T04:46:34.083+0000] {logging_mixin.py:190} INFO - [2025-05-16T04:46:34.083+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T04:46:34.105+0000] {logging_mixin.py:190} INFO - [2025-05-16T04:46:34.105+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 04:40:00+00:00, run_after=2025-05-16 05:00:00+00:00
+[2025-05-16T04:46:34.114+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.109 seconds
+[2025-05-16T05:07:57.089+0000] {processor.py:186} INFO - Started process (PID=11184) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T05:07:57.091+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T05:07:57.099+0000] {logging_mixin.py:190} INFO - [2025-05-16T05:07:57.098+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T05:07:57.128+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T05:07:57.163+0000] {logging_mixin.py:190} INFO - [2025-05-16T05:07:57.162+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T05:07:57.222+0000] {logging_mixin.py:190} INFO - [2025-05-16T05:07:57.222+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 05:00:00+00:00, run_after=2025-05-16 05:20:00+00:00
+[2025-05-16T05:07:57.239+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.280 seconds
+[2025-05-16T05:26:53.124+0000] {processor.py:186} INFO - Started process (PID=11234) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T05:26:53.125+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T05:26:53.132+0000] {logging_mixin.py:190} INFO - [2025-05-16T05:26:53.132+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T05:26:53.149+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T05:26:53.180+0000] {logging_mixin.py:190} INFO - [2025-05-16T05:26:53.180+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T05:26:53.210+0000] {logging_mixin.py:190} INFO - [2025-05-16T05:26:53.210+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 05:20:00+00:00, run_after=2025-05-16 05:40:00+00:00
+[2025-05-16T05:26:53.221+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.114 seconds
+[2025-05-16T05:42:46.981+0000] {processor.py:186} INFO - Started process (PID=11290) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T05:42:46.982+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T05:42:46.984+0000] {logging_mixin.py:190} INFO - [2025-05-16T05:42:46.984+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T05:42:46.993+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T05:42:47.007+0000] {logging_mixin.py:190} INFO - [2025-05-16T05:42:47.007+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T05:42:47.018+0000] {logging_mixin.py:190} INFO - [2025-05-16T05:42:47.018+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 05:40:00+00:00, run_after=2025-05-16 06:00:00+00:00
+[2025-05-16T05:42:47.026+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.049 seconds
+[2025-05-16T06:02:55.775+0000] {processor.py:186} INFO - Started process (PID=11331) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T06:02:55.775+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T06:02:55.778+0000] {logging_mixin.py:190} INFO - [2025-05-16T06:02:55.777+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T06:02:55.791+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T06:02:55.834+0000] {logging_mixin.py:190} INFO - [2025-05-16T06:02:55.834+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T06:02:55.853+0000] {logging_mixin.py:190} INFO - [2025-05-16T06:02:55.853+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 05:40:00+00:00, run_after=2025-05-16 06:00:00+00:00
+[2025-05-16T06:02:55.863+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.094 seconds
+[2025-05-16T06:18:14.990+0000] {processor.py:186} INFO - Started process (PID=11380) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T06:18:14.992+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T06:18:15.003+0000] {logging_mixin.py:190} INFO - [2025-05-16T06:18:15.003+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T06:18:15.018+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T06:18:15.039+0000] {logging_mixin.py:190} INFO - [2025-05-16T06:18:15.039+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T06:18:15.068+0000] {logging_mixin.py:190} INFO - [2025-05-16T06:18:15.067+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 06:00:00+00:00, run_after=2025-05-16 06:20:00+00:00
+[2025-05-16T06:18:15.090+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.111 seconds
+[2025-05-16T06:38:22.725+0000] {processor.py:186} INFO - Started process (PID=11392) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T06:38:22.728+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T06:38:22.733+0000] {logging_mixin.py:190} INFO - [2025-05-16T06:38:22.733+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T06:38:22.747+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T06:38:22.771+0000] {logging_mixin.py:190} INFO - [2025-05-16T06:38:22.771+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T06:38:22.795+0000] {logging_mixin.py:190} INFO - [2025-05-16T06:38:22.795+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 06:20:00+00:00, run_after=2025-05-16 06:40:00+00:00
+[2025-05-16T06:38:22.805+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.087 seconds
+[2025-05-16T06:47:39.576+0000] {processor.py:186} INFO - Started process (PID=11440) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T06:47:39.577+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T06:47:39.580+0000] {logging_mixin.py:190} INFO - [2025-05-16T06:47:39.579+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T06:47:39.593+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T06:47:39.612+0000] {logging_mixin.py:190} INFO - [2025-05-16T06:47:39.612+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T06:47:39.627+0000] {logging_mixin.py:190} INFO - [2025-05-16T06:47:39.627+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 06:20:00+00:00, run_after=2025-05-16 06:40:00+00:00
+[2025-05-16T06:47:39.638+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.070 seconds
+[2025-05-16T07:07:46.035+0000] {processor.py:186} INFO - Started process (PID=11460) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T07:07:46.036+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T07:07:46.039+0000] {logging_mixin.py:190} INFO - [2025-05-16T07:07:46.038+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T07:07:46.050+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T07:07:46.079+0000] {logging_mixin.py:190} INFO - [2025-05-16T07:07:46.079+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T07:07:46.104+0000] {logging_mixin.py:190} INFO - [2025-05-16T07:07:46.104+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 07:00:00+00:00, run_after=2025-05-16 07:20:00+00:00
+[2025-05-16T07:07:46.113+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.083 seconds
+[2025-05-16T07:27:46.295+0000] {processor.py:186} INFO - Started process (PID=11479) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T07:27:46.297+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T07:27:46.305+0000] {logging_mixin.py:190} INFO - [2025-05-16T07:27:46.305+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T07:27:46.322+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T07:27:46.343+0000] {logging_mixin.py:190} INFO - [2025-05-16T07:27:46.342+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T07:27:46.368+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.081 seconds
+[2025-05-16T07:43:28.042+0000] {processor.py:186} INFO - Started process (PID=11537) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T07:43:28.043+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T07:43:28.046+0000] {logging_mixin.py:190} INFO - [2025-05-16T07:43:28.045+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T07:43:28.058+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T07:43:28.076+0000] {logging_mixin.py:190} INFO - [2025-05-16T07:43:28.076+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T07:43:28.090+0000] {logging_mixin.py:190} INFO - [2025-05-16T07:43:28.090+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 07:20:00+00:00, run_after=2025-05-16 07:40:00+00:00
+[2025-05-16T07:43:28.099+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.061 seconds
+[2025-05-16T07:58:09.615+0000] {processor.py:186} INFO - Started process (PID=11586) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T07:58:09.616+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T07:58:09.622+0000] {logging_mixin.py:190} INFO - [2025-05-16T07:58:09.622+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T07:58:09.651+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T07:58:09.672+0000] {logging_mixin.py:190} INFO - [2025-05-16T07:58:09.672+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T07:58:09.686+0000] {logging_mixin.py:190} INFO - [2025-05-16T07:58:09.686+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 07:40:00+00:00, run_after=2025-05-16 08:00:00+00:00
+[2025-05-16T07:58:09.695+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.086 seconds
+[2025-05-16T08:18:26.741+0000] {processor.py:186} INFO - Started process (PID=11597) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T08:18:26.742+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T08:18:26.743+0000] {logging_mixin.py:190} INFO - [2025-05-16T08:18:26.743+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T08:18:26.751+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T08:18:26.765+0000] {logging_mixin.py:190} INFO - [2025-05-16T08:18:26.765+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T08:18:26.776+0000] {logging_mixin.py:190} INFO - [2025-05-16T08:18:26.776+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 07:40:00+00:00, run_after=2025-05-16 08:00:00+00:00
+[2025-05-16T08:18:26.783+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.046 seconds
+[2025-05-16T08:32:40.818+0000] {processor.py:186} INFO - Started process (PID=11646) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T08:32:40.818+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T08:32:40.821+0000] {logging_mixin.py:190} INFO - [2025-05-16T08:32:40.820+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T08:32:40.834+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T08:32:40.852+0000] {logging_mixin.py:190} INFO - [2025-05-16T08:32:40.852+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T08:32:40.866+0000] {logging_mixin.py:190} INFO - [2025-05-16T08:32:40.866+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 08:00:00+00:00, run_after=2025-05-16 08:20:00+00:00
+[2025-05-16T08:32:40.874+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.062 seconds
+[2025-05-16T08:52:50.255+0000] {processor.py:186} INFO - Started process (PID=11695) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T08:52:50.256+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T08:52:50.258+0000] {logging_mixin.py:190} INFO - [2025-05-16T08:52:50.258+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T08:52:50.274+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T08:52:50.294+0000] {logging_mixin.py:190} INFO - [2025-05-16T08:52:50.294+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T08:52:50.308+0000] {logging_mixin.py:190} INFO - [2025-05-16T08:52:50.308+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 08:20:00+00:00, run_after=2025-05-16 08:40:00+00:00
+[2025-05-16T08:52:50.316+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.067 seconds
+[2025-05-16T09:06:51.105+0000] {processor.py:186} INFO - Started process (PID=11752) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T09:06:51.106+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T09:06:51.108+0000] {logging_mixin.py:190} INFO - [2025-05-16T09:06:51.108+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T09:06:51.118+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T09:06:51.133+0000] {logging_mixin.py:190} INFO - [2025-05-16T09:06:51.133+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T09:06:51.145+0000] {logging_mixin.py:190} INFO - [2025-05-16T09:06:51.145+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 09:00:00+00:00, run_after=2025-05-16 09:20:00+00:00
+[2025-05-16T09:06:51.152+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.053 seconds
+[2025-05-16T09:28:00.513+0000] {processor.py:186} INFO - Started process (PID=11793) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T09:28:00.513+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T09:28:00.520+0000] {logging_mixin.py:190} INFO - [2025-05-16T09:28:00.519+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T09:28:00.561+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T09:28:00.590+0000] {logging_mixin.py:190} INFO - [2025-05-16T09:28:00.589+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T09:28:00.611+0000] {logging_mixin.py:190} INFO - [2025-05-16T09:28:00.611+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 09:20:00+00:00, run_after=2025-05-16 09:40:00+00:00
+[2025-05-16T09:28:00.623+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.118 seconds
+[2025-05-16T09:47:31.278+0000] {processor.py:186} INFO - Started process (PID=11813) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T09:47:31.278+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T09:47:31.281+0000] {logging_mixin.py:190} INFO - [2025-05-16T09:47:31.281+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T09:47:31.296+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T09:47:31.321+0000] {logging_mixin.py:190} INFO - [2025-05-16T09:47:31.321+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T09:47:31.358+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.087 seconds
+[2025-05-16T10:03:18.052+0000] {processor.py:186} INFO - Started process (PID=11862) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:03:18.054+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T10:03:18.058+0000] {logging_mixin.py:190} INFO - [2025-05-16T10:03:18.057+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:03:18.073+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:03:18.093+0000] {logging_mixin.py:190} INFO - [2025-05-16T10:03:18.092+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T10:03:18.119+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.083 seconds
+[2025-05-16T10:16:44.379+0000] {processor.py:186} INFO - Started process (PID=11910) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:16:44.382+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T10:16:44.387+0000] {logging_mixin.py:190} INFO - [2025-05-16T10:16:44.386+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:16:44.402+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:16:44.421+0000] {logging_mixin.py:190} INFO - [2025-05-16T10:16:44.421+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T10:16:44.435+0000] {logging_mixin.py:190} INFO - [2025-05-16T10:16:44.434+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 10:00:00+00:00, run_after=2025-05-16 10:20:00+00:00
+[2025-05-16T10:16:44.443+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.080 seconds
+[2025-05-16T10:28:05.760+0000] {processor.py:186} INFO - Started process (PID=11921) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:28:05.761+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T10:28:05.763+0000] {logging_mixin.py:190} INFO - [2025-05-16T10:28:05.762+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:28:05.772+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:28:05.789+0000] {logging_mixin.py:190} INFO - [2025-05-16T10:28:05.788+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T10:28:05.802+0000] {logging_mixin.py:190} INFO - [2025-05-16T10:28:05.802+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 10:00:00+00:00, run_after=2025-05-16 10:20:00+00:00
+[2025-05-16T10:28:05.817+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.061 seconds
+[2025-05-16T10:47:06.833+0000] {processor.py:186} INFO - Started process (PID=11971) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:47:06.834+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T10:47:06.837+0000] {logging_mixin.py:190} INFO - [2025-05-16T10:47:06.836+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:47:06.851+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:47:06.871+0000] {logging_mixin.py:190} INFO - [2025-05-16T10:47:06.871+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T10:47:06.906+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.088 seconds
+[2025-05-16T10:56:53.248+0000] {processor.py:186} INFO - Started process (PID=12029) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:56:53.249+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T10:56:53.252+0000] {logging_mixin.py:190} INFO - [2025-05-16T10:56:53.252+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:56:53.266+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T10:56:53.301+0000] {logging_mixin.py:190} INFO - [2025-05-16T10:56:53.300+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T10:56:53.320+0000] {logging_mixin.py:190} INFO - [2025-05-16T10:56:53.320+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 10:40:00+00:00, run_after=2025-05-16 11:00:00+00:00
+[2025-05-16T10:56:53.330+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.088 seconds
+[2025-05-16T11:08:04.882+0000] {processor.py:186} INFO - Started process (PID=12040) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T11:08:04.883+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T11:08:04.884+0000] {logging_mixin.py:190} INFO - [2025-05-16T11:08:04.884+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T11:08:04.892+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T11:08:04.906+0000] {logging_mixin.py:190} INFO - [2025-05-16T11:08:04.906+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T11:08:04.917+0000] {logging_mixin.py:190} INFO - [2025-05-16T11:08:04.916+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 10:40:00+00:00, run_after=2025-05-16 11:00:00+00:00
+[2025-05-16T11:08:04.925+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.047 seconds
+[2025-05-16T11:20:29.643+0000] {processor.py:186} INFO - Started process (PID=12089) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T11:20:29.643+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T11:20:29.646+0000] {logging_mixin.py:190} INFO - [2025-05-16T11:20:29.646+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T11:20:29.660+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T11:20:29.702+0000] {logging_mixin.py:190} INFO - [2025-05-16T11:20:29.702+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T11:20:29.720+0000] {logging_mixin.py:190} INFO - [2025-05-16T11:20:29.720+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 11:20:00+00:00, run_after=2025-05-16 11:40:00+00:00
+[2025-05-16T11:20:29.733+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.095 seconds
+[2025-05-16T11:37:33.735+0000] {processor.py:186} INFO - Started process (PID=12108) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T11:37:33.735+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T11:37:33.739+0000] {logging_mixin.py:190} INFO - [2025-05-16T11:37:33.738+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T11:37:33.755+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T11:37:33.789+0000] {logging_mixin.py:190} INFO - [2025-05-16T11:37:33.789+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T11:37:33.804+0000] {logging_mixin.py:190} INFO - [2025-05-16T11:37:33.804+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 11:20:00+00:00, run_after=2025-05-16 11:40:00+00:00
+[2025-05-16T11:37:33.815+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.087 seconds
+[2025-05-16T11:52:27.315+0000] {processor.py:186} INFO - Started process (PID=12120) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T11:52:27.316+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T11:52:27.319+0000] {logging_mixin.py:190} INFO - [2025-05-16T11:52:27.318+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T11:52:27.338+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T11:52:27.363+0000] {logging_mixin.py:190} INFO - [2025-05-16T11:52:27.363+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T11:52:27.389+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.080 seconds
+[2025-05-16T12:07:56.386+0000] {processor.py:186} INFO - Started process (PID=12169) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:07:56.387+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T12:07:56.391+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:07:56.390+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:07:56.419+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:07:56.442+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:07:56.442+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T12:07:56.467+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.090 seconds
+[2025-05-16T12:08:29.924+0000] {processor.py:186} INFO - Started process (PID=12217) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:08:29.925+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T12:08:29.929+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:08:29.928+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:08:29.946+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:08:29.971+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:08:29.971+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T12:08:29.999+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:08:29.999+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 12:00:00+00:00, run_after=2025-05-16 12:20:00+00:00
+[2025-05-16T12:08:30.010+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.100 seconds
+[2025-05-16T12:09:00.220+0000] {processor.py:186} INFO - Started process (PID=12228) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:09:00.221+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T12:09:00.224+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:09:00.223+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:09:00.237+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:09:00.272+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:09:00.272+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T12:09:00.302+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:09:00.302+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 12:00:00+00:00, run_after=2025-05-16 12:20:00+00:00
+[2025-05-16T12:09:00.312+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.098 seconds
+[2025-05-16T12:09:30.520+0000] {processor.py:186} INFO - Started process (PID=12249) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:09:30.521+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T12:09:30.523+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:09:30.523+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:09:30.546+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:09:30.567+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:09:30.566+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T12:09:30.584+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:09:30.584+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 12:00:00+00:00, run_after=2025-05-16 12:20:00+00:00
+[2025-05-16T12:09:30.594+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.080 seconds
+[2025-05-16T12:10:00.811+0000] {processor.py:186} INFO - Started process (PID=12260) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:10:00.812+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T12:10:00.813+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:10:00.813+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:10:00.820+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:10:00.836+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:10:00.836+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T12:10:00.848+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:10:00.848+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 12:00:00+00:00, run_after=2025-05-16 12:20:00+00:00
+[2025-05-16T12:10:00.857+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.050 seconds
+[2025-05-16T12:10:31.141+0000] {processor.py:186} INFO - Started process (PID=12271) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:10:31.142+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T12:10:31.146+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:10:31.145+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:10:31.162+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:10:31.191+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:10:31.190+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T12:10:31.208+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:10:31.208+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 12:00:00+00:00, run_after=2025-05-16 12:20:00+00:00
+[2025-05-16T12:10:31.218+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.096 seconds
+[2025-05-16T12:11:01.433+0000] {processor.py:186} INFO - Started process (PID=12282) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:11:01.434+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T12:11:01.444+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:11:01.442+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:11:01.461+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:11:01.487+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:11:01.487+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T12:11:01.504+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:11:01.504+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 12:00:00+00:00, run_after=2025-05-16 12:20:00+00:00
+[2025-05-16T12:11:01.515+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.090 seconds
+[2025-05-16T12:11:31.783+0000] {processor.py:186} INFO - Started process (PID=12293) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:11:31.786+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T12:11:31.791+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:11:31.790+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:11:31.808+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:11:31.836+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:11:31.836+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T12:11:31.854+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:11:31.853+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 12:00:00+00:00, run_after=2025-05-16 12:20:00+00:00
+[2025-05-16T12:11:31.865+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.102 seconds
+[2025-05-16T12:12:02.123+0000] {processor.py:186} INFO - Started process (PID=12304) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:12:02.125+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T12:12:02.129+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:12:02.129+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:12:02.175+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:12:02.214+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:12:02.213+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T12:12:02.231+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:12:02.231+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 12:00:00+00:00, run_after=2025-05-16 12:20:00+00:00
+[2025-05-16T12:12:02.241+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.132 seconds
+[2025-05-16T12:12:32.475+0000] {processor.py:186} INFO - Started process (PID=12315) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:12:32.479+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T12:12:32.492+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:12:32.491+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:12:32.512+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:12:32.584+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:12:32.584+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T12:12:32.613+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:12:32.613+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 12:00:00+00:00, run_after=2025-05-16 12:20:00+00:00
+[2025-05-16T12:12:32.627+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.187 seconds
+[2025-05-16T12:13:02.818+0000] {processor.py:186} INFO - Started process (PID=12326) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:13:02.820+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T12:13:02.823+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:13:02.823+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:13:02.841+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:13:02.866+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:13:02.866+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T12:13:02.897+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:13:02.897+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 12:00:00+00:00, run_after=2025-05-16 12:20:00+00:00
+[2025-05-16T12:13:02.908+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.099 seconds
+[2025-05-16T12:13:33.183+0000] {processor.py:186} INFO - Started process (PID=12337) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:13:33.185+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T12:13:33.211+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:13:33.210+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:13:33.286+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:13:33.329+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:13:33.329+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T12:13:33.352+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:13:33.352+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 12:00:00+00:00, run_after=2025-05-16 12:20:00+00:00
+[2025-05-16T12:13:33.366+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.189 seconds
+[2025-05-16T12:14:03.506+0000] {processor.py:186} INFO - Started process (PID=12348) to work on /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:14:03.507+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py for tasks to queue
+[2025-05-16T12:14:03.510+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:14:03.510+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:14:03.531+0000] {processor.py:925} INFO - DAG(s) 'DYNAMIC_FILE_TO_DB_LOADER' retrieved from /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py
+[2025-05-16T12:14:03.560+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:14:03.559+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-05-16T12:14:03.577+0000] {logging_mixin.py:190} INFO - [2025-05-16T12:14:03.577+0000] {dag.py:4180} INFO - Setting next_dagrun for DYNAMIC_FILE_TO_DB_LOADER to 2025-05-16 12:00:00+00:00, run_after=2025-05-16 12:20:00+00:00
+[2025-05-16T12:14:03.596+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/airflow_dynamic_file_to_db_loader.py took 0.099 seconds

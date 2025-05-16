@@ -1,0 +1,105 @@
+docker system prune -a --volumes
+
+docker rm -f $(docker ps -aq)
+
+docker rmi -f $(docker images -q)
+
+docker system prune -a --volumes -f
+
+docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}"
+
+docker-compose down airflow-init airflow-webserver airflow-scheduler
+
+docker-compose up airflow-webserver airflow-scheduler airflow-init -d
+
+docker-compose up --build -d
+
+docker-compose down --volumes --remove-orphans
+
+
+cp ~/.kube/config ./airflow/config/kubeconfig
+sed -i.bak 's|/Users/allahverdihajiyev/.minikube|/home/airflow/.minikube|g' ./airflow/config/kubeconfig
+
+
+chmod 644 ~/.minikube/profiles/minikube/client.key
+
+allahverdihajiyev@005269 01_project % minikube status
+
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+allahverdihajiyev@005269 01_project % minikube ip
+
+192.168.49.2
+
+allahverdihajiyev@005269 airflow % kubectl config get-contexts
+
+CURRENT   NAME       CLUSTER    AUTHINFO   NAMESPACE
+*         minikube   minikube   minikube   default
+
+allahverdihajiyev@005269 airflow % kubectl cluster-info
+
+Kubernetes control plane is running at https://127.0.0.1:52033
+CoreDNS is running at https://127.0.0.1:52033/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+
+
+
+kubectl get pods -n default
+kubectl get pods --show-all -n default
+
+
+
+airflow@392dd753145f:/opt/airflow$ pip show kubernetes
+Name: kubernetes
+Version: 30.1.0
+Summary: Kubernetes python client
+Home-page: https://github.com/kubernetes-client/python
+Author: Kubernetes
+Author-email: 
+License: Apache License Version 2.0
+Location: /home/airflow/.local/lib/python3.12/site-packages
+Requires: certifi, google-auth, oauthlib, python-dateutil, pyyaml, requests, requests-oauthlib, six, urllib3, websocket-client
+Required-by: apache-airflow-providers-cncf-kubernetes
+
+
+------------------
+kubectl proxy --address=0.0.0.0 --port=8001 --accept-hosts='.*'
+
+server: http://host.docker.internal:8001
+
+
+
+
+brew install helm
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+
+helm install minio bitnami/minio \
+  --set auth.rootUser=admin \
+  --set auth.rootPassword=admin123 \
+  --set defaultBuckets=ahajiyev \
+  --set service.type=ClusterIP \
+  --namespace default
+
+kubectl get pods -n default | grep minio
+kubectl port-forward svc/minio 9001:9001 -n default
+
+
+
+
+
+mc alias set s3-prod http://minio:9000 admin admin123
+
+
+
+
+
+kubernetesden localdaki docker servislerine ip ile access ede biliyoruz.
+kubernetesde static alias set edilmelidi (ip ucun) hemise locala gede bilsin.
