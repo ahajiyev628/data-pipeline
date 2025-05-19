@@ -19,16 +19,42 @@ def execute_postgres_query(query, parameters=None):
 
 def log_initial_task_details(context):
     params = context['params']
+    ti = context['task_instance']
+
     query = """
         INSERT INTO airflow_daily_log (log_time, source_name, target_name)
-        VALUES (CURRENT_DATE, %(source)s, %(target)s)
-        ON CONFLICT (log_time, source_name, target_name) DO NOTHING
+        VALUES (CURRENT_TIMESTAMP, %(source)s, %(target)s)
     """
     values = {
         'source': params['source_file_name'],
         'target': params['target_table_name']
     }
+    print(query)
+    execute_postgres_query(query, values)
 
+    query = """
+        UPDATE airflow_daily_log
+        SET dag_id = %(dag_id)s,
+            task_id = %(task_id)s,
+            run_id = %(run_id)s,
+            execution_date = %(execution_date)s,
+            try_number = %(try_number)s,
+            log_time = CURRENT_TIMESTAMP
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and dag_id is null
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    """
+    values = {
+        'dag_id': ti.dag_id,
+        'task_id': ti.task_id,
+        'run_id': ti.run_id,
+        'execution_date': str(context['execution_date']),
+        'try_number': ti.try_number,
+        'source': params['source_file_name'],
+        'target': params['target_table_name']
+    }
+    print(query)
     execute_postgres_query(query, values)
 
 
@@ -38,29 +64,39 @@ def merge_task_state(context, state):
 
     query = """
         UPDATE airflow_daily_log
-        SET
-            status = %(status)s,
-            dag_id = %(dag_id)s,
-            task_id = %(task_id)s,
-            run_id = %(run_id)s,
-            execution_date = %(execution_date)s,
-            try_number = %(try_number)s,
-            log_time = CURRENT_TIMESTAMP
-        WHERE report_date = CURRENT_DATE
-          AND source = %(source)s
-          AND target = %(target)s
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
     """
     values = {
         'status': state,
-        'dag_id': ti.dag_id,
-        'task_id': ti.task_id,
-        'run_id': ti.run_id,
-        'execution_date': str(context['execution_date']),
         'try_number': ti.try_number,
         'source': params['source_file_name'],
         'target': params['target_table_name']
     }
+    print(query)
+    execute_postgres_query(query, values)
 
+def merge_end_time(context):
+    ti = context['task_instance']
+    params = context['params']
+
+    query = """
+        UPDATE airflow_daily_log
+        SET end_time = %(end_time)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+        AND source_name = %(source)s
+        AND target_name = %(target)s
+    """
+    values = {
+        'end_time': ti.end_time,
+        'source': params['source_file_name'],
+        'target': params['target_table_name']
+    }
+    print(query)
     execute_postgres_query(query, values)
 
 
@@ -71,11 +107,12 @@ def task_running_callback(context):
 
 def task_success_callback(context):
     merge_task_state(context, state="success")
+    merge_end_time(context)
 
 
 def task_failure_callback(context):
     merge_task_state(context, state="failed")
-
+    merge_end_time(context)
 
 default_args = {
     'owner': 'airflow',
@@ -113,7 +150,7 @@ with DAG(
 
     @task
     def upload_script_to_minio():
-        hook = S3Hook(aws_conn_id="minioic")
+        hook = S3Hook(aws_conn_id="minio_conn")
         bucket_name = "ahajiyev"
         key = "dynamic_file_to_db_transfer.py"
         local_file_path = "/opt/airflow/files/repo/dynamic_file_to_db_transfer.py"
@@ -127,7 +164,7 @@ with DAG(
 
     @task
     def list_minio_objects():
-        hook = S3Hook(aws_conn_id="minioic")
+        hook = S3Hook(aws_conn_id="minio_conn")
         bucket_name = "ahajiyev"
         keys = hook.list_keys(bucket_name=bucket_name)
         print(f"Objects in {bucket_name}: {keys}")
@@ -139,7 +176,7 @@ with DAG(
     def get_required_files_and_download():
         file_mappings = json.loads(Variable.get("VAR_FILE_TO_DB"))
 
-        hook = S3Hook(aws_conn_id="minioic")
+        hook = S3Hook(aws_conn_id="minio_conn")
         bucket_name = "ahajiyev"
 
         os.makedirs(FILES_DIRECTORY, exist_ok=True)
@@ -175,15 +212,15 @@ with DAG(
             (
                 "mc alias set s3-local http://minio-external.default.svc.cluster.local:9000 adminic adminic123 && "
                 "mc cp s3-local/ahajiyev/dynamic_file_to_db_transfer.py /tmp/dynamic_file_to_db_transfer.py && "
-                "python /tmp/dynamic_file_to_db_transfer.py --source {{ params.source_file_name }} --target ahajiyev/{{ params.target_table_name }}"
+                "python /tmp/dynamic_file_to_db_transfer.py --source {{ params.source_file_name }} --target {{ params.target_table_name }}"
             )
         ],
         get_logs=True,
         is_delete_operator_pod=False,
         map_index_template="{{ params.source_file_name }}",
-        # on_execute_callback=task_running_callback,
-        # on_success_callback=task_success_callback,
-        # on_failure_callback=task_failure_callback,
+        on_execute_callback=task_running_callback,
+        on_success_callback=task_success_callback,
+        on_failure_callback=task_failure_callback,
     ).expand(
         params=needed_files
     )

@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   type: ExternalName
-  externalName: host.docker.internal # Any pod in the cluster can now use this stable name to reach MinIO
+  externalName: host.docker.internal
   ports:
     - port: 9000
 
