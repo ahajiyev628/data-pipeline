@@ -1,0 +1,89 @@
+[2025-05-23T08:00:01.057+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-23T08:00:01.067+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.clone_repo scheduled__2025-05-23T07:40:00+00:00 [queued]>
+[2025-05-23T08:00:01.071+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.clone_repo scheduled__2025-05-23T07:40:00+00:00 [queued]>
+[2025-05-23T08:00:01.071+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-05-23T08:00:01.076+0000] {taskinstance.py:2890} INFO - Executing <Task(BashOperator): clone_repo> on 2025-05-23 07:40:00+00:00
+[2025-05-23T08:00:01.083+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=21715) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-23T08:00:01.084+0000] {standard_task_runner.py:72} INFO - Started process 21716 to run task
+[2025-05-23T08:00:01.082+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'DYNAMIC_FILE_TO_DB_LOADER', 'clone_repo', 'scheduled__2025-05-23T07:40:00+00:00', '--job-id', '2009', '--raw', '--subdir', 'DAGS_FOLDER/***_dynamic_file_to_db_loader.py', '--cfg-path', '/tmp/tmpn54o4jmf']
+[2025-05-23T08:00:01.085+0000] {standard_task_runner.py:105} INFO - Job 2009: Subtask clone_repo
+[2025-05-23T08:00:01.117+0000] {task_command.py:467} INFO - Running <TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.clone_repo scheduled__2025-05-23T07:40:00+00:00 [running]> on host 5fb7fe4c544d
+[2025-05-23T08:00:01.164+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='DYNAMIC_FILE_TO_DB_LOADER' AIRFLOW_CTX_TASK_ID='clone_repo' AIRFLOW_CTX_EXECUTION_DATE='2025-05-23T07:40:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-23T07:40:00+00:00'
+[2025-05-23T08:00:01.165+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-05-23T08:00:01.167+0000] {subprocess.py:78} INFO - Tmp dir root location: /tmp
+[2025-05-23T08:00:01.167+0000] {subprocess.py:88} INFO - Running command: ['/usr/bin/bash', '-c', 'rm -rf /opt/***/files/repo && git clone https://github.com/ahajiyev628/***_dynamic_file_to_db_loader.git /opt/***/files/repo']
+[2025-05-23T08:00:01.178+0000] {subprocess.py:99} INFO - Output:
+[2025-05-23T08:00:01.188+0000] {subprocess.py:106} INFO - Cloning into '/opt/***/files/repo'...
+[2025-05-23T08:00:01.486+0000] {subprocess.py:106} INFO - fatal: unable to access 'https://github.com/ahajiyev628/***_dynamic_file_to_db_loader.git/': gnutls_handshake() failed: The TLS connection was non-properly terminated.
+[2025-05-23T08:00:01.498+0000] {subprocess.py:110} INFO - Command exited with return code 128
+[2025-05-23T08:00:01.505+0000] {taskinstance.py:3313} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 276, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 128.
+[2025-05-23T08:00:01.507+0000] {taskinstance.py:1226} INFO - Marking task as FAILED. dag_id=DYNAMIC_FILE_TO_DB_LOADER, task_id=clone_repo, run_id=scheduled__2025-05-23T07:40:00+00:00, execution_date=20250523T074000, start_date=20250523T080001, end_date=20250523T080001
+[2025-05-23T08:00:01.520+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-05-23T08:00:01.520+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 2009 for task clone_repo (Bash command failed. The command returned a non-zero exit code 128.; 21716)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3006, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 274, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3161, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3185, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 276, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 128.
+[2025-05-23T08:00:01.561+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-05-23T08:00:01.576+0000] {taskinstance.py:3901} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-05-23T08:00:01.578+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

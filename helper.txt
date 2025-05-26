@@ -96,9 +96,19 @@ kubectl port-forward svc/minio 9001:9001 -n default
 
 
 mc alias set s3-prod http://minio:9000 admin admin123
+mc alias set s3-local http://minio-external.default.svc.cluster.local:9000 adminic adminic123
+
+mc alias set s3-local http://host.docker.internal:9000 adminic adminic123
 
 
-
+pyspark \
+  --packages com.crealytics:spark-excel_2.12:0.13.7 \
+  --conf spark.hadoop.fs.s3a.endpoint=http://minio-external.default.svc.cluster.local:9000 \
+  --conf spark.hadoop.fs.s3a.access.key=adminic \
+  --conf spark.hadoop.fs.s3a.secret.key=adminic123 \
+  --conf spark.hadoop.fs.s3a.path.style.access=true \
+  --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem \
+  --conf spark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider
 
 
 kubernetesden localdaki docker servislerine ip ile access ede biliyoruz.

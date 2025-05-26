@@ -1,0 +1,21 @@
+name: Sync DAGs to local volume
+
+on:
+  push:
+    paths:
+      - 'airflow/dags/**'
+
+jobs:
+  update-dags:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Print a message
+        run: |
+          echo "DAGs changed. You need to pull latest changes locally:"
+          echo ""
+          echo "    git pull origin main"
+          echo ""
+          echo "Your Airflow containers will pick them up automatically via volume mount."

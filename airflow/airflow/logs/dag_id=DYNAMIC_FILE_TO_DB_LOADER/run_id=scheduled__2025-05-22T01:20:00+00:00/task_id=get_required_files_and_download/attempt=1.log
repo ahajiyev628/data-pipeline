@@ -1,0 +1,26 @@
+[2025-05-22T01:53:54.508+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-22T01:53:54.518+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.get_required_files_and_download scheduled__2025-05-22T01:20:00+00:00 [queued]>
+[2025-05-22T01:53:54.522+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.get_required_files_and_download scheduled__2025-05-22T01:20:00+00:00 [queued]>
+[2025-05-22T01:53:54.522+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-05-22T01:53:54.526+0000] {taskinstance.py:2890} INFO - Executing <Task(_PythonDecoratedOperator): get_required_files_and_download> on 2025-05-22 01:20:00+00:00
+[2025-05-22T01:53:54.531+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=15114) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-22T01:53:54.532+0000] {standard_task_runner.py:72} INFO - Started process 15115 to run task
+[2025-05-22T01:53:54.531+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'DYNAMIC_FILE_TO_DB_LOADER', 'get_required_files_and_download', 'scheduled__2025-05-22T01:20:00+00:00', '--job-id', '1924', '--raw', '--subdir', 'DAGS_FOLDER/***_dynamic_file_to_db_loader.py', '--cfg-path', '/tmp/tmpty7lj1dp']
+[2025-05-22T01:53:54.532+0000] {standard_task_runner.py:105} INFO - Job 1924: Subtask get_required_files_and_download
+[2025-05-22T01:53:54.554+0000] {task_command.py:467} INFO - Running <TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.get_required_files_and_download scheduled__2025-05-22T01:20:00+00:00 [running]> on host 5fb7fe4c544d
+[2025-05-22T01:53:54.590+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='DYNAMIC_FILE_TO_DB_LOADER' AIRFLOW_CTX_TASK_ID='get_required_files_and_download' AIRFLOW_CTX_EXECUTION_DATE='2025-05-22T01:20:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-22T01:20:00+00:00'
+[2025-05-22T01:53:54.590+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-05-22T01:53:54.600+0000] {base.py:84} INFO - Retrieving connection 'minio_conn'
+[2025-05-22T01:53:54.600+0000] {connection_wrapper.py:325} INFO - AWS Connection (conn_id='minio_conn', conn_type='aws') credentials retrieved from login and password.
+[2025-05-22T01:53:54.749+0000] {s3.py:1467} INFO - Downloading source S3 file from Bucket ahajiyev with path abc.xlsx
+[2025-05-22T01:53:54.806+0000] {httpchecksum.py:481} INFO - Skipping checksum validation. Response did not contain one of the following algorithms: ['crc32', 'sha1', 'sha256'].
+[2025-05-22T01:53:54.809+0000] {s3.py:1467} INFO - Downloading source S3 file from Bucket ahajiyev with path xyz.xlsx
+[2025-05-22T01:53:54.821+0000] {httpchecksum.py:481} INFO - Skipping checksum validation. Response did not contain one of the following algorithms: ['crc32', 'sha1', 'sha256'].
+[2025-05-22T01:53:54.822+0000] {hook.py:208} WARNING - Data lineage tracking is disabled. Register a hook lineage reader to start tracking hook lineage.
+[2025-05-22T01:53:54.823+0000] {airflow_dynamic_file_to_db_loader.py:201} INFO - Downloaded Mappings: [{'source_file_name': 'abc.xlsx', 'target_table_name': 'ahajiyev/abc'}, {'source_file_name': 'xyz.xlsx', 'target_table_name': 'ahajiyev/xyz'}]
+[2025-05-22T01:53:54.823+0000] {python.py:240} INFO - Done. Returned value was: [{'source_file_name': 'abc.xlsx', 'target_table_name': 'ahajiyev/abc'}, {'source_file_name': 'xyz.xlsx', 'target_table_name': 'ahajiyev/xyz'}]
+[2025-05-22T01:53:54.838+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-05-22T01:53:54.839+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=DYNAMIC_FILE_TO_DB_LOADER, task_id=get_required_files_and_download, run_id=scheduled__2025-05-22T01:20:00+00:00, execution_date=20250522T012000, start_date=20250522T015354, end_date=20250522T015354
+[2025-05-22T01:53:54.880+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-05-22T01:53:54.911+0000] {taskinstance.py:3901} INFO - 2 downstream tasks scheduled from follow-on schedule check
+[2025-05-22T01:53:54.913+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

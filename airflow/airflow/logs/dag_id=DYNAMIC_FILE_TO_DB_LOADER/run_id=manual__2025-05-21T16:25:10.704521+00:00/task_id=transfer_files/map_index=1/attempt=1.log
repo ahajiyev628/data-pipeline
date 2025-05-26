@@ -1,0 +1,281 @@
+[2025-05-21T16:25:17.421+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-21T16:25:17.433+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.transfer_files manual__2025-05-21T16:25:10.704521+00:00 map_index=1 [queued]>
+[2025-05-21T16:25:17.437+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.transfer_files manual__2025-05-21T16:25:10.704521+00:00 map_index=1 [queued]>
+[2025-05-21T16:25:17.438+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-05-21T16:25:17.443+0000] {taskinstance.py:2890} INFO - Executing <Mapped(KubernetesPodOperator): transfer_files> on 2025-05-21 16:25:10.704521+00:00
+[2025-05-21T16:25:17.447+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=11756) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-21T16:25:17.448+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'DYNAMIC_FILE_TO_DB_LOADER', 'transfer_files', 'manual__2025-05-21T16:25:10.704521+00:00', '--job-id', '1911', '--raw', '--subdir', 'DAGS_FOLDER/***_dynamic_file_to_db_loader.py', '--cfg-path', '/tmp/tmph5s6g6dy', '--map-index', '1']
+[2025-05-21T16:25:17.450+0000] {standard_task_runner.py:72} INFO - Started process 11758 to run task
+[2025-05-21T16:25:17.450+0000] {standard_task_runner.py:105} INFO - Job 1911: Subtask transfer_files
+[2025-05-21T16:25:17.480+0000] {task_command.py:467} INFO - Running <TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.transfer_files manual__2025-05-21T16:25:10.704521+00:00 map_index=1 [running]> on host 5fb7fe4c544d
+[2025-05-21T16:25:17.535+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='DYNAMIC_FILE_TO_DB_LOADER' AIRFLOW_CTX_TASK_ID='transfer_files' AIRFLOW_CTX_EXECUTION_DATE='2025-05-21T16:25:10.704521+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-05-21T16:25:10.704521+00:00'
+[2025-05-21T16:25:17.536+0000] {logging_mixin.py:190} INFO - 
+        INSERT INTO ***_daily_log (log_time, source_name, target_name)
+        VALUES (CURRENT_TIMESTAMP, %(source)s, %(target)s)
+    
+[2025-05-21T16:25:17.542+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-21T16:25:17.546+0000] {sql.py:511} INFO - Running statement: 
+        INSERT INTO ***_daily_log (log_time, source_name, target_name)
+        VALUES (CURRENT_TIMESTAMP, %(source)s, %(target)s)
+    , parameters: {'source': 'xyz.xlsx', 'target': 'ahajiyev/xyz'}
+[2025-05-21T16:25:17.547+0000] {sql.py:520} INFO - Rows affected: 1
+[2025-05-21T16:25:17.547+0000] {logging_mixin.py:190} INFO - 
+        UPDATE ***_daily_log
+        SET dag_id = %(dag_id)s,
+            task_id = %(task_id)s,
+            run_id = %(run_id)s,
+            execution_date = %(execution_date)s,
+            try_number = %(try_number)s,
+            log_time = CURRENT_TIMESTAMP
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and dag_id is null
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    
+[2025-05-21T16:25:17.552+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-21T16:25:17.555+0000] {sql.py:511} INFO - Running statement: 
+        UPDATE ***_daily_log
+        SET dag_id = %(dag_id)s,
+            task_id = %(task_id)s,
+            run_id = %(run_id)s,
+            execution_date = %(execution_date)s,
+            try_number = %(try_number)s,
+            log_time = CURRENT_TIMESTAMP
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and dag_id is null
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    , parameters: {'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER', 'task_id': 'transfer_files', 'run_id': 'manual__2025-05-21T16:25:10.704521+00:00', 'execution_date': '2025-05-21 16:25:10.704521+00:00', 'try_number': 1, 'source': 'xyz.xlsx', 'target': 'ahajiyev/xyz'}
+[2025-05-21T16:25:17.556+0000] {sql.py:520} INFO - Rows affected: 1
+[2025-05-21T16:25:17.556+0000] {logging_mixin.py:190} INFO - 
+        UPDATE ***_daily_log
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    
+[2025-05-21T16:25:17.561+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-21T16:25:17.564+0000] {sql.py:511} INFO - Running statement: 
+        UPDATE ***_daily_log
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    , parameters: {'status': 'running', 'try_number': 1, 'source': 'xyz.xlsx', 'target': 'ahajiyev/xyz'}
+[2025-05-21T16:25:17.565+0000] {sql.py:520} INFO - Rows affected: 4
+[2025-05-21T16:25:17.566+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-05-21T16:25:17.571+0000] {pod.py:1148} INFO - Building pod excel-to-parquet-vwr23ufe with labels: {'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER', 'task_id': 'transfer_files', 'run_id': 'manual__2025-05-21T162510.7045210000-09a0cbab6', 'kubernetes_pod_operator': 'True', 'map_index': '1', 'try_number': '1'}
+[2025-05-21T16:25:17.683+0000] {pod.py:545} INFO - Found matching pod excel-to-parquet-vwr23ufe with labels {'airflow_kpo_in_cluster': 'False', 'airflow_version': '2.10.5', 'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER', 'kubernetes_pod_operator': 'True', 'map_index': '1', 'run_id': 'manual__2025-05-21T162510.7045210000-09a0cbab6', 'task_id': 'transfer_files', 'try_number': '1'}
+[2025-05-21T16:25:17.683+0000] {pod.py:546} INFO - `try_number` of task_instance: 1
+[2025-05-21T16:25:17.684+0000] {pod.py:547} INFO - `try_number` of pod: 1
+[2025-05-21T16:25:17.689+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-vwr23ufe
+[2025-05-21T16:25:22.736+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-vwr23ufe
+[2025-05-21T16:25:27.833+0000] {pod_manager.py:477} INFO - [base] Added `s3-local` successfully.
+[2025-05-21T16:25:27.834+0000] {pod_manager.py:477} INFO - [base] `s3-local/ahajiyev/dynamic_file_to_db_transfer.py` -> `/tmp/dynamic_file_to_db_transfer.py`
+[2025-05-21T16:25:28.689+0000] {pod_manager.py:477} INFO - [base] Total: 2.82 KiB, Transferred: 2.82 KiB, Speed: 66.62 KiB/s
+[2025-05-21T16:25:28.780+0000] {pod_manager.py:477} INFO - [base] :: loading settings :: url = jar:file:/opt/spark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2025-05-21T16:25:28.780+0000] {pod_manager.py:477} INFO - [base] Ivy Default Cache set to: /root/.ivy2/cache
+[2025-05-21T16:25:28.786+0000] {pod_manager.py:477} INFO - [base] The jars for the packages stored in: /root/.ivy2/jars
+[2025-05-21T16:25:28.787+0000] {pod_manager.py:477} INFO - [base] com.crealytics#spark-excel_2.12 added as a dependency
+[2025-05-21T16:25:28.788+0000] {pod_manager.py:477} INFO - [base] :: resolving dependencies :: org.apache.spark#spark-submit-parent-f2ce2a02-b876-4d0c-b039-5b7550e711e8;1.0
+[2025-05-21T16:25:29.860+0000] {pod_manager.py:477} INFO - [base] 	confs: [default]
+[2025-05-21T16:25:30.076+0000] {pod_manager.py:477} INFO - [base] 	found com.crealytics#spark-excel_2.12;0.13.7 in central
+[2025-05-21T16:25:32.124+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.poi#poi;4.1.2 in central
+[2025-05-21T16:25:32.947+0000] {pod_manager.py:477} INFO - [base] 	found commons-codec#commons-codec;1.13 in central
+[2025-05-21T16:25:34.260+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.commons#commons-collections4;4.4 in central
+[2025-05-21T16:25:35.223+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.commons#commons-math3;3.6.1 in central
+[2025-05-21T16:25:35.407+0000] {pod_manager.py:477} INFO - [base] 	found com.zaxxer#SparseBitSet;1.2 in central
+[2025-05-21T16:25:35.587+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.poi#poi-ooxml;4.1.2 in central
+[2025-05-21T16:25:35.755+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.poi#poi-ooxml-schemas;4.1.2 in central
+[2025-05-21T16:25:35.923+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.xmlbeans#xmlbeans;3.1.0 in central
+[2025-05-21T16:25:36.105+0000] {pod_manager.py:477} INFO - [base] 	found com.github.virtuald#curvesapi;1.06 in central
+[2025-05-21T16:25:36.276+0000] {pod_manager.py:477} INFO - [base] 	found com.norbitltd#spoiwo_2.12;1.8.0 in central
+[2025-05-21T16:25:36.469+0000] {pod_manager.py:477} INFO - [base] 	found org.scala-lang.modules#scala-xml_2.12;1.3.0 in central
+[2025-05-21T16:25:36.704+0000] {pod_manager.py:477} INFO - [base] 	found com.github.pjfanning#excel-streaming-reader;2.3.6 in central
+[2025-05-21T16:25:36.874+0000] {pod_manager.py:477} INFO - [base] 	found com.github.pjfanning#poi-shared-strings;1.0.4 in central
+[2025-05-21T16:25:37.124+0000] {pod_manager.py:477} INFO - [base] 	found com.h2database#h2;1.4.200 in central
+[2025-05-21T16:25:37.322+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.commons#commons-text;1.8 in central
+[2025-05-21T16:25:37.490+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.commons#commons-lang3;3.9 in central
+[2025-05-21T16:25:38.373+0000] {pod_manager.py:477} INFO - [base] 	found xml-apis#xml-apis;1.4.01 in central
+[2025-05-21T16:25:38.545+0000] {pod_manager.py:477} INFO - [base] 	found org.slf4j#slf4j-api;1.7.30 in central
+[2025-05-21T16:25:38.643+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.commons#commons-compress;1.20 in central
+[2025-05-21T16:25:40.021+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/com/crealytics/spark-excel_2.12/0.13.7/spark-excel_2.12-0.13.7.jar ...
+[2025-05-21T16:25:40.112+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] com.crealytics#spark-excel_2.12;0.13.7!spark-excel_2.12.jar (1456ms)
+[2025-05-21T16:25:40.676+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/org/apache/poi/poi/4.1.2/poi-4.1.2.jar ...
+[2025-05-21T16:25:40.750+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] org.apache.poi#poi;4.1.2!poi.jar (651ms)
+[2025-05-21T16:25:41.197+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/org/apache/poi/poi-ooxml/4.1.2/poi-ooxml-4.1.2.jar ...
+[2025-05-21T16:25:41.277+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] org.apache.poi#poi-ooxml;4.1.2!poi-ooxml.jar (519ms)
+[2025-05-21T16:25:41.419+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/com/norbitltd/spoiwo_2.12/1.8.0/spoiwo_2.12-1.8.0.jar ...
+[2025-05-21T16:25:41.494+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] com.norbitltd#spoiwo_2.12;1.8.0!spoiwo_2.12.jar (221ms)
+[2025-05-21T16:25:41.632+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/com/github/pjfanning/excel-streaming-reader/2.3.6/excel-streaming-reader-2.3.6.jar ...
+[2025-05-21T16:25:41.731+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] com.github.pjfanning#excel-streaming-reader;2.3.6!excel-streaming-reader.jar (212ms)
+[2025-05-21T16:25:41.813+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/com/github/pjfanning/poi-shared-strings/1.0.4/poi-shared-strings-1.0.4.jar ...
+[2025-05-21T16:25:41.895+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] com.github.pjfanning#poi-shared-strings;1.0.4!poi-shared-strings.jar (175ms)
+[2025-05-21T16:25:42.064+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar ...
+[2025-05-21T16:25:42.141+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] org.apache.commons#commons-compress;1.20!commons-compress.jar (248ms)
+[2025-05-21T16:25:42.260+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/commons-codec/commons-codec/1.13/commons-codec-1.13.jar ...
+[2025-05-21T16:25:42.334+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] commons-codec#commons-codec;1.13!commons-codec.jar (195ms)
+[2025-05-21T16:25:42.491+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar ...
+[2025-05-21T16:25:42.563+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] org.apache.commons#commons-collections4;4.4!commons-collections4.jar (230ms)
+[2025-05-21T16:25:42.904+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar ...
+[2025-05-21T16:25:42.977+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] org.apache.commons#commons-math3;3.6.1!commons-math3.jar (411ms)
+[2025-05-21T16:25:43.056+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar ...
+[2025-05-21T16:25:43.135+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] com.zaxxer#SparseBitSet;1.2!SparseBitSet.jar (151ms)
+[2025-05-21T16:25:44.308+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/org/apache/poi/poi-ooxml-schemas/4.1.2/poi-ooxml-schemas-4.1.2.jar ...
+[2025-05-21T16:25:44.381+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] org.apache.poi#poi-ooxml-schemas;4.1.2!poi-ooxml-schemas.jar (1251ms)
+[2025-05-21T16:25:44.475+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.jar ...
+[2025-05-21T16:25:44.620+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] com.github.virtuald#curvesapi;1.06!curvesapi.jar (166ms)
+[2025-05-21T16:25:45.234+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans/3.1.0/xmlbeans-3.1.0.jar ...
+[2025-05-21T16:25:45.380+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] org.apache.xmlbeans#xmlbeans;3.1.0!xmlbeans.jar (754ms)
+[2025-05-21T16:25:45.661+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.3.0/scala-xml_2.12-1.3.0.jar ...
+[2025-05-21T16:25:45.732+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] org.scala-lang.modules#scala-xml_2.12;1.3.0!scala-xml_2.12.jar(bundle) (426ms)
+[2025-05-21T16:25:45.855+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar ...
+[2025-05-21T16:25:45.961+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] xml-apis#xml-apis;1.4.01!xml-apis.jar (189ms)
+[2025-05-21T16:25:46.122+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar ...
+[2025-05-21T16:25:46.278+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] org.slf4j#slf4j-api;1.7.30!slf4j-api.jar (258ms)
+[2025-05-21T16:25:46.647+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/com/h2database/h2/1.4.200/h2-1.4.200.jar ...
+[2025-05-21T16:25:46.743+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] com.h2database#h2;1.4.200!h2.jar (514ms)
+[2025-05-21T16:25:46.867+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/org/apache/commons/commons-text/1.8/commons-text-1.8.jar ...
+[2025-05-21T16:25:46.947+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] org.apache.commons#commons-text;1.8!commons-text.jar (217ms)
+[2025-05-21T16:25:47.075+0000] {pod_manager.py:477} INFO - [base] downloading https://repo1.maven.org/maven2/org/apache/commons/commons-lang3/3.9/commons-lang3-3.9.jar ...
+[2025-05-21T16:25:47.078+0000] {pod_manager.py:477} INFO - [base] 	[SUCCESSFUL ] org.apache.commons#commons-lang3;3.9!commons-lang3.jar (200ms)
+[2025-05-21T16:25:47.078+0000] {pod_manager.py:477} INFO - [base] :: resolution report :: resolve 9777ms :: artifacts dl 8513ms
+[2025-05-21T16:25:47.079+0000] {pod_manager.py:477} INFO - [base] 	:: modules in use:
+[2025-05-21T16:25:47.079+0000] {pod_manager.py:477} INFO - [base] 	com.crealytics#spark-excel_2.12;0.13.7 from central in [default]
+[2025-05-21T16:25:47.079+0000] {pod_manager.py:477} INFO - [base] 	com.github.pjfanning#excel-streaming-reader;2.3.6 from central in [default]
+[2025-05-21T16:25:47.080+0000] {pod_manager.py:477} INFO - [base] 	com.github.pjfanning#poi-shared-strings;1.0.4 from central in [default]
+[2025-05-21T16:25:47.080+0000] {pod_manager.py:477} INFO - [base] 	com.github.virtuald#curvesapi;1.06 from central in [default]
+[2025-05-21T16:25:47.080+0000] {pod_manager.py:477} INFO - [base] 	com.h2database#h2;1.4.200 from central in [default]
+[2025-05-21T16:25:47.080+0000] {pod_manager.py:477} INFO - [base] 	com.norbitltd#spoiwo_2.12;1.8.0 from central in [default]
+[2025-05-21T16:25:47.080+0000] {pod_manager.py:477} INFO - [base] 	com.zaxxer#SparseBitSet;1.2 from central in [default]
+[2025-05-21T16:25:47.081+0000] {pod_manager.py:477} INFO - [base] 	commons-codec#commons-codec;1.13 from central in [default]
+[2025-05-21T16:25:47.081+0000] {pod_manager.py:477} INFO - [base] 	org.apache.commons#commons-collections4;4.4 from central in [default]
+[2025-05-21T16:25:47.081+0000] {pod_manager.py:477} INFO - [base] 	org.apache.commons#commons-compress;1.20 from central in [default]
+[2025-05-21T16:25:47.081+0000] {pod_manager.py:477} INFO - [base] 	org.apache.commons#commons-lang3;3.9 from central in [default]
+[2025-05-21T16:25:47.081+0000] {pod_manager.py:477} INFO - [base] 	org.apache.commons#commons-math3;3.6.1 from central in [default]
+[2025-05-21T16:25:47.081+0000] {pod_manager.py:477} INFO - [base] 	org.apache.commons#commons-text;1.8 from central in [default]
+[2025-05-21T16:25:47.081+0000] {pod_manager.py:477} INFO - [base] 	org.apache.poi#poi;4.1.2 from central in [default]
+[2025-05-21T16:25:47.082+0000] {pod_manager.py:477} INFO - [base] 	org.apache.poi#poi-ooxml;4.1.2 from central in [default]
+[2025-05-21T16:25:47.082+0000] {pod_manager.py:477} INFO - [base] 	org.apache.poi#poi-ooxml-schemas;4.1.2 from central in [default]
+[2025-05-21T16:25:47.082+0000] {pod_manager.py:477} INFO - [base] 	org.apache.xmlbeans#xmlbeans;3.1.0 from central in [default]
+[2025-05-21T16:25:47.082+0000] {pod_manager.py:477} INFO - [base] 	org.scala-lang.modules#scala-xml_2.12;1.3.0 from central in [default]
+[2025-05-21T16:25:47.082+0000] {pod_manager.py:477} INFO - [base] 	org.slf4j#slf4j-api;1.7.30 from central in [default]
+[2025-05-21T16:25:47.082+0000] {pod_manager.py:477} INFO - [base] 	xml-apis#xml-apis;1.4.01 from central in [default]
+[2025-05-21T16:25:47.082+0000] {pod_manager.py:477} INFO - [base] 	:: evicted modules:
+[2025-05-21T16:25:47.082+0000] {pod_manager.py:477} INFO - [base] 	org.apache.commons#commons-compress;1.19 by [org.apache.commons#commons-compress;1.20] in [default]
+[2025-05-21T16:25:47.083+0000] {pod_manager.py:477} INFO - [base] 	---------------------------------------------------------------------
+[2025-05-21T16:25:47.083+0000] {pod_manager.py:477} INFO - [base] 	|                  |            modules            ||   artifacts   |
+[2025-05-21T16:25:47.083+0000] {pod_manager.py:477} INFO - [base] 	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2025-05-21T16:25:47.083+0000] {pod_manager.py:477} INFO - [base] 	---------------------------------------------------------------------
+[2025-05-21T16:25:47.083+0000] {pod_manager.py:477} INFO - [base] 	|      default     |   21  |   20  |   20  |   1   ||   20  |   20  |
+[2025-05-21T16:25:47.102+0000] {pod_manager.py:477} INFO - [base] 	---------------------------------------------------------------------
+[2025-05-21T16:25:47.104+0000] {pod_manager.py:477} INFO - [base] :: retrieving :: org.apache.spark#spark-submit-parent-f2ce2a02-b876-4d0c-b039-5b7550e711e8
+[2025-05-21T16:25:47.180+0000] {pod_manager.py:477} INFO - [base] 	confs: [default]
+[2025-05-21T16:25:47.549+0000] {pod_manager.py:477} INFO - [base] 	20 artifacts copied, 0 already retrieved (29243kB/78ms)
+[2025-05-21T16:25:48.217+0000] {pod_manager.py:477} INFO - [base] 25/05/21 16:25:47 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-05-21T16:25:48.218+0000] {pod_manager.py:477} INFO - [base] Setting default log level to "WARN".
+[2025-05-21T16:25:57.551+0000] {pod_manager.py:477} INFO - [base] To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-05-21T16:26:44.468+0000] {pod_manager.py:477} INFO - [base] 25/05/21 16:25:57 WARN MetricsConfig: Cannot locate configuration: tried hadoop-metrics2-s3a-file-system.properties,hadoop-metrics2.properties
+[2025-05-21T16:26:44.472+0000] {pod_manager.py:477} INFO - [base] PostgreSQL Config:
+[2025-05-21T16:26:44.472+0000] {pod_manager.py:477} INFO - [base] HOST=postgres-external.default.svc.cluster.local
+[2025-05-21T16:26:44.473+0000] {pod_manager.py:477} INFO - [base] PORT=5433
+[2025-05-21T16:26:44.473+0000] {pod_manager.py:477} INFO - [base] DB=***
+[2025-05-21T16:26:44.474+0000] {pod_manager.py:477} INFO - [base] USER=***
+[2025-05-21T16:26:44.474+0000] {pod_manager.py:477} INFO - [base] ***
+[2025-05-21T16:26:44.475+0000] {pod_manager.py:477} INFO - [base] URL=jdbc:postgresql://postgres-external.default.svc.cluster.local:5433/***
+[2025-05-21T16:26:44.475+0000] {pod_manager.py:477} INFO - [base] Read data from s3a://ahajiyev/xyz.xlsx:
+[2025-05-21T16:26:44.475+0000] {pod_manager.py:477} INFO - [base] +-------+----+-----------+
+[2025-05-21T16:26:44.475+0000] {pod_manager.py:477} INFO - [base] |   Name| Age| Department|
+[2025-05-21T16:26:44.476+0000] {pod_manager.py:477} INFO - [base] +-------+----+-----------+
+[2025-05-21T16:26:44.476+0000] {pod_manager.py:477} INFO - [base] |  Alice|25.0|         HR|
+[2025-05-21T16:26:44.476+0000] {pod_manager.py:477} INFO - [base] |    Bob|30.0|Engineering|
+[2025-05-21T16:26:44.476+0000] {pod_manager.py:477} INFO - [base] |Charlie|35.0|  Marketing|
+[2025-05-21T16:26:44.476+0000] {pod_manager.py:477} INFO - [base] |  Diana|28.0|    Finance|
+[2025-05-21T16:26:44.476+0000] {pod_manager.py:477} INFO - [base] |   Evan|40.0|         IT|
+[2025-05-21T16:26:44.477+0000] {pod_manager.py:477} INFO - [base] +-------+----+-----------+
+2025-05-21T16:26:44.462214886Z 
+
+[2025-05-21T16:26:44.477+0000] {pod_manager.py:477} INFO - [base] Successfully written to s3a://ahajiyev/ahajiyev/xyz
+[2025-05-21T16:26:44.477+0000] {pod_manager.py:477} INFO - [base] +--------+
+[2025-05-21T16:26:44.477+0000] {pod_manager.py:477} INFO - [base] |?column?|
+[2025-05-21T16:26:44.478+0000] {pod_manager.py:477} INFO - [base] +--------+
+[2025-05-21T16:26:44.478+0000] {pod_manager.py:477} INFO - [base] |       1|
+[2025-05-21T16:26:44.590+0000] {pod_manager.py:477} INFO - [base] +--------+
+2025-05-21T16:26:44.462232719Z 
+
+[2025-05-21T16:26:44.591+0000] {pod_manager.py:496} INFO - [base] [Stage 0:>                                                        (0 + 12) / 12]                                                                                [Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 2:>                                                          (0 + 4) / 4][Stage 2:==============>                                            (1 + 3) / 4][Stage 2:=============================>                             (2 + 2) / 4]                                                                                [Stage 3:>                                                          (0 + 7) / 7][Stage 3:=================================>                         (4 + 3) / 7][Stage 3:===========================================================(7 + 0) / 7]                                                                                [Stage 4:>                                                        (0 + 12) / 12][Stage 4:====>                                                    (1 + 11) / 12][Stage 4:===================>                                      (4 + 8) / 12][Stage 6:>                                                          (0 + 1) / 1][Stage 6:===========================================================(1 + 0) / 1]                                                                                [Stage 7:>                                                         (0 + 0) / 12][Stage 7:>                                                        (0 + 12) / 12][Stage 7:=============================>                            (6 + 6) / 12]
+[2025-05-21T16:26:44.609+0000] {pod_manager.py:524} WARNING - Pod excel-to-parquet-vwr23ufe log read interrupted but container base still running. Logs generated in the last one second might get duplicated.
+[2025-05-21T16:26:45.619+0000] {pod_manager.py:477} INFO - [base] PostgreSQL Config:
+[2025-05-21T16:26:45.620+0000] {pod_manager.py:477} INFO - [base] HOST=postgres-external.default.svc.cluster.local
+[2025-05-21T16:26:45.620+0000] {pod_manager.py:477} INFO - [base] PORT=5433
+[2025-05-21T16:26:45.620+0000] {pod_manager.py:477} INFO - [base] DB=***
+[2025-05-21T16:26:45.620+0000] {pod_manager.py:477} INFO - [base] USER=***
+[2025-05-21T16:26:45.620+0000] {pod_manager.py:477} INFO - [base] ***
+[2025-05-21T16:26:45.621+0000] {pod_manager.py:477} INFO - [base] URL=jdbc:postgresql://postgres-external.default.svc.cluster.local:5433/***
+[2025-05-21T16:26:45.621+0000] {pod_manager.py:477} INFO - [base] Read data from s3a://ahajiyev/xyz.xlsx:
+[2025-05-21T16:26:45.621+0000] {pod_manager.py:477} INFO - [base] +-------+----+-----------+
+[2025-05-21T16:26:45.621+0000] {pod_manager.py:477} INFO - [base] |   Name| Age| Department|
+[2025-05-21T16:26:45.621+0000] {pod_manager.py:477} INFO - [base] +-------+----+-----------+
+[2025-05-21T16:26:45.621+0000] {pod_manager.py:477} INFO - [base] |  Alice|25.0|         HR|
+[2025-05-21T16:26:45.621+0000] {pod_manager.py:477} INFO - [base] |    Bob|30.0|Engineering|
+[2025-05-21T16:26:45.621+0000] {pod_manager.py:477} INFO - [base] |Charlie|35.0|  Marketing|
+[2025-05-21T16:26:45.622+0000] {pod_manager.py:477} INFO - [base] |  Diana|28.0|    Finance|
+[2025-05-21T16:26:45.622+0000] {pod_manager.py:477} INFO - [base] |   Evan|40.0|         IT|
+[2025-05-21T16:26:45.622+0000] {pod_manager.py:477} INFO - [base] +-------+----+-----------+
+2025-05-21T16:26:44.462214886Z 
+
+[2025-05-21T16:26:45.622+0000] {pod_manager.py:477} INFO - [base] Successfully written to s3a://ahajiyev/ahajiyev/xyz
+[2025-05-21T16:26:45.622+0000] {pod_manager.py:477} INFO - [base] +--------+
+[2025-05-21T16:26:45.622+0000] {pod_manager.py:477} INFO - [base] |?column?|
+[2025-05-21T16:26:45.623+0000] {pod_manager.py:477} INFO - [base] +--------+
+[2025-05-21T16:26:45.623+0000] {pod_manager.py:477} INFO - [base] |       1|
+[2025-05-21T16:26:45.623+0000] {pod_manager.py:477} INFO - [base] +--------+
+2025-05-21T16:26:44.462232719Z 
+
+[2025-05-21T16:26:45.623+0000] {pod_manager.py:496} INFO - [base] [Stage 0:>                                                        (0 + 12) / 12]                                                                                [Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 2:>                                                          (0 + 4) / 4][Stage 2:==============>                                            (1 + 3) / 4][Stage 2:=============================>                             (2 + 2) / 4]                                                                                [Stage 3:>                                                          (0 + 7) / 7][Stage 3:=================================>                         (4 + 3) / 7][Stage 3:===========================================================(7 + 0) / 7]                                                                                [Stage 4:>                                                        (0 + 12) / 12][Stage 4:====>                                                    (1 + 11) / 12][Stage 4:===================>                                      (4 + 8) / 12][Stage 6:>                                                          (0 + 1) / 1][Stage 6:===========================================================(1 + 0) / 1]                                                                                [Stage 7:>                                                         (0 + 0) / 12][Stage 7:>                                                        (0 + 12) / 12][Stage 7:=============================>                            (6 + 6) / 12]
+[2025-05-21T16:26:45.635+0000] {pod_manager.py:654} INFO - Pod excel-to-parquet-vwr23ufe has phase Running
+[2025-05-21T16:26:47.647+0000] {pod.py:997} INFO - Deleting pod: excel-to-parquet-vwr23ufe
+[2025-05-21T16:26:47.675+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-05-21T16:26:47.675+0000] {taskinstance.py:353} INFO - Marking task as SUCCESS. dag_id=DYNAMIC_FILE_TO_DB_LOADER, task_id=transfer_files, run_id=manual__2025-05-21T16:25:10.704521+00:00, map_index=1, execution_date=20250521T162510, start_date=20250521T162517, end_date=20250521T162647
+[2025-05-21T16:26:47.676+0000] {taskinstance.py:1564} INFO - Executing callback at index 0: task_success_callback
+[2025-05-21T16:26:47.676+0000] {logging_mixin.py:190} INFO - 
+        UPDATE ***_daily_log
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    
+[2025-05-21T16:26:47.679+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-21T16:26:47.685+0000] {sql.py:511} INFO - Running statement: 
+        UPDATE ***_daily_log
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    , parameters: {'status': 'success', 'try_number': 1, 'source': 'xyz.xlsx', 'target': 'ahajiyev/xyz'}
+[2025-05-21T16:26:47.686+0000] {sql.py:520} INFO - Rows affected: 4
+[2025-05-21T16:26:47.687+0000] {logging_mixin.py:190} INFO - 
+        UPDATE ***_daily_log
+        SET end_time = %(end_time)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and end_time is null
+        AND source_name = %(source)s
+        AND target_name = %(target)s
+    
+[2025-05-21T16:26:47.691+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-21T16:26:47.696+0000] {sql.py:511} INFO - Running statement: 
+        UPDATE ***_daily_log
+        SET end_time = %(end_time)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and end_time is null
+        AND source_name = %(source)s
+        AND target_name = %(target)s
+    , parameters: {'end_time': datetime.datetime(2025, 5, 21, 16, 26, 47, 675601, tzinfo=Timezone('UTC')), 'source': 'xyz.xlsx', 'target': 'ahajiyev/xyz'}
+[2025-05-21T16:26:47.697+0000] {sql.py:520} INFO - Rows affected: 1
+[2025-05-21T16:26:47.754+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-05-21T16:26:47.766+0000] {taskinstance.py:3901} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-05-21T16:26:47.767+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

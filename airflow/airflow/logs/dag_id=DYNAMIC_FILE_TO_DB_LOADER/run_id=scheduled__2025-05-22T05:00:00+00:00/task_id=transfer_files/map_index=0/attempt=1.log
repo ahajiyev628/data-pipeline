@@ -1,0 +1,1141 @@
+[2025-05-22T05:21:44.736+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-22T05:21:44.748+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.transfer_files scheduled__2025-05-22T05:00:00+00:00 map_index=0 [queued]>
+[2025-05-22T05:21:44.752+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.transfer_files scheduled__2025-05-22T05:00:00+00:00 map_index=0 [queued]>
+[2025-05-22T05:21:44.753+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-05-22T05:21:44.757+0000] {taskinstance.py:2890} INFO - Executing <Mapped(KubernetesPodOperator): transfer_files> on 2025-05-22 05:00:00+00:00
+[2025-05-22T05:21:44.762+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=15405) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-22T05:21:44.763+0000] {standard_task_runner.py:72} INFO - Started process 15408 to run task
+[2025-05-22T05:21:44.762+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'DYNAMIC_FILE_TO_DB_LOADER', 'transfer_files', 'scheduled__2025-05-22T05:00:00+00:00', '--job-id', '1943', '--raw', '--subdir', 'DAGS_FOLDER/***_dynamic_file_to_db_loader.py', '--cfg-path', '/tmp/tmp3xrkx0id', '--map-index', '0']
+[2025-05-22T05:21:44.763+0000] {standard_task_runner.py:105} INFO - Job 1943: Subtask transfer_files
+[2025-05-22T05:21:44.801+0000] {task_command.py:467} INFO - Running <TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.transfer_files scheduled__2025-05-22T05:00:00+00:00 map_index=0 [running]> on host 5fb7fe4c544d
+[2025-05-22T05:21:44.850+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='DYNAMIC_FILE_TO_DB_LOADER' AIRFLOW_CTX_TASK_ID='transfer_files' AIRFLOW_CTX_EXECUTION_DATE='2025-05-22T05:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-22T05:00:00+00:00'
+[2025-05-22T05:21:44.851+0000] {logging_mixin.py:190} INFO - 
+        INSERT INTO ***_daily_log (log_time, source_name, target_name)
+        VALUES (CURRENT_TIMESTAMP, %(source)s, %(target)s)
+    
+[2025-05-22T05:21:44.855+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-22T05:21:44.857+0000] {sql.py:511} INFO - Running statement: 
+        INSERT INTO ***_daily_log (log_time, source_name, target_name)
+        VALUES (CURRENT_TIMESTAMP, %(source)s, %(target)s)
+    , parameters: {'source': 'abc.xlsx', 'target': 'ahajiyev/abc'}
+[2025-05-22T05:21:44.858+0000] {sql.py:520} INFO - Rows affected: 1
+[2025-05-22T05:21:44.859+0000] {logging_mixin.py:190} INFO - 
+        UPDATE ***_daily_log
+        SET dag_id = %(dag_id)s,
+            task_id = %(task_id)s,
+            run_id = %(run_id)s,
+            execution_date = %(execution_date)s,
+            try_number = %(try_number)s,
+            log_time = CURRENT_TIMESTAMP
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and dag_id is null
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    
+[2025-05-22T05:21:44.862+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-22T05:21:44.864+0000] {sql.py:511} INFO - Running statement: 
+        UPDATE ***_daily_log
+        SET dag_id = %(dag_id)s,
+            task_id = %(task_id)s,
+            run_id = %(run_id)s,
+            execution_date = %(execution_date)s,
+            try_number = %(try_number)s,
+            log_time = CURRENT_TIMESTAMP
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and dag_id is null
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    , parameters: {'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER', 'task_id': 'transfer_files', 'run_id': 'scheduled__2025-05-22T05:00:00+00:00', 'execution_date': '2025-05-22 05:00:00+00:00', 'try_number': 1, 'source': 'abc.xlsx', 'target': 'ahajiyev/abc'}
+[2025-05-22T05:21:44.865+0000] {sql.py:520} INFO - Rows affected: 1
+[2025-05-22T05:21:44.865+0000] {logging_mixin.py:190} INFO - 
+        UPDATE ***_daily_log
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    
+[2025-05-22T05:21:44.868+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-22T05:21:44.871+0000] {sql.py:511} INFO - Running statement: 
+        UPDATE ***_daily_log
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    , parameters: {'status': 'running', 'try_number': 1, 'source': 'abc.xlsx', 'target': 'ahajiyev/abc'}
+[2025-05-22T05:21:44.871+0000] {sql.py:520} INFO - Rows affected: 4
+[2025-05-22T05:21:44.872+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-05-22T05:21:44.875+0000] {pod.py:1148} INFO - Building pod excel-to-parquet-r9l1yfkw with labels: {'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER', 'task_id': 'transfer_files', 'run_id': 'scheduled__2025-05-22T0500000000-2e08fb77f', 'kubernetes_pod_operator': 'True', 'map_index': '0', 'try_number': '1'}
+[2025-05-22T05:21:44.935+0000] {pod.py:545} INFO - Found matching pod excel-to-parquet-r9l1yfkw with labels {'airflow_kpo_in_cluster': 'False', 'airflow_version': '2.10.5', 'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER', 'kubernetes_pod_operator': 'True', 'map_index': '0', 'run_id': 'scheduled__2025-05-22T0500000000-2e08fb77f', 'task_id': 'transfer_files', 'try_number': '1'}
+[2025-05-22T05:21:44.935+0000] {pod.py:546} INFO - `try_number` of task_instance: 1
+[2025-05-22T05:21:44.936+0000] {pod.py:547} INFO - `try_number` of pod: 1
+[2025-05-22T05:21:44.940+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-r9l1yfkw
+[2025-05-22T05:21:49.964+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-r9l1yfkw
+[2025-05-22T05:21:54.985+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-r9l1yfkw
+[2025-05-22T05:22:00.015+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-r9l1yfkw
+[2025-05-22T05:22:05.026+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-r9l1yfkw
+[2025-05-22T06:31:53.318+0000] {job.py:229} INFO - Heartbeat recovered after 4188.39 seconds
+[2025-05-22T06:31:53.385+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-r9l1yfkw
+[2025-05-22T06:31:53.401+0000] {pod.py:997} INFO - Deleting pod: excel-to-parquet-r9l1yfkw
+[2025-05-22T06:31:53.433+0000] {taskinstance.py:3313} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 611, in execute_sync
+    self.await_pod_start(pod=self.pod)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 560, in await_pod_start
+    self.pod_manager.await_pod_start(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/utils/pod_manager.py", line 398, in await_pod_start
+    raise PodLaunchFailedException(msg)
+airflow.providers.cncf.kubernetes.utils.pod_manager.PodLaunchFailedException: Pod took longer than 120 seconds to start. Check the pod events in kubernetes to determine why.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 583, in execute
+    return self.execute_sync(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 636, in execute_sync
+    self.cleanup(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 928, in cleanup
+    raise AirflowException(
+airflow.exceptions.AirflowException: Pod excel-to-parquet-r9l1yfkw returned a failure.
+remote_pod: {'api_version': None,
+ 'kind': None,
+ 'metadata': {'annotations': None,
+              'creation_timestamp': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+              'deletion_grace_period_seconds': None,
+              'deletion_timestamp': None,
+              'finalizers': None,
+              'generate_name': None,
+              'generation': None,
+              'labels': {'***_kpo_in_cluster': 'False',
+                         '***_version': '2.10.5',
+                         'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER',
+                         'kubernetes_pod_operator': 'True',
+                         'map_index': '0',
+                         'run_id': 'scheduled__2025-05-22T0500000000-2e08fb77f',
+                         'task_id': 'transfer_files',
+                         'try_number': '1'},
+              'managed_fields': [{'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:metadata': {'f:labels': {'.': {},
+                                                                            'f:***_kpo_in_cluster': {},
+                                                                            'f:***_version': {},
+                                                                            'f:dag_id': {},
+                                                                            'f:kubernetes_pod_operator': {},
+                                                                            'f:map_index': {},
+                                                                            'f:run_id': {},
+                                                                            'f:task_id': {},
+                                                                            'f:try_number': {}}},
+                                                'f:spec': {'f:affinity': {},
+                                                           'f:containers': {'k:{"name":"base"}': {'.': {},
+                                                                                                  'f:args': {},
+                                                                                                  'f:command': {},
+                                                                                                  'f:envFrom': {},
+                                                                                                  'f:image': {},
+                                                                                                  'f:imagePullPolicy': {},
+                                                                                                  'f:name': {},
+                                                                                                  'f:resources': {},
+                                                                                                  'f:terminationMessagePath': {},
+                                                                                                  'f:terminationMessagePolicy': {}}},
+                                                           'f:dnsPolicy': {},
+                                                           'f:enableServiceLinks': {},
+                                                           'f:restartPolicy': {},
+                                                           'f:schedulerName': {},
+                                                           'f:securityContext': {},
+                                                           'f:terminationGracePeriodSeconds': {}}},
+                                  'manager': 'OpenAPI-Generator',
+                                  'operation': 'Update',
+                                  'subresource': None,
+                                  'time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal())},
+                                 {'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:status': {'f:conditions': {'k:{"type":"ContainersReady"}': {'.': {},
+                                                                                                               'f:lastProbeTime': {},
+                                                                                                               'f:lastTransitionTime': {},
+                                                                                                               'f:message': {},
+                                                                                                               'f:reason': {},
+                                                                                                               'f:status': {},
+                                                                                                               'f:type': {}},
+                                                                              'k:{"type":"Initialized"}': {'.': {},
+                                                                                                           'f:lastProbeTime': {},
+                                                                                                           'f:lastTransitionTime': {},
+                                                                                                           'f:status': {},
+                                                                                                           'f:type': {}},
+                                                                              'k:{"type":"PodReadyToStartContainers"}': {'.': {},
+                                                                                                                         'f:lastProbeTime': {},
+                                                                                                                         'f:lastTransitionTime': {},
+                                                                                                                         'f:status': {},
+                                                                                                                         'f:type': {}},
+                                                                              'k:{"type":"Ready"}': {'.': {},
+                                                                                                     'f:lastProbeTime': {},
+                                                                                                     'f:lastTransitionTime': {},
+                                                                                                     'f:message': {},
+                                                                                                     'f:reason': {},
+                                                                                                     'f:status': {},
+                                                                                                     'f:type': {}}},
+                                                             'f:containerStatuses': {},
+                                                             'f:hostIP': {},
+                                                             'f:hostIPs': {},
+                                                             'f:startTime': {}}},
+                                  'manager': 'kubelet',
+                                  'operation': 'Update',
+                                  'subresource': 'status',
+                                  'time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal())}],
+              'name': 'excel-to-parquet-r9l1yfkw',
+              'namespace': 'default',
+              'owner_references': None,
+              'resource_version': '248925',
+              'self_link': None,
+              'uid': 'cf766f06-3c66-436d-a327-90c3fd929a3b'},
+ 'spec': {'active_deadline_seconds': None,
+          'affinity': {'node_affinity': None,
+                       'pod_affinity': None,
+                       'pod_anti_affinity': None},
+          'automount_service_account_token': None,
+          'containers': [{'args': ['mc alias set s3-local '
+                                   'http://minio-external.default.svc.cluster.local:9000 '
+                                   'adminic adminic123 && mc cp '
+                                   's3-local/ahajiyev/dynamic_file_to_db_transfer.py '
+                                   '/tmp/dynamic_file_to_db_transfer.py && '
+                                   'python /tmp/dynamic_file_to_db_transfer.py '
+                                   '--source abc.xlsx --target ahajiyev/abc'],
+                          'command': ['sh', '-c'],
+                          'env': None,
+                          'env_from': [{'config_map_ref': None,
+                                        'prefix': None,
+                                        'secret_ref': {'name': 'postgres-secret',
+                                                       'optional': None}}],
+                          'image': 'ahajiyev/pyspark-with-awscli',
+                          'image_pull_policy': 'Always',
+                          'lifecycle': None,
+                          'liveness_probe': None,
+                          'name': 'base',
+                          'ports': None,
+                          'readiness_probe': None,
+                          'resize_policy': None,
+                          'resources': {'claims': None,
+                                        'limits': None,
+                                        'requests': None},
+                          'restart_policy': None,
+                          'security_context': None,
+                          'startup_probe': None,
+                          'stdin': None,
+                          'stdin_once': None,
+                          'termination_message_path': '/dev/termination-log',
+                          'termination_message_policy': 'File',
+                          'tty': None,
+                          'volume_devices': None,
+                          'volume_mounts': [{'mount_path': '/var/run/secrets/kubernetes.io/serviceaccount',
+                                             'mount_propagation': None,
+                                             'name': 'kube-api-access-x95fx',
+                                             'read_only': True,
+                                             'recursive_read_only': None,
+                                             'sub_path': None,
+                                             'sub_path_expr': None}],
+                          'working_dir': None}],
+          'dns_config': None,
+          'dns_policy': 'ClusterFirst',
+          'enable_service_links': True,
+          'ephemeral_containers': None,
+          'host_aliases': None,
+          'host_ipc': None,
+          'host_network': None,
+          'host_pid': None,
+          'host_users': None,
+          'hostname': None,
+          'image_pull_secrets': None,
+          'init_containers': None,
+          'node_name': 'minikube',
+          'node_selector': None,
+          'os': None,
+          'overhead': None,
+          'preemption_policy': 'PreemptLowerPriority',
+          'priority': 0,
+          'priority_class_name': None,
+          'readiness_gates': None,
+          'resource_claims': None,
+          'restart_policy': 'Never',
+          'runtime_class_name': None,
+          'scheduler_name': 'default-scheduler',
+          'scheduling_gates': None,
+          'security_context': {'app_armor_profile': None,
+                               'fs_group': None,
+                               'fs_group_change_policy': None,
+                               'run_as_group': None,
+                               'run_as_non_root': None,
+                               'run_as_user': None,
+                               'se_linux_options': None,
+                               'seccomp_profile': None,
+                               'supplemental_groups': None,
+                               'sysctls': None,
+                               'windows_options': None},
+          'service_account': 'default',
+          'service_account_name': 'default',
+          'set_hostname_as_fqdn': None,
+          'share_process_namespace': None,
+          'subdomain': None,
+          'termination_grace_period_seconds': 30,
+          'tolerations': [{'effect': 'NoExecute',
+                           'key': 'node.kubernetes.io/not-ready',
+                           'operator': 'Exists',
+                           'toleration_seconds': 300,
+                           'value': None},
+                          {'effect': 'NoExecute',
+                           'key': 'node.kubernetes.io/unreachable',
+                           'operator': 'Exists',
+                           'toleration_seconds': 300,
+                           'value': None}],
+          'topology_spread_constraints': None,
+          'volumes': [{'aws_elastic_block_store': None,
+                       'azure_disk': None,
+                       'azure_file': None,
+                       'cephfs': None,
+                       'cinder': None,
+                       'config_map': None,
+                       'csi': None,
+                       'downward_api': None,
+                       'empty_dir': None,
+                       'ephemeral': None,
+                       'fc': None,
+                       'flex_volume': None,
+                       'flocker': None,
+                       'gce_persistent_disk': None,
+                       'git_repo': None,
+                       'glusterfs': None,
+                       'host_path': None,
+                       'iscsi': None,
+                       'name': 'kube-api-access-x95fx',
+                       'nfs': None,
+                       'persistent_volume_claim': None,
+                       'photon_persistent_disk': None,
+                       'portworx_volume': None,
+                       'projected': {'default_mode': 420,
+                                     'sources': [{'cluster_trust_bundle': None,
+                                                  'config_map': None,
+                                                  'downward_api': None,
+                                                  'secret': None,
+                                                  'service_account_token': {'audience': None,
+                                                                            'expiration_seconds': 3607,
+                                                                            'path': 'token'}},
+                                                 {'cluster_trust_bundle': None,
+                                                  'config_map': {'items': [{'key': 'ca.crt',
+                                                                            'mode': None,
+                                                                            'path': 'ca.crt'}],
+                                                                 'name': 'kube-root-ca.crt',
+                                                                 'optional': None},
+                                                  'downward_api': None,
+                                                  'secret': None,
+                                                  'service_account_token': None},
+                                                 {'cluster_trust_bundle': None,
+                                                  'config_map': None,
+                                                  'downward_api': {'items': [{'field_ref': {'api_version': 'v1',
+                                                                                            'field_path': 'metadata.namespace'},
+                                                                              'mode': None,
+                                                                              'path': 'namespace',
+                                                                              'resource_field_ref': None}]},
+                                                  'secret': None,
+                                                  'service_account_token': None}]},
+                       'quobyte': None,
+                       'rbd': None,
+                       'scale_io': None,
+                       'secret': None,
+                       'storageos': None,
+                       'vsphere_volume': None}]},
+ 'status': {'conditions': [{'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'False',
+                            'type': 'PodReadyToStartContainers'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'True',
+                            'type': 'Initialized'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': 'containers with unready status: [base]',
+                            'reason': 'ContainersNotReady',
+                            'status': 'False',
+                            'type': 'Ready'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': 'containers with unready status: [base]',
+                            'reason': 'ContainersNotReady',
+                            'status': 'False',
+                            'type': 'ContainersReady'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'True',
+                            'type': 'PodScheduled'}],
+            'container_statuses': [{'allocated_resources': None,
+                                    'container_id': None,
+                                    'image': 'ahajiyev/pyspark-with-awscli',
+                                    'image_id': '',
+                                    'last_state': {'running': None,
+                                                   'terminated': None,
+                                                   'waiting': None},
+                                    'name': 'base',
+                                    'ready': False,
+                                    'resources': None,
+                                    'restart_count': 0,
+                                    'started': False,
+                                    'state': {'running': None,
+                                              'terminated': None,
+                                              'waiting': {'message': None,
+                                                          'reason': 'ContainerCreating'}},
+                                    'volume_mounts': [{'mount_path': '/var/run/secrets/kubernetes.io/serviceaccount',
+                                                       'name': 'kube-api-access-x95fx',
+                                                       'read_only': True,
+                                                       'recursive_read_only': 'Disabled'}]}],
+            'ephemeral_container_statuses': None,
+            'host_i_ps': [{'ip': '192.168.49.2'}],
+            'host_ip': '192.168.49.2',
+            'init_container_statuses': None,
+            'message': None,
+            'nominated_node_name': None,
+            'phase': 'Pending',
+            'pod_i_ps': None,
+            'pod_ip': None,
+            'qos_class': 'BestEffort',
+            'reason': None,
+            'resize': None,
+            'resource_claim_statuses': None,
+            'start_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal())}}
+[2025-05-22T06:31:53.437+0000] {taskinstance.py:1226} INFO - Marking task as FAILED. dag_id=DYNAMIC_FILE_TO_DB_LOADER, task_id=transfer_files, run_id=scheduled__2025-05-22T05:00:00+00:00, map_index=0, execution_date=20250522T050000, start_date=20250522T052144, end_date=20250522T063153
+[2025-05-22T06:31:53.438+0000] {taskinstance.py:1564} INFO - Executing callback at index 0: task_failure_callback
+[2025-05-22T06:31:53.438+0000] {logging_mixin.py:190} INFO - 
+        UPDATE ***_daily_log
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    
+[2025-05-22T06:31:53.440+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-22T06:31:53.444+0000] {sql.py:511} INFO - Running statement: 
+        UPDATE ***_daily_log
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    , parameters: {'status': 'failed', 'try_number': 1, 'source': 'abc.xlsx', 'target': 'ahajiyev/abc'}
+[2025-05-22T06:31:53.445+0000] {sql.py:520} INFO - Rows affected: 4
+[2025-05-22T06:31:53.446+0000] {logging_mixin.py:190} INFO - 
+        UPDATE ***_daily_log
+        SET end_time = %(end_time)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and end_time is null
+        AND source_name = %(source)s
+        AND target_name = %(target)s
+    
+[2025-05-22T06:31:53.451+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-22T06:31:53.454+0000] {sql.py:511} INFO - Running statement: 
+        UPDATE ***_daily_log
+        SET end_time = %(end_time)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and end_time is null
+        AND source_name = %(source)s
+        AND target_name = %(target)s
+    , parameters: {'end_time': datetime.datetime(2025, 5, 22, 6, 31, 53, 437121, tzinfo=Timezone('UTC')), 'source': 'abc.xlsx', 'target': 'ahajiyev/abc'}
+[2025-05-22T06:31:53.456+0000] {sql.py:520} INFO - Rows affected: 1
+[2025-05-22T06:31:53.471+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-05-22T06:31:53.471+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 1943 for task transfer_files (Pod excel-to-parquet-r9l1yfkw returned a failure.
+remote_pod: {'api_version': None,
+ 'kind': None,
+ 'metadata': {'annotations': None,
+              'creation_timestamp': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+              'deletion_grace_period_seconds': None,
+              'deletion_timestamp': None,
+              'finalizers': None,
+              'generate_name': None,
+              'generation': None,
+              'labels': {'***_kpo_in_cluster': 'False',
+                         '***_version': '2.10.5',
+                         'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER',
+                         'kubernetes_pod_operator': 'True',
+                         'map_index': '0',
+                         'run_id': 'scheduled__2025-05-22T0500000000-2e08fb77f',
+                         'task_id': 'transfer_files',
+                         'try_number': '1'},
+              'managed_fields': [{'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:metadata': {'f:labels': {'.': {},
+                                                                            'f:***_kpo_in_cluster': {},
+                                                                            'f:***_version': {},
+                                                                            'f:dag_id': {},
+                                                                            'f:kubernetes_pod_operator': {},
+                                                                            'f:map_index': {},
+                                                                            'f:run_id': {},
+                                                                            'f:task_id': {},
+                                                                            'f:try_number': {}}},
+                                                'f:spec': {'f:affinity': {},
+                                                           'f:containers': {'k:{"name":"base"}': {'.': {},
+                                                                                                  'f:args': {},
+                                                                                                  'f:command': {},
+                                                                                                  'f:envFrom': {},
+                                                                                                  'f:image': {},
+                                                                                                  'f:imagePullPolicy': {},
+                                                                                                  'f:name': {},
+                                                                                                  'f:resources': {},
+                                                                                                  'f:terminationMessagePath': {},
+                                                                                                  'f:terminationMessagePolicy': {}}},
+                                                           'f:dnsPolicy': {},
+                                                           'f:enableServiceLinks': {},
+                                                           'f:restartPolicy': {},
+                                                           'f:schedulerName': {},
+                                                           'f:securityContext': {},
+                                                           'f:terminationGracePeriodSeconds': {}}},
+                                  'manager': 'OpenAPI-Generator',
+                                  'operation': 'Update',
+                                  'subresource': None,
+                                  'time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal())},
+                                 {'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:status': {'f:conditions': {'k:{"type":"ContainersReady"}': {'.': {},
+                                                                                                               'f:lastProbeTime': {},
+                                                                                                               'f:lastTransitionTime': {},
+                                                                                                               'f:message': {},
+                                                                                                               'f:reason': {},
+                                                                                                               'f:status': {},
+                                                                                                               'f:type': {}},
+                                                                              'k:{"type":"Initialized"}': {'.': {},
+                                                                                                           'f:lastProbeTime': {},
+                                                                                                           'f:lastTransitionTime': {},
+                                                                                                           'f:status': {},
+                                                                                                           'f:type': {}},
+                                                                              'k:{"type":"PodReadyToStartContainers"}': {'.': {},
+                                                                                                                         'f:lastProbeTime': {},
+                                                                                                                         'f:lastTransitionTime': {},
+                                                                                                                         'f:status': {},
+                                                                                                                         'f:type': {}},
+                                                                              'k:{"type":"Ready"}': {'.': {},
+                                                                                                     'f:lastProbeTime': {},
+                                                                                                     'f:lastTransitionTime': {},
+                                                                                                     'f:message': {},
+                                                                                                     'f:reason': {},
+                                                                                                     'f:status': {},
+                                                                                                     'f:type': {}}},
+                                                             'f:containerStatuses': {},
+                                                             'f:hostIP': {},
+                                                             'f:hostIPs': {},
+                                                             'f:startTime': {}}},
+                                  'manager': 'kubelet',
+                                  'operation': 'Update',
+                                  'subresource': 'status',
+                                  'time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal())}],
+              'name': 'excel-to-parquet-r9l1yfkw',
+              'namespace': 'default',
+              'owner_references': None,
+              'resource_version': '248925',
+              'self_link': None,
+              'uid': 'cf766f06-3c66-436d-a327-90c3fd929a3b'},
+ 'spec': {'active_deadline_seconds': None,
+          'affinity': {'node_affinity': None,
+                       'pod_affinity': None,
+                       'pod_anti_affinity': None},
+          'automount_service_account_token': None,
+          'containers': [{'args': ['mc alias set s3-local '
+                                   'http://minio-external.default.svc.cluster.local:9000 '
+                                   'adminic adminic123 && mc cp '
+                                   's3-local/ahajiyev/dynamic_file_to_db_transfer.py '
+                                   '/tmp/dynamic_file_to_db_transfer.py && '
+                                   'python /tmp/dynamic_file_to_db_transfer.py '
+                                   '--source abc.xlsx --target ahajiyev/abc'],
+                          'command': ['sh', '-c'],
+                          'env': None,
+                          'env_from': [{'config_map_ref': None,
+                                        'prefix': None,
+                                        'secret_ref': {'name': 'postgres-secret',
+                                                       'optional': None}}],
+                          'image': 'ahajiyev/pyspark-with-awscli',
+                          'image_pull_policy': 'Always',
+                          'lifecycle': None,
+                          'liveness_probe': None,
+                          'name': 'base',
+                          'ports': None,
+                          'readiness_probe': None,
+                          'resize_policy': None,
+                          'resources': {'claims': None,
+                                        'limits': None,
+                                        'requests': None},
+                          'restart_policy': None,
+                          'security_context': None,
+                          'startup_probe': None,
+                          'stdin': None,
+                          'stdin_once': None,
+                          'termination_message_path': '/dev/termination-log',
+                          'termination_message_policy': 'File',
+                          'tty': None,
+                          'volume_devices': None,
+                          'volume_mounts': [{'mount_path': '/var/run/secrets/kubernetes.io/serviceaccount',
+                                             'mount_propagation': None,
+                                             'name': 'kube-api-access-x95fx',
+                                             'read_only': True,
+                                             'recursive_read_only': None,
+                                             'sub_path': None,
+                                             'sub_path_expr': None}],
+                          'working_dir': None}],
+          'dns_config': None,
+          'dns_policy': 'ClusterFirst',
+          'enable_service_links': True,
+          'ephemeral_containers': None,
+          'host_aliases': None,
+          'host_ipc': None,
+          'host_network': None,
+          'host_pid': None,
+          'host_users': None,
+          'hostname': None,
+          'image_pull_secrets': None,
+          'init_containers': None,
+          'node_name': 'minikube',
+          'node_selector': None,
+          'os': None,
+          'overhead': None,
+          'preemption_policy': 'PreemptLowerPriority',
+          'priority': 0,
+          'priority_class_name': None,
+          'readiness_gates': None,
+          'resource_claims': None,
+          'restart_policy': 'Never',
+          'runtime_class_name': None,
+          'scheduler_name': 'default-scheduler',
+          'scheduling_gates': None,
+          'security_context': {'app_armor_profile': None,
+                               'fs_group': None,
+                               'fs_group_change_policy': None,
+                               'run_as_group': None,
+                               'run_as_non_root': None,
+                               'run_as_user': None,
+                               'se_linux_options': None,
+                               'seccomp_profile': None,
+                               'supplemental_groups': None,
+                               'sysctls': None,
+                               'windows_options': None},
+          'service_account': 'default',
+          'service_account_name': 'default',
+          'set_hostname_as_fqdn': None,
+          'share_process_namespace': None,
+          'subdomain': None,
+          'termination_grace_period_seconds': 30,
+          'tolerations': [{'effect': 'NoExecute',
+                           'key': 'node.kubernetes.io/not-ready',
+                           'operator': 'Exists',
+                           'toleration_seconds': 300,
+                           'value': None},
+                          {'effect': 'NoExecute',
+                           'key': 'node.kubernetes.io/unreachable',
+                           'operator': 'Exists',
+                           'toleration_seconds': 300,
+                           'value': None}],
+          'topology_spread_constraints': None,
+          'volumes': [{'aws_elastic_block_store': None,
+                       'azure_disk': None,
+                       'azure_file': None,
+                       'cephfs': None,
+                       'cinder': None,
+                       'config_map': None,
+                       'csi': None,
+                       'downward_api': None,
+                       'empty_dir': None,
+                       'ephemeral': None,
+                       'fc': None,
+                       'flex_volume': None,
+                       'flocker': None,
+                       'gce_persistent_disk': None,
+                       'git_repo': None,
+                       'glusterfs': None,
+                       'host_path': None,
+                       'iscsi': None,
+                       'name': 'kube-api-access-x95fx',
+                       'nfs': None,
+                       'persistent_volume_claim': None,
+                       'photon_persistent_disk': None,
+                       'portworx_volume': None,
+                       'projected': {'default_mode': 420,
+                                     'sources': [{'cluster_trust_bundle': None,
+                                                  'config_map': None,
+                                                  'downward_api': None,
+                                                  'secret': None,
+                                                  'service_account_token': {'audience': None,
+                                                                            'expiration_seconds': 3607,
+                                                                            'path': 'token'}},
+                                                 {'cluster_trust_bundle': None,
+                                                  'config_map': {'items': [{'key': 'ca.crt',
+                                                                            'mode': None,
+                                                                            'path': 'ca.crt'}],
+                                                                 'name': 'kube-root-ca.crt',
+                                                                 'optional': None},
+                                                  'downward_api': None,
+                                                  'secret': None,
+                                                  'service_account_token': None},
+                                                 {'cluster_trust_bundle': None,
+                                                  'config_map': None,
+                                                  'downward_api': {'items': [{'field_ref': {'api_version': 'v1',
+                                                                                            'field_path': 'metadata.namespace'},
+                                                                              'mode': None,
+                                                                              'path': 'namespace',
+                                                                              'resource_field_ref': None}]},
+                                                  'secret': None,
+                                                  'service_account_token': None}]},
+                       'quobyte': None,
+                       'rbd': None,
+                       'scale_io': None,
+                       'secret': None,
+                       'storageos': None,
+                       'vsphere_volume': None}]},
+ 'status': {'conditions': [{'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'False',
+                            'type': 'PodReadyToStartContainers'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'True',
+                            'type': 'Initialized'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': 'containers with unready status: [base]',
+                            'reason': 'ContainersNotReady',
+                            'status': 'False',
+                            'type': 'Ready'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': 'containers with unready status: [base]',
+                            'reason': 'ContainersNotReady',
+                            'status': 'False',
+                            'type': 'ContainersReady'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'True',
+                            'type': 'PodScheduled'}],
+            'container_statuses': [{'allocated_resources': None,
+                                    'container_id': None,
+                                    'image': 'ahajiyev/pyspark-with-awscli',
+                                    'image_id': '',
+                                    'last_state': {'running': None,
+                                                   'terminated': None,
+                                                   'waiting': None},
+                                    'name': 'base',
+                                    'ready': False,
+                                    'resources': None,
+                                    'restart_count': 0,
+                                    'started': False,
+                                    'state': {'running': None,
+                                              'terminated': None,
+                                              'waiting': {'message': None,
+                                                          'reason': 'ContainerCreating'}},
+                                    'volume_mounts': [{'mount_path': '/var/run/secrets/kubernetes.io/serviceaccount',
+                                                       'name': 'kube-api-access-x95fx',
+                                                       'read_only': True,
+                                                       'recursive_read_only': 'Disabled'}]}],
+            'ephemeral_container_statuses': None,
+            'host_i_ps': [{'ip': '192.168.49.2'}],
+            'host_ip': '192.168.49.2',
+            'init_container_statuses': None,
+            'message': None,
+            'nominated_node_name': None,
+            'phase': 'Pending',
+            'pod_i_ps': None,
+            'pod_ip': None,
+            'qos_class': 'BestEffort',
+            'reason': None,
+            'resize': None,
+            'resource_claim_statuses': None,
+            'start_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal())}}; 15408)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 611, in execute_sync
+    self.await_pod_start(pod=self.pod)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 560, in await_pod_start
+    self.pod_manager.await_pod_start(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/utils/pod_manager.py", line 398, in await_pod_start
+    raise PodLaunchFailedException(msg)
+airflow.providers.cncf.kubernetes.utils.pod_manager.PodLaunchFailedException: Pod took longer than 120 seconds to start. Check the pod events in kubernetes to determine why.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3006, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 274, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3161, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3185, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 583, in execute
+    return self.execute_sync(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 636, in execute_sync
+    self.cleanup(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 928, in cleanup
+    raise AirflowException(
+airflow.exceptions.AirflowException: Pod excel-to-parquet-r9l1yfkw returned a failure.
+remote_pod: {'api_version': None,
+ 'kind': None,
+ 'metadata': {'annotations': None,
+              'creation_timestamp': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+              'deletion_grace_period_seconds': None,
+              'deletion_timestamp': None,
+              'finalizers': None,
+              'generate_name': None,
+              'generation': None,
+              'labels': {'***_kpo_in_cluster': 'False',
+                         '***_version': '2.10.5',
+                         'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER',
+                         'kubernetes_pod_operator': 'True',
+                         'map_index': '0',
+                         'run_id': 'scheduled__2025-05-22T0500000000-2e08fb77f',
+                         'task_id': 'transfer_files',
+                         'try_number': '1'},
+              'managed_fields': [{'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:metadata': {'f:labels': {'.': {},
+                                                                            'f:***_kpo_in_cluster': {},
+                                                                            'f:***_version': {},
+                                                                            'f:dag_id': {},
+                                                                            'f:kubernetes_pod_operator': {},
+                                                                            'f:map_index': {},
+                                                                            'f:run_id': {},
+                                                                            'f:task_id': {},
+                                                                            'f:try_number': {}}},
+                                                'f:spec': {'f:affinity': {},
+                                                           'f:containers': {'k:{"name":"base"}': {'.': {},
+                                                                                                  'f:args': {},
+                                                                                                  'f:command': {},
+                                                                                                  'f:envFrom': {},
+                                                                                                  'f:image': {},
+                                                                                                  'f:imagePullPolicy': {},
+                                                                                                  'f:name': {},
+                                                                                                  'f:resources': {},
+                                                                                                  'f:terminationMessagePath': {},
+                                                                                                  'f:terminationMessagePolicy': {}}},
+                                                           'f:dnsPolicy': {},
+                                                           'f:enableServiceLinks': {},
+                                                           'f:restartPolicy': {},
+                                                           'f:schedulerName': {},
+                                                           'f:securityContext': {},
+                                                           'f:terminationGracePeriodSeconds': {}}},
+                                  'manager': 'OpenAPI-Generator',
+                                  'operation': 'Update',
+                                  'subresource': None,
+                                  'time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal())},
+                                 {'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:status': {'f:conditions': {'k:{"type":"ContainersReady"}': {'.': {},
+                                                                                                               'f:lastProbeTime': {},
+                                                                                                               'f:lastTransitionTime': {},
+                                                                                                               'f:message': {},
+                                                                                                               'f:reason': {},
+                                                                                                               'f:status': {},
+                                                                                                               'f:type': {}},
+                                                                              'k:{"type":"Initialized"}': {'.': {},
+                                                                                                           'f:lastProbeTime': {},
+                                                                                                           'f:lastTransitionTime': {},
+                                                                                                           'f:status': {},
+                                                                                                           'f:type': {}},
+                                                                              'k:{"type":"PodReadyToStartContainers"}': {'.': {},
+                                                                                                                         'f:lastProbeTime': {},
+                                                                                                                         'f:lastTransitionTime': {},
+                                                                                                                         'f:status': {},
+                                                                                                                         'f:type': {}},
+                                                                              'k:{"type":"Ready"}': {'.': {},
+                                                                                                     'f:lastProbeTime': {},
+                                                                                                     'f:lastTransitionTime': {},
+                                                                                                     'f:message': {},
+                                                                                                     'f:reason': {},
+                                                                                                     'f:status': {},
+                                                                                                     'f:type': {}}},
+                                                             'f:containerStatuses': {},
+                                                             'f:hostIP': {},
+                                                             'f:hostIPs': {},
+                                                             'f:startTime': {}}},
+                                  'manager': 'kubelet',
+                                  'operation': 'Update',
+                                  'subresource': 'status',
+                                  'time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal())}],
+              'name': 'excel-to-parquet-r9l1yfkw',
+              'namespace': 'default',
+              'owner_references': None,
+              'resource_version': '248925',
+              'self_link': None,
+              'uid': 'cf766f06-3c66-436d-a327-90c3fd929a3b'},
+ 'spec': {'active_deadline_seconds': None,
+          'affinity': {'node_affinity': None,
+                       'pod_affinity': None,
+                       'pod_anti_affinity': None},
+          'automount_service_account_token': None,
+          'containers': [{'args': ['mc alias set s3-local '
+                                   'http://minio-external.default.svc.cluster.local:9000 '
+                                   'adminic adminic123 && mc cp '
+                                   's3-local/ahajiyev/dynamic_file_to_db_transfer.py '
+                                   '/tmp/dynamic_file_to_db_transfer.py && '
+                                   'python /tmp/dynamic_file_to_db_transfer.py '
+                                   '--source abc.xlsx --target ahajiyev/abc'],
+                          'command': ['sh', '-c'],
+                          'env': None,
+                          'env_from': [{'config_map_ref': None,
+                                        'prefix': None,
+                                        'secret_ref': {'name': 'postgres-secret',
+                                                       'optional': None}}],
+                          'image': 'ahajiyev/pyspark-with-awscli',
+                          'image_pull_policy': 'Always',
+                          'lifecycle': None,
+                          'liveness_probe': None,
+                          'name': 'base',
+                          'ports': None,
+                          'readiness_probe': None,
+                          'resize_policy': None,
+                          'resources': {'claims': None,
+                                        'limits': None,
+                                        'requests': None},
+                          'restart_policy': None,
+                          'security_context': None,
+                          'startup_probe': None,
+                          'stdin': None,
+                          'stdin_once': None,
+                          'termination_message_path': '/dev/termination-log',
+                          'termination_message_policy': 'File',
+                          'tty': None,
+                          'volume_devices': None,
+                          'volume_mounts': [{'mount_path': '/var/run/secrets/kubernetes.io/serviceaccount',
+                                             'mount_propagation': None,
+                                             'name': 'kube-api-access-x95fx',
+                                             'read_only': True,
+                                             'recursive_read_only': None,
+                                             'sub_path': None,
+                                             'sub_path_expr': None}],
+                          'working_dir': None}],
+          'dns_config': None,
+          'dns_policy': 'ClusterFirst',
+          'enable_service_links': True,
+          'ephemeral_containers': None,
+          'host_aliases': None,
+          'host_ipc': None,
+          'host_network': None,
+          'host_pid': None,
+          'host_users': None,
+          'hostname': None,
+          'image_pull_secrets': None,
+          'init_containers': None,
+          'node_name': 'minikube',
+          'node_selector': None,
+          'os': None,
+          'overhead': None,
+          'preemption_policy': 'PreemptLowerPriority',
+          'priority': 0,
+          'priority_class_name': None,
+          'readiness_gates': None,
+          'resource_claims': None,
+          'restart_policy': 'Never',
+          'runtime_class_name': None,
+          'scheduler_name': 'default-scheduler',
+          'scheduling_gates': None,
+          'security_context': {'app_armor_profile': None,
+                               'fs_group': None,
+                               'fs_group_change_policy': None,
+                               'run_as_group': None,
+                               'run_as_non_root': None,
+                               'run_as_user': None,
+                               'se_linux_options': None,
+                               'seccomp_profile': None,
+                               'supplemental_groups': None,
+                               'sysctls': None,
+                               'windows_options': None},
+          'service_account': 'default',
+          'service_account_name': 'default',
+          'set_hostname_as_fqdn': None,
+          'share_process_namespace': None,
+          'subdomain': None,
+          'termination_grace_period_seconds': 30,
+          'tolerations': [{'effect': 'NoExecute',
+                           'key': 'node.kubernetes.io/not-ready',
+                           'operator': 'Exists',
+                           'toleration_seconds': 300,
+                           'value': None},
+                          {'effect': 'NoExecute',
+                           'key': 'node.kubernetes.io/unreachable',
+                           'operator': 'Exists',
+                           'toleration_seconds': 300,
+                           'value': None}],
+          'topology_spread_constraints': None,
+          'volumes': [{'aws_elastic_block_store': None,
+                       'azure_disk': None,
+                       'azure_file': None,
+                       'cephfs': None,
+                       'cinder': None,
+                       'config_map': None,
+                       'csi': None,
+                       'downward_api': None,
+                       'empty_dir': None,
+                       'ephemeral': None,
+                       'fc': None,
+                       'flex_volume': None,
+                       'flocker': None,
+                       'gce_persistent_disk': None,
+                       'git_repo': None,
+                       'glusterfs': None,
+                       'host_path': None,
+                       'iscsi': None,
+                       'name': 'kube-api-access-x95fx',
+                       'nfs': None,
+                       'persistent_volume_claim': None,
+                       'photon_persistent_disk': None,
+                       'portworx_volume': None,
+                       'projected': {'default_mode': 420,
+                                     'sources': [{'cluster_trust_bundle': None,
+                                                  'config_map': None,
+                                                  'downward_api': None,
+                                                  'secret': None,
+                                                  'service_account_token': {'audience': None,
+                                                                            'expiration_seconds': 3607,
+                                                                            'path': 'token'}},
+                                                 {'cluster_trust_bundle': None,
+                                                  'config_map': {'items': [{'key': 'ca.crt',
+                                                                            'mode': None,
+                                                                            'path': 'ca.crt'}],
+                                                                 'name': 'kube-root-ca.crt',
+                                                                 'optional': None},
+                                                  'downward_api': None,
+                                                  'secret': None,
+                                                  'service_account_token': None},
+                                                 {'cluster_trust_bundle': None,
+                                                  'config_map': None,
+                                                  'downward_api': {'items': [{'field_ref': {'api_version': 'v1',
+                                                                                            'field_path': 'metadata.namespace'},
+                                                                              'mode': None,
+                                                                              'path': 'namespace',
+                                                                              'resource_field_ref': None}]},
+                                                  'secret': None,
+                                                  'service_account_token': None}]},
+                       'quobyte': None,
+                       'rbd': None,
+                       'scale_io': None,
+                       'secret': None,
+                       'storageos': None,
+                       'vsphere_volume': None}]},
+ 'status': {'conditions': [{'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'False',
+                            'type': 'PodReadyToStartContainers'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'True',
+                            'type': 'Initialized'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': 'containers with unready status: [base]',
+                            'reason': 'ContainersNotReady',
+                            'status': 'False',
+                            'type': 'Ready'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': 'containers with unready status: [base]',
+                            'reason': 'ContainersNotReady',
+                            'status': 'False',
+                            'type': 'ContainersReady'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'True',
+                            'type': 'PodScheduled'}],
+            'container_statuses': [{'allocated_resources': None,
+                                    'container_id': None,
+                                    'image': 'ahajiyev/pyspark-with-awscli',
+                                    'image_id': '',
+                                    'last_state': {'running': None,
+                                                   'terminated': None,
+                                                   'waiting': None},
+                                    'name': 'base',
+                                    'ready': False,
+                                    'resources': None,
+                                    'restart_count': 0,
+                                    'started': False,
+                                    'state': {'running': None,
+                                              'terminated': None,
+                                              'waiting': {'message': None,
+                                                          'reason': 'ContainerCreating'}},
+                                    'volume_mounts': [{'mount_path': '/var/run/secrets/kubernetes.io/serviceaccount',
+                                                       'name': 'kube-api-access-x95fx',
+                                                       'read_only': True,
+                                                       'recursive_read_only': 'Disabled'}]}],
+            'ephemeral_container_statuses': None,
+            'host_i_ps': [{'ip': '192.168.49.2'}],
+            'host_ip': '192.168.49.2',
+            'init_container_statuses': None,
+            'message': None,
+            'nominated_node_name': None,
+            'phase': 'Pending',
+            'pod_i_ps': None,
+            'pod_ip': None,
+            'qos_class': 'BestEffort',
+            'reason': None,
+            'resize': None,
+            'resource_claim_statuses': None,
+            'start_time': datetime.datetime(2025, 5, 22, 5, 21, 44, tzinfo=tzlocal())}}
+[2025-05-22T06:31:53.509+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-05-22T06:31:53.523+0000] {taskinstance.py:3901} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-05-22T06:31:53.524+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

@@ -1,0 +1,84 @@
+[2025-05-23T02:13:41.720+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-23T02:13:41.732+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.transfer_files scheduled__2025-05-23T01:20:00+00:00 map_index=0 [queued]>
+[2025-05-23T02:13:41.738+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.transfer_files scheduled__2025-05-23T01:20:00+00:00 map_index=0 [queued]>
+[2025-05-23T02:13:41.738+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-05-23T02:13:41.743+0000] {taskinstance.py:2890} INFO - Executing <Mapped(KubernetesPodOperator): transfer_files> on 2025-05-23 01:20:00+00:00
+[2025-05-23T02:13:41.754+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=16322) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-23T02:13:41.753+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'DYNAMIC_FILE_TO_DB_LOADER', 'transfer_files', 'scheduled__2025-05-23T01:20:00+00:00', '--job-id', '1974', '--raw', '--subdir', 'DAGS_FOLDER/***_dynamic_file_to_db_loader.py', '--cfg-path', '/tmp/tmpesf285nl', '--map-index', '0']
+[2025-05-23T02:13:41.756+0000] {standard_task_runner.py:72} INFO - Started process 16324 to run task
+[2025-05-23T02:13:41.757+0000] {standard_task_runner.py:105} INFO - Job 1974: Subtask transfer_files
+[2025-05-23T02:13:41.795+0000] {task_command.py:467} INFO - Running <TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.transfer_files scheduled__2025-05-23T01:20:00+00:00 map_index=0 [running]> on host 5fb7fe4c544d
+[2025-05-23T02:13:41.841+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='DYNAMIC_FILE_TO_DB_LOADER' AIRFLOW_CTX_TASK_ID='transfer_files' AIRFLOW_CTX_EXECUTION_DATE='2025-05-23T01:20:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-23T01:20:00+00:00'
+[2025-05-23T02:13:41.841+0000] {logging_mixin.py:190} INFO - 
+        INSERT INTO ***_daily_log (log_time, source_name, target_name)
+        VALUES (CURRENT_TIMESTAMP, %(source)s, %(target)s)
+    
+[2025-05-23T02:13:41.846+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-23T02:13:41.848+0000] {sql.py:511} INFO - Running statement: 
+        INSERT INTO ***_daily_log (log_time, source_name, target_name)
+        VALUES (CURRENT_TIMESTAMP, %(source)s, %(target)s)
+    , parameters: {'source': 'abc.xlsx', 'target': 'ahajiyev/abc'}
+[2025-05-23T02:13:41.849+0000] {sql.py:520} INFO - Rows affected: 1
+[2025-05-23T02:13:41.850+0000] {logging_mixin.py:190} INFO - 
+        UPDATE ***_daily_log
+        SET dag_id = %(dag_id)s,
+            task_id = %(task_id)s,
+            run_id = %(run_id)s,
+            execution_date = %(execution_date)s,
+            try_number = %(try_number)s,
+            log_time = CURRENT_TIMESTAMP
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and dag_id is null
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    
+[2025-05-23T02:13:41.856+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-23T02:13:41.861+0000] {sql.py:511} INFO - Running statement: 
+        UPDATE ***_daily_log
+        SET dag_id = %(dag_id)s,
+            task_id = %(task_id)s,
+            run_id = %(run_id)s,
+            execution_date = %(execution_date)s,
+            try_number = %(try_number)s,
+            log_time = CURRENT_TIMESTAMP
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and dag_id is null
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    , parameters: {'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER', 'task_id': 'transfer_files', 'run_id': 'scheduled__2025-05-23T01:20:00+00:00', 'execution_date': '2025-05-23 01:20:00+00:00', 'try_number': 1, 'source': 'abc.xlsx', 'target': 'ahajiyev/abc'}
+[2025-05-23T02:13:41.863+0000] {sql.py:520} INFO - Rows affected: 1
+[2025-05-23T02:13:41.864+0000] {logging_mixin.py:190} INFO - 
+        UPDATE ***_daily_log
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    
+[2025-05-23T02:13:41.869+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-23T02:13:41.871+0000] {sql.py:511} INFO - Running statement: 
+        UPDATE ***_daily_log
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    , parameters: {'status': 'running', 'try_number': 1, 'source': 'abc.xlsx', 'target': 'ahajiyev/abc'}
+[2025-05-23T02:13:41.872+0000] {sql.py:520} INFO - Rows affected: 4
+[2025-05-23T02:13:41.873+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-05-23T02:13:41.880+0000] {pod.py:1148} INFO - Building pod excel-to-parquet-1tvbgw21 with labels: {'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER', 'task_id': 'transfer_files', 'run_id': 'scheduled__2025-05-23T0120000000-444fd191e', 'kubernetes_pod_operator': 'True', 'map_index': '0', 'try_number': '1'}
+[2025-05-23T02:13:41.946+0000] {pod.py:545} INFO - Found matching pod excel-to-parquet-1tvbgw21 with labels {'airflow_kpo_in_cluster': 'False', 'airflow_version': '2.10.5', 'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER', 'kubernetes_pod_operator': 'True', 'map_index': '0', 'run_id': 'scheduled__2025-05-23T0120000000-444fd191e', 'task_id': 'transfer_files', 'try_number': '1'}
+[2025-05-23T02:13:41.947+0000] {pod.py:546} INFO - `try_number` of task_instance: 1
+[2025-05-23T02:13:41.947+0000] {pod.py:547} INFO - `try_number` of pod: 1
+[2025-05-23T02:13:41.952+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-1tvbgw21
+[2025-05-23T02:13:46.988+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-1tvbgw21
+[2025-05-23T02:13:52.001+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-1tvbgw21
+[2025-05-23T02:13:57.130+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-1tvbgw21
+[2025-05-23T02:14:02.149+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-1tvbgw21
+[2025-05-23T03:24:39.367+0000] {job.py:229} INFO - Heartbeat recovered after 4237.38 seconds
+[2025-05-23T03:24:39.472+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-1tvbgw21
+[2025-05-23T03:24:39.490+0000] {pod.py:997} INFO - Deleting pod: excel-to-parquet-1tvbgw21
+[2025-05-23T03:24:39.554+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-05-23T03:24:39.600+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-05-23T03:24:39.615+0000] {taskinstance.py:3901} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-05-23T03:24:39.615+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

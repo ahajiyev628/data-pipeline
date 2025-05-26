@@ -1,0 +1,2359 @@
+[2025-05-22T06:31:58.228+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-05-22T06:31:58.240+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.transfer_files scheduled__2025-05-22T06:00:00+00:00 map_index=1 [queued]>
+[2025-05-22T06:31:58.244+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.transfer_files scheduled__2025-05-22T06:00:00+00:00 map_index=1 [queued]>
+[2025-05-22T06:31:58.245+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 1
+[2025-05-22T06:31:58.251+0000] {taskinstance.py:2890} INFO - Executing <Mapped(KubernetesPodOperator): transfer_files> on 2025-05-22 06:00:00+00:00
+[2025-05-22T06:31:58.256+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=15453) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-05-22T06:31:58.257+0000] {standard_task_runner.py:72} INFO - Started process 15455 to run task
+[2025-05-22T06:31:58.257+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'DYNAMIC_FILE_TO_DB_LOADER', 'transfer_files', 'scheduled__2025-05-22T06:00:00+00:00', '--job-id', '1949', '--raw', '--subdir', 'DAGS_FOLDER/***_dynamic_file_to_db_loader.py', '--cfg-path', '/tmp/tmp4jkdil93', '--map-index', '1']
+[2025-05-22T06:31:58.258+0000] {standard_task_runner.py:105} INFO - Job 1949: Subtask transfer_files
+[2025-05-22T06:31:58.284+0000] {task_command.py:467} INFO - Running <TaskInstance: DYNAMIC_FILE_TO_DB_LOADER.transfer_files scheduled__2025-05-22T06:00:00+00:00 map_index=1 [running]> on host 5fb7fe4c544d
+[2025-05-22T06:31:58.347+0000] {taskinstance.py:3134} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='DYNAMIC_FILE_TO_DB_LOADER' AIRFLOW_CTX_TASK_ID='transfer_files' AIRFLOW_CTX_EXECUTION_DATE='2025-05-22T06:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-05-22T06:00:00+00:00'
+[2025-05-22T06:31:58.348+0000] {logging_mixin.py:190} INFO - 
+        INSERT INTO ***_daily_log (log_time, source_name, target_name)
+        VALUES (CURRENT_TIMESTAMP, %(source)s, %(target)s)
+    
+[2025-05-22T06:31:58.354+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-22T06:31:58.357+0000] {sql.py:511} INFO - Running statement: 
+        INSERT INTO ***_daily_log (log_time, source_name, target_name)
+        VALUES (CURRENT_TIMESTAMP, %(source)s, %(target)s)
+    , parameters: {'source': 'xyz.xlsx', 'target': 'ahajiyev/xyz'}
+[2025-05-22T06:31:58.358+0000] {sql.py:520} INFO - Rows affected: 1
+[2025-05-22T06:31:58.360+0000] {logging_mixin.py:190} INFO - 
+        UPDATE ***_daily_log
+        SET dag_id = %(dag_id)s,
+            task_id = %(task_id)s,
+            run_id = %(run_id)s,
+            execution_date = %(execution_date)s,
+            try_number = %(try_number)s,
+            log_time = CURRENT_TIMESTAMP
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and dag_id is null
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    
+[2025-05-22T06:31:58.364+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-22T06:31:58.368+0000] {sql.py:511} INFO - Running statement: 
+        UPDATE ***_daily_log
+        SET dag_id = %(dag_id)s,
+            task_id = %(task_id)s,
+            run_id = %(run_id)s,
+            execution_date = %(execution_date)s,
+            try_number = %(try_number)s,
+            log_time = CURRENT_TIMESTAMP
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and dag_id is null
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    , parameters: {'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER', 'task_id': 'transfer_files', 'run_id': 'scheduled__2025-05-22T06:00:00+00:00', 'execution_date': '2025-05-22 06:00:00+00:00', 'try_number': 1, 'source': 'xyz.xlsx', 'target': 'ahajiyev/xyz'}
+[2025-05-22T06:31:58.369+0000] {sql.py:520} INFO - Rows affected: 1
+[2025-05-22T06:31:58.370+0000] {logging_mixin.py:190} INFO - 
+        UPDATE ***_daily_log
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    
+[2025-05-22T06:31:58.375+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-22T06:31:58.378+0000] {sql.py:511} INFO - Running statement: 
+        UPDATE ***_daily_log
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    , parameters: {'status': 'running', 'try_number': 1, 'source': 'xyz.xlsx', 'target': 'ahajiyev/xyz'}
+[2025-05-22T06:31:58.378+0000] {sql.py:520} INFO - Rows affected: 5
+[2025-05-22T06:31:58.379+0000] {taskinstance.py:732} INFO - ::endgroup::
+[2025-05-22T06:31:58.383+0000] {pod.py:1148} INFO - Building pod excel-to-parquet-sjc0790s with labels: {'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER', 'task_id': 'transfer_files', 'run_id': 'scheduled__2025-05-22T0600000000-7c7246905', 'kubernetes_pod_operator': 'True', 'map_index': '1', 'try_number': '1'}
+[2025-05-22T06:31:58.450+0000] {pod.py:545} INFO - Found matching pod excel-to-parquet-sjc0790s with labels {'airflow_kpo_in_cluster': 'False', 'airflow_version': '2.10.5', 'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER', 'kubernetes_pod_operator': 'True', 'map_index': '1', 'run_id': 'scheduled__2025-05-22T0600000000-7c7246905', 'task_id': 'transfer_files', 'try_number': '1'}
+[2025-05-22T06:31:58.450+0000] {pod.py:546} INFO - `try_number` of task_instance: 1
+[2025-05-22T06:31:58.450+0000] {pod.py:547} INFO - `try_number` of pod: 1
+[2025-05-22T06:31:58.454+0000] {pod_manager.py:392} WARNING - Pod not yet started: excel-to-parquet-sjc0790s
+[2025-05-22T06:32:03.482+0000] {pod_manager.py:477} INFO - [base] Added `s3-local` successfully.
+[2025-05-22T06:32:03.483+0000] {pod_manager.py:477} INFO - [base] `s3-local/ahajiyev/dynamic_file_to_db_transfer.py` -> `/tmp/dynamic_file_to_db_transfer.py`
+[2025-05-22T06:32:05.870+0000] {pod_manager.py:477} INFO - [base] Total: 2.82 KiB, Transferred: 2.82 KiB, Speed: 75.97 KiB/s
+[2025-05-22T06:32:06.164+0000] {pod_manager.py:477} INFO - [base] :: loading settings :: url = jar:file:/opt/spark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2025-05-22T06:32:06.165+0000] {pod_manager.py:477} INFO - [base] Ivy Default Cache set to: /root/.ivy2/cache
+[2025-05-22T06:32:06.170+0000] {pod_manager.py:477} INFO - [base] The jars for the packages stored in: /root/.ivy2/jars
+[2025-05-22T06:32:06.174+0000] {pod_manager.py:477} INFO - [base] com.crealytics#spark-excel_2.12 added as a dependency
+[2025-05-22T06:32:06.174+0000] {pod_manager.py:477} INFO - [base] :: resolving dependencies :: org.apache.spark#spark-submit-parent-89cc262b-b331-4d04-85d9-d6cc8fbc71eb;1.0
+[2025-05-22T06:32:08.655+0000] {pod_manager.py:477} INFO - [base] 	confs: [default]
+[2025-05-22T06:32:08.954+0000] {pod_manager.py:477} INFO - [base] 	found com.crealytics#spark-excel_2.12;0.13.7 in central
+[2025-05-22T06:32:10.806+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.poi#poi;4.1.2 in central
+[2025-05-22T06:32:11.161+0000] {pod_manager.py:477} INFO - [base] 	found commons-codec#commons-codec;1.13 in central
+[2025-05-22T06:32:20.460+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.commons#commons-collections4;4.4 in central
+[2025-05-22T06:32:20.983+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.commons#commons-math3;3.6.1 in central
+[2025-05-22T06:32:21.165+0000] {pod_manager.py:477} INFO - [base] 	found com.zaxxer#SparseBitSet;1.2 in central
+[2025-05-22T06:32:21.364+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.poi#poi-ooxml;4.1.2 in central
+[2025-05-22T06:32:21.557+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.poi#poi-ooxml-schemas;4.1.2 in central
+[2025-05-22T06:32:21.755+0000] {pod_manager.py:477} INFO - [base] 	found org.apache.xmlbeans#xmlbeans;3.1.0 in central
+[2025-05-22T06:32:21.946+0000] {pod_manager.py:477} INFO - [base] 	found com.github.virtuald#curvesapi;1.06 in central
+[2025-05-22T07:22:16.001+0000] {pod_manager.py:477} INFO - [base] 	found com.norbitltd#spoiwo_2.12;1.8.0 in central
+[2025-05-22T07:22:16.212+0000] {pod_manager.py:477} INFO - [base] 	found org.scala-lang.modules#scala-xml_2.12;1.3.0 in central
+[2025-05-22T07:22:16.423+0000] {pod_manager.py:477} INFO - [base] 	found com.github.pjfanning#excel-streaming-reader;2.3.6 in central
+[2025-05-22T07:22:17.342+0000] {job.py:229} INFO - Heartbeat recovered after 2998.92 seconds
+[2025-05-22T08:33:48.984+0000] {job.py:229} INFO - Heartbeat recovered after 4266.44 seconds
+[2025-05-22T09:50:03.501+0000] {job.py:229} INFO - Heartbeat recovered after 4549.33 seconds
+[2025-05-22T10:35:52.184+0000] {job.py:229} INFO - Heartbeat recovered after 2723.51 seconds
+[2025-05-22T11:36:51.790+0000] {job.py:229} INFO - Heartbeat recovered after 3634.41 seconds
+[2025-05-22T12:55:04.560+0000] {pod_manager.py:477} INFO - [base] 	found com.github.pjfanning#poi-shared-strings;1.0.4 in central
+[2025-05-22T12:55:05.264+0000] {job.py:229} INFO - Heartbeat recovered after 4668.22 seconds
+[2025-05-22T12:55:21.274+0000] {pod_manager.py:477} INFO - [base] 	found com.h2database#h2;1.4.200 in central
+[2025-05-22T12:55:21.278+0000] {pod_manager.py:477} INFO - [base] You probably access the destination server through a proxy server that is not well configured.
+[2025-05-22T12:55:21.302+0000] {pod_manager.py:477} INFO - [base] You probably access the destination server through a proxy server that is not well configured.
+[2025-05-22T12:55:21.304+0000] {pod_manager.py:477} INFO - [base] You probably access the destination server through a proxy server that is not well configured.
+[2025-05-22T12:55:21.319+0000] {pod_manager.py:477} INFO - [base] You probably access the destination server through a proxy server that is not well configured.
+[2025-05-22T12:55:21.320+0000] {pod_manager.py:477} INFO - [base] You probably access the destination server through a proxy server that is not well configured.
+[2025-05-22T12:55:21.332+0000] {pod_manager.py:477} INFO - [base] You probably access the destination server through a proxy server that is not well configured.
+[2025-05-22T12:55:21.334+0000] {pod_manager.py:477} INFO - [base] You probably access the destination server through a proxy server that is not well configured.
+[2025-05-22T12:55:21.561+0000] {pod_manager.py:477} INFO - [base] You probably access the destination server through a proxy server that is not well configured.
+[2025-05-22T12:55:21.563+0000] {pod_manager.py:477} INFO - [base] :: resolution report :: resolve 22995201ms :: artifacts dl 188ms
+[2025-05-22T12:55:21.564+0000] {pod_manager.py:477} INFO - [base] 	:: modules in use:
+[2025-05-22T12:55:21.564+0000] {pod_manager.py:477} INFO - [base] 	com.crealytics#spark-excel_2.12;0.13.7 from central in [default]
+[2025-05-22T12:55:21.565+0000] {pod_manager.py:477} INFO - [base] 	com.github.pjfanning#excel-streaming-reader;2.3.6 from central in [default]
+[2025-05-22T12:55:21.567+0000] {pod_manager.py:477} INFO - [base] 	com.github.pjfanning#poi-shared-strings;1.0.4 from central in [default]
+[2025-05-22T12:55:21.567+0000] {pod_manager.py:477} INFO - [base] 	com.github.virtuald#curvesapi;1.06 from central in [default]
+[2025-05-22T12:55:21.568+0000] {pod_manager.py:477} INFO - [base] 	com.h2database#h2;1.4.200 from central in [default]
+[2025-05-22T12:55:21.568+0000] {pod_manager.py:477} INFO - [base] 	com.norbitltd#spoiwo_2.12;1.8.0 from central in [default]
+[2025-05-22T12:55:21.568+0000] {pod_manager.py:477} INFO - [base] 	com.zaxxer#SparseBitSet;1.2 from central in [default]
+[2025-05-22T12:55:21.570+0000] {pod_manager.py:477} INFO - [base] 	commons-codec#commons-codec;1.13 from central in [default]
+[2025-05-22T12:55:21.570+0000] {pod_manager.py:477} INFO - [base] 	org.apache.commons#commons-collections4;4.4 from central in [default]
+[2025-05-22T12:55:21.572+0000] {pod_manager.py:477} INFO - [base] 	org.apache.commons#commons-math3;3.6.1 from central in [default]
+[2025-05-22T12:55:21.573+0000] {pod_manager.py:477} INFO - [base] 	org.apache.poi#poi;4.1.2 from central in [default]
+[2025-05-22T12:55:21.573+0000] {pod_manager.py:477} INFO - [base] 	org.apache.poi#poi-ooxml;4.1.2 from central in [default]
+[2025-05-22T12:55:21.574+0000] {pod_manager.py:477} INFO - [base] 	org.apache.poi#poi-ooxml-schemas;4.1.2 from central in [default]
+[2025-05-22T12:55:21.575+0000] {pod_manager.py:477} INFO - [base] 	org.apache.xmlbeans#xmlbeans;3.1.0 from central in [default]
+[2025-05-22T12:55:21.575+0000] {pod_manager.py:477} INFO - [base] 	org.scala-lang.modules#scala-xml_2.12;1.3.0 from central in [default]
+[2025-05-22T12:55:21.576+0000] {pod_manager.py:477} INFO - [base] 	:: evicted modules:
+[2025-05-22T12:55:21.576+0000] {pod_manager.py:477} INFO - [base] 	org.apache.commons#commons-compress;1.19 by [org.apache.commons#commons-compress;1.20] in [default]
+[2025-05-22T12:55:21.576+0000] {pod_manager.py:477} INFO - [base] 	---------------------------------------------------------------------
+[2025-05-22T12:55:21.577+0000] {pod_manager.py:477} INFO - [base] 	|                  |            modules            ||   artifacts   |
+[2025-05-22T12:55:21.577+0000] {pod_manager.py:477} INFO - [base] 	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2025-05-22T12:55:21.578+0000] {pod_manager.py:477} INFO - [base] 	---------------------------------------------------------------------
+[2025-05-22T12:55:21.578+0000] {pod_manager.py:477} INFO - [base] 	|      default     |   20  |   15  |   15  |   1   ||   15  |   0   |
+[2025-05-22T12:55:21.579+0000] {pod_manager.py:477} INFO - [base] 	---------------------------------------------------------------------
+2025-05-22T12:55:21.571590842Z 
+
+[2025-05-22T12:55:21.579+0000] {pod_manager.py:477} INFO - [base] :: problems summary ::
+[2025-05-22T12:55:21.580+0000] {pod_manager.py:477} INFO - [base] :::: WARNINGS
+[2025-05-22T12:55:21.581+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/org/apache/commons/commons-text/1.8/commons-text-1.8.pom
+2025-05-22T12:55:21.572006759Z 
+
+[2025-05-22T12:55:21.581+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/org/apache/commons/commons-text/1.8/commons-text-1.8.jar
+2025-05-22T12:55:21.572024967Z 
+
+[2025-05-22T12:55:21.582+0000] {pod_manager.py:477} INFO - [base] 		module not found: org.apache.commons#commons-text;1.8
+2025-05-22T12:55:21.572028175Z 
+
+[2025-05-22T12:55:21.582+0000] {pod_manager.py:477} INFO - [base] 	==== local-m2-cache: tried
+2025-05-22T12:55:21.572031092Z 
+
+[2025-05-22T12:55:21.582+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/org/apache/commons/commons-text/1.8/commons-text-1.8.pom
+2025-05-22T12:55:21.572034009Z 
+
+[2025-05-22T12:55:21.582+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-text;1.8!commons-text.jar:
+2025-05-22T12:55:21.575240217Z 
+
+[2025-05-22T12:55:21.582+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/org/apache/commons/commons-text/1.8/commons-text-1.8.jar
+2025-05-22T12:55:21.575244092Z 
+
+[2025-05-22T12:55:21.583+0000] {pod_manager.py:477} INFO - [base] 	==== local-ivy-cache: tried
+2025-05-22T12:55:21.575247175Z 
+
+[2025-05-22T12:55:21.583+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/org.apache.commons/commons-text/1.8/ivys/ivy.xml
+2025-05-22T12:55:21.575251009Z 
+
+[2025-05-22T12:55:21.583+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-text;1.8!commons-text.jar:
+2025-05-22T12:55:21.575258217Z 
+
+[2025-05-22T12:55:21.583+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/org.apache.commons/commons-text/1.8/jars/commons-text.jar
+2025-05-22T12:55:21.575261800Z 
+
+[2025-05-22T12:55:21.583+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575264550Z 
+
+[2025-05-22T12:55:21.584+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/commons/commons-text/1.8/commons-text-1.8.pom
+2025-05-22T12:55:21.575267467Z 
+
+[2025-05-22T12:55:21.584+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-text;1.8!commons-text.jar:
+2025-05-22T12:55:21.575270300Z 
+
+[2025-05-22T12:55:21.584+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/commons/commons-text/1.8/commons-text-1.8.jar
+2025-05-22T12:55:21.575273092Z 
+
+[2025-05-22T12:55:21.584+0000] {pod_manager.py:477} INFO - [base] 	==== spark-packages: tried
+2025-05-22T12:55:21.575276175Z 
+
+[2025-05-22T12:55:21.584+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/org/apache/commons/commons-text/1.8/commons-text-1.8.pom
+2025-05-22T12:55:21.575278967Z 
+
+[2025-05-22T12:55:21.584+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-text;1.8!commons-text.jar:
+2025-05-22T12:55:21.575281842Z 
+
+[2025-05-22T12:55:21.585+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/org/apache/commons/commons-text/1.8/commons-text-1.8.jar
+2025-05-22T12:55:21.575284592Z 
+
+[2025-05-22T12:55:21.585+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.pom
+2025-05-22T12:55:21.575338300Z 
+
+[2025-05-22T12:55:21.585+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar
+2025-05-22T12:55:21.575341300Z 
+
+[2025-05-22T12:55:21.585+0000] {pod_manager.py:477} INFO - [base] 		module not found: xml-apis#xml-apis;1.4.01
+2025-05-22T12:55:21.575344134Z 
+
+[2025-05-22T12:55:21.585+0000] {pod_manager.py:477} INFO - [base] 	==== local-m2-cache: tried
+2025-05-22T12:55:21.575346842Z 
+
+[2025-05-22T12:55:21.585+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.pom
+2025-05-22T12:55:21.575349592Z 
+
+[2025-05-22T12:55:21.585+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact xml-apis#xml-apis;1.4.01!xml-apis.jar:
+2025-05-22T12:55:21.575352384Z 
+
+[2025-05-22T12:55:21.586+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar
+2025-05-22T12:55:21.575355175Z 
+
+[2025-05-22T12:55:21.586+0000] {pod_manager.py:477} INFO - [base] 	==== local-ivy-cache: tried
+2025-05-22T12:55:21.575417675Z 
+
+[2025-05-22T12:55:21.586+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/xml-apis/xml-apis/1.4.01/ivys/ivy.xml
+2025-05-22T12:55:21.575425759Z 
+
+[2025-05-22T12:55:21.586+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact xml-apis#xml-apis;1.4.01!xml-apis.jar:
+2025-05-22T12:55:21.575428842Z 
+
+[2025-05-22T12:55:21.586+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/xml-apis/xml-apis/1.4.01/jars/xml-apis.jar
+2025-05-22T12:55:21.575466050Z 
+
+[2025-05-22T12:55:21.586+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575497425Z 
+
+[2025-05-22T12:55:21.586+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.pom
+2025-05-22T12:55:21.575506217Z 
+
+[2025-05-22T12:55:21.587+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact xml-apis#xml-apis;1.4.01!xml-apis.jar:
+2025-05-22T12:55:21.575513592Z 
+
+[2025-05-22T12:55:21.587+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar
+2025-05-22T12:55:21.575516550Z 
+
+[2025-05-22T12:55:21.587+0000] {pod_manager.py:477} INFO - [base] 	==== spark-packages: tried
+2025-05-22T12:55:21.575523425Z 
+
+[2025-05-22T12:55:21.587+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.pom
+2025-05-22T12:55:21.575528842Z 
+
+[2025-05-22T12:55:21.587+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact xml-apis#xml-apis;1.4.01!xml-apis.jar:
+2025-05-22T12:55:21.575532009Z 
+
+[2025-05-22T12:55:21.587+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar
+2025-05-22T12:55:21.575539009Z 
+
+[2025-05-22T12:55:21.587+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom
+2025-05-22T12:55:21.575597259Z 
+
+[2025-05-22T12:55:21.588+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar
+2025-05-22T12:55:21.575599425Z 
+
+[2025-05-22T12:55:21.588+0000] {pod_manager.py:477} INFO - [base] 		module not found: org.slf4j#slf4j-api;1.7.30
+2025-05-22T12:55:21.575601175Z 
+
+[2025-05-22T12:55:21.588+0000] {pod_manager.py:477} INFO - [base] 	==== local-m2-cache: tried
+2025-05-22T12:55:21.575602800Z 
+
+[2025-05-22T12:55:21.588+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom
+2025-05-22T12:55:21.575604300Z 
+
+[2025-05-22T12:55:21.589+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.slf4j#slf4j-api;1.7.30!slf4j-api.jar:
+2025-05-22T12:55:21.575605759Z 
+
+[2025-05-22T12:55:21.590+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar
+2025-05-22T12:55:21.575607217Z 
+
+[2025-05-22T12:55:21.590+0000] {pod_manager.py:477} INFO - [base] 	==== local-ivy-cache: tried
+2025-05-22T12:55:21.575608925Z 
+
+[2025-05-22T12:55:21.590+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/org.slf4j/slf4j-api/1.7.30/ivys/ivy.xml
+2025-05-22T12:55:21.575610384Z 
+
+[2025-05-22T12:55:21.591+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.slf4j#slf4j-api;1.7.30!slf4j-api.jar:
+2025-05-22T12:55:21.575612300Z 
+
+[2025-05-22T12:55:21.591+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/org.slf4j/slf4j-api/1.7.30/jars/slf4j-api.jar
+2025-05-22T12:55:21.575613800Z 
+
+[2025-05-22T12:55:21.591+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575618717Z 
+
+[2025-05-22T12:55:21.591+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom
+2025-05-22T12:55:21.575620175Z 
+
+[2025-05-22T12:55:21.591+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.slf4j#slf4j-api;1.7.30!slf4j-api.jar:
+2025-05-22T12:55:21.575621592Z 
+
+[2025-05-22T12:55:21.592+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar
+2025-05-22T12:55:21.575623092Z 
+
+[2025-05-22T12:55:21.592+0000] {pod_manager.py:477} INFO - [base] 	==== spark-packages: tried
+2025-05-22T12:55:21.575624467Z 
+
+[2025-05-22T12:55:21.592+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom
+2025-05-22T12:55:21.575629217Z 
+
+[2025-05-22T12:55:21.592+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.slf4j#slf4j-api;1.7.30!slf4j-api.jar:
+2025-05-22T12:55:21.575631134Z 
+
+[2025-05-22T12:55:21.592+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar
+2025-05-22T12:55:21.575632634Z 
+
+[2025-05-22T12:55:21.592+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom
+2025-05-22T12:55:21.575652009Z 
+
+[2025-05-22T12:55:21.593+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar
+2025-05-22T12:55:21.575654925Z 
+
+[2025-05-22T12:55:21.593+0000] {pod_manager.py:477} INFO - [base] 		module not found: org.apache.commons#commons-compress;1.20
+2025-05-22T12:55:21.575656384Z 
+
+[2025-05-22T12:55:21.593+0000] {pod_manager.py:477} INFO - [base] 	==== local-m2-cache: tried
+2025-05-22T12:55:21.575657759Z 
+
+[2025-05-22T12:55:21.593+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom
+2025-05-22T12:55:21.575659259Z 
+
+[2025-05-22T12:55:21.594+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-compress;1.20!commons-compress.jar:
+2025-05-22T12:55:21.575660675Z 
+
+[2025-05-22T12:55:21.594+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar
+2025-05-22T12:55:21.575663009Z 
+
+[2025-05-22T12:55:21.594+0000] {pod_manager.py:477} INFO - [base] 	==== local-ivy-cache: tried
+2025-05-22T12:55:21.575664384Z 
+
+[2025-05-22T12:55:21.594+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/org.apache.commons/commons-compress/1.20/ivys/ivy.xml
+2025-05-22T12:55:21.575665842Z 
+
+[2025-05-22T12:55:21.594+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-compress;1.20!commons-compress.jar:
+2025-05-22T12:55:21.575667259Z 
+
+[2025-05-22T12:55:21.595+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/org.apache.commons/commons-compress/1.20/jars/commons-compress.jar
+2025-05-22T12:55:21.575668717Z 
+
+[2025-05-22T12:55:21.595+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575670050Z 
+
+[2025-05-22T12:55:21.595+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom
+2025-05-22T12:55:21.575671550Z 
+
+[2025-05-22T12:55:21.595+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-compress;1.20!commons-compress.jar:
+2025-05-22T12:55:21.575673009Z 
+
+[2025-05-22T12:55:21.595+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar
+2025-05-22T12:55:21.575674550Z 
+
+[2025-05-22T12:55:21.595+0000] {pod_manager.py:477} INFO - [base] 	==== spark-packages: tried
+2025-05-22T12:55:21.575675925Z 
+
+[2025-05-22T12:55:21.596+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom
+2025-05-22T12:55:21.575677800Z 
+
+[2025-05-22T12:55:21.596+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-compress;1.20!commons-compress.jar:
+2025-05-22T12:55:21.575680842Z 
+
+[2025-05-22T12:55:21.596+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar
+2025-05-22T12:55:21.575682592Z 
+
+[2025-05-22T12:55:21.596+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] com.crealytics#spark-excel_2.12;0.13.7!spark-excel_2.12.jar (4ms)
+2025-05-22T12:55:21.575686425Z 
+
+[2025-05-22T12:55:21.596+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575688300Z 
+
+[2025-05-22T12:55:21.596+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/com/crealytics/spark-excel_2.12/0.13.7/spark-excel_2.12-0.13.7.jar
+2025-05-22T12:55:21.575689842Z 
+
+[2025-05-22T12:55:21.596+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] org.apache.poi#poi;4.1.2!poi.jar (3ms)
+2025-05-22T12:55:21.575691259Z 
+
+[2025-05-22T12:55:21.597+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575693134Z 
+
+[2025-05-22T12:55:21.597+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/poi/poi/4.1.2/poi-4.1.2.jar
+2025-05-22T12:55:21.575696759Z 
+
+[2025-05-22T12:55:21.597+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] org.apache.poi#poi-ooxml;4.1.2!poi-ooxml.jar (9ms)
+2025-05-22T12:55:21.575700384Z 
+
+[2025-05-22T12:55:21.597+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575701800Z 
+
+[2025-05-22T12:55:21.597+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/poi/poi-ooxml/4.1.2/poi-ooxml-4.1.2.jar
+2025-05-22T12:55:21.575706717Z 
+
+[2025-05-22T12:55:21.597+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] com.norbitltd#spoiwo_2.12;1.8.0!spoiwo_2.12.jar (4ms)
+2025-05-22T12:55:21.575708925Z 
+
+[2025-05-22T12:55:21.597+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575710259Z 
+
+[2025-05-22T12:55:21.598+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/com/norbitltd/spoiwo_2.12/1.8.0/spoiwo_2.12-1.8.0.jar
+2025-05-22T12:55:21.575715175Z 
+
+[2025-05-22T12:55:21.598+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] com.github.pjfanning#excel-streaming-reader;2.3.6!excel-streaming-reader.jar (5ms)
+2025-05-22T12:55:21.575716717Z 
+
+[2025-05-22T12:55:21.598+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575718009Z 
+
+[2025-05-22T12:55:21.598+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/com/github/pjfanning/excel-streaming-reader/2.3.6/excel-streaming-reader-2.3.6.jar
+2025-05-22T12:55:21.575719509Z 
+
+[2025-05-22T12:55:21.598+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] com.github.pjfanning#poi-shared-strings;1.0.4!poi-shared-strings.jar (4ms)
+2025-05-22T12:55:21.575720925Z 
+
+[2025-05-22T12:55:21.598+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575722259Z 
+
+[2025-05-22T12:55:21.598+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/com/github/pjfanning/poi-shared-strings/1.0.4/poi-shared-strings-1.0.4.jar
+2025-05-22T12:55:21.575724634Z 
+
+[2025-05-22T12:55:21.598+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] commons-codec#commons-codec;1.13!commons-codec.jar (2ms)
+2025-05-22T12:55:21.575726634Z 
+
+[2025-05-22T12:55:21.599+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575733467Z 
+
+[2025-05-22T12:55:21.599+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/commons-codec/commons-codec/1.13/commons-codec-1.13.jar
+2025-05-22T12:55:21.575735967Z 
+
+[2025-05-22T12:55:21.599+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] org.apache.commons#commons-collections4;4.4!commons-collections4.jar (3ms)
+2025-05-22T12:55:21.575737717Z 
+
+[2025-05-22T12:55:21.599+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575739092Z 
+
+[2025-05-22T12:55:21.599+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar
+2025-05-22T12:55:21.575740592Z 
+
+[2025-05-22T12:55:21.600+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] org.apache.commons#commons-math3;3.6.1!commons-math3.jar (3ms)
+2025-05-22T12:55:21.575742009Z 
+
+[2025-05-22T12:55:21.600+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575743342Z 
+
+[2025-05-22T12:55:21.600+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar
+2025-05-22T12:55:21.575744800Z 
+
+[2025-05-22T12:55:21.600+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] com.zaxxer#SparseBitSet;1.2!SparseBitSet.jar (4ms)
+2025-05-22T12:55:21.575746259Z 
+
+[2025-05-22T12:55:21.600+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575747675Z 
+
+[2025-05-22T12:55:21.600+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar
+2025-05-22T12:55:21.575749634Z 
+
+[2025-05-22T12:55:21.601+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] org.apache.poi#poi-ooxml-schemas;4.1.2!poi-ooxml-schemas.jar (3ms)
+2025-05-22T12:55:21.575751675Z 
+
+[2025-05-22T12:55:21.601+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575753592Z 
+
+[2025-05-22T12:55:21.659+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/poi/poi-ooxml-schemas/4.1.2/poi-ooxml-schemas-4.1.2.jar
+2025-05-22T12:55:21.575755092Z 
+
+[2025-05-22T12:55:21.660+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] com.github.virtuald#curvesapi;1.06!curvesapi.jar (3ms)
+2025-05-22T12:55:21.575756592Z 
+
+[2025-05-22T12:55:21.660+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575758509Z 
+
+[2025-05-22T12:55:21.661+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.jar
+2025-05-22T12:55:21.575760009Z 
+
+[2025-05-22T12:55:21.661+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] org.apache.xmlbeans#xmlbeans;3.1.0!xmlbeans.jar (60ms)
+2025-05-22T12:55:21.575761800Z 
+
+[2025-05-22T12:55:21.662+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575763300Z 
+
+[2025-05-22T12:55:21.663+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans/3.1.0/xmlbeans-3.1.0.jar
+2025-05-22T12:55:21.575766800Z 
+
+[2025-05-22T12:55:21.663+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] org.scala-lang.modules#scala-xml_2.12;1.3.0!scala-xml_2.12.jar(bundle) (2ms)
+2025-05-22T12:55:21.575768342Z 
+
+[2025-05-22T12:55:21.663+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575769717Z 
+
+[2025-05-22T12:55:21.665+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.3.0/scala-xml_2.12-1.3.0.jar
+2025-05-22T12:55:21.575771759Z 
+
+[2025-05-22T12:55:21.665+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] com.h2database#h2;1.4.200!h2.jar (3ms)
+2025-05-22T12:55:21.575773175Z 
+
+[2025-05-22T12:55:21.666+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575774675Z 
+
+[2025-05-22T12:55:21.666+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/com/h2database/h2/1.4.200/h2-1.4.200.jar
+2025-05-22T12:55:21.575776134Z 
+
+[2025-05-22T12:55:21.667+0000] {pod_manager.py:477} INFO - [base] 		::::::::::::::::::::::::::::::::::::::::::::::
+2025-05-22T12:55:21.575781217Z 
+
+[2025-05-22T12:55:21.668+0000] {pod_manager.py:477} INFO - [base] 		::          UNRESOLVED DEPENDENCIES         ::
+2025-05-22T12:55:21.575782800Z 
+
+[2025-05-22T12:55:21.668+0000] {pod_manager.py:477} INFO - [base] 		::::::::::::::::::::::::::::::::::::::::::::::
+2025-05-22T12:55:21.575784675Z 
+
+[2025-05-22T12:55:21.669+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.commons#commons-text;1.8: not found
+2025-05-22T12:55:21.575786217Z 
+
+[2025-05-22T12:55:21.669+0000] {pod_manager.py:477} INFO - [base] 		:: xml-apis#xml-apis;1.4.01: not found
+2025-05-22T12:55:21.575788009Z 
+
+[2025-05-22T12:55:21.670+0000] {pod_manager.py:477} INFO - [base] 		:: org.slf4j#slf4j-api;1.7.30: not found
+2025-05-22T12:55:21.575790009Z 
+
+[2025-05-22T12:55:21.670+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.commons#commons-compress;1.20: not found
+2025-05-22T12:55:21.575795009Z 
+
+[2025-05-22T12:55:21.671+0000] {pod_manager.py:477} INFO - [base] 		::::::::::::::::::::::::::::::::::::::::::::::
+2025-05-22T12:55:21.575797509Z 
+
+2025-05-22T12:55:21.575802217Z 
+
+[2025-05-22T12:55:21.672+0000] {pod_manager.py:477} INFO - [base] 		::::::::::::::::::::::::::::::::::::::::::::::
+2025-05-22T12:55:21.575808884Z 
+
+[2025-05-22T12:55:21.672+0000] {pod_manager.py:477} INFO - [base] 		::              FAILED DOWNLOADS            ::
+2025-05-22T12:55:21.575810300Z 
+
+[2025-05-22T12:55:21.673+0000] {pod_manager.py:477} INFO - [base] 		:: ^ see resolution messages for details  ^ ::
+2025-05-22T12:55:21.575815467Z 
+
+[2025-05-22T12:55:21.673+0000] {pod_manager.py:477} INFO - [base] 		::::::::::::::::::::::::::::::::::::::::::::::
+2025-05-22T12:55:21.575817300Z 
+
+[2025-05-22T12:55:21.673+0000] {pod_manager.py:477} INFO - [base] 		:: com.crealytics#spark-excel_2.12;0.13.7!spark-excel_2.12.jar
+2025-05-22T12:55:21.575818717Z 
+
+[2025-05-22T12:55:21.674+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.poi#poi;4.1.2!poi.jar
+2025-05-22T12:55:21.575822300Z 
+
+[2025-05-22T12:55:21.674+0000] {pod_manager.py:477} INFO - [base] 		:: commons-codec#commons-codec;1.13!commons-codec.jar
+2025-05-22T12:55:21.575823925Z 
+
+[2025-05-22T12:55:21.674+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.commons#commons-collections4;4.4!commons-collections4.jar
+2025-05-22T12:55:21.575825342Z 
+
+[2025-05-22T12:55:21.674+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.commons#commons-math3;3.6.1!commons-math3.jar
+2025-05-22T12:55:21.575829675Z 
+
+[2025-05-22T12:55:21.675+0000] {pod_manager.py:477} INFO - [base] 		:: com.zaxxer#SparseBitSet;1.2!SparseBitSet.jar
+2025-05-22T12:55:21.575832175Z 
+
+[2025-05-22T12:55:21.675+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.poi#poi-ooxml;4.1.2!poi-ooxml.jar
+2025-05-22T12:55:21.575833842Z 
+
+[2025-05-22T12:55:21.675+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.poi#poi-ooxml-schemas;4.1.2!poi-ooxml-schemas.jar
+2025-05-22T12:55:21.575835300Z 
+
+[2025-05-22T12:55:21.676+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.xmlbeans#xmlbeans;3.1.0!xmlbeans.jar
+2025-05-22T12:55:21.575836717Z 
+
+[2025-05-22T12:55:21.676+0000] {pod_manager.py:477} INFO - [base] 		:: com.github.virtuald#curvesapi;1.06!curvesapi.jar
+2025-05-22T12:55:21.575838092Z 
+
+[2025-05-22T12:55:21.676+0000] {pod_manager.py:477} INFO - [base] 		:: com.norbitltd#spoiwo_2.12;1.8.0!spoiwo_2.12.jar
+2025-05-22T12:55:21.575843217Z 
+
+[2025-05-22T12:55:21.676+0000] {pod_manager.py:477} INFO - [base] 		:: org.scala-lang.modules#scala-xml_2.12;1.3.0!scala-xml_2.12.jar(bundle)
+2025-05-22T12:55:21.575845092Z 
+
+[2025-05-22T12:55:21.676+0000] {pod_manager.py:477} INFO - [base] 		:: com.github.pjfanning#excel-streaming-reader;2.3.6!excel-streaming-reader.jar
+2025-05-22T12:55:21.575846509Z 
+
+[2025-05-22T12:55:21.677+0000] {pod_manager.py:477} INFO - [base] 		:: com.github.pjfanning#poi-shared-strings;1.0.4!poi-shared-strings.jar
+2025-05-22T12:55:21.575848467Z 
+
+[2025-05-22T12:55:21.677+0000] {pod_manager.py:477} INFO - [base] 		:: com.h2database#h2;1.4.200!h2.jar
+2025-05-22T12:55:21.575849925Z 
+
+[2025-05-22T12:55:21.677+0000] {pod_manager.py:477} INFO - [base] 		::::::::::::::::::::::::::::::::::::::::::::::
+2025-05-22T12:55:21.575851342Z 
+
+2025-05-22T12:55:21.575852009Z 
+
+[2025-05-22T12:55:21.677+0000] {pod_manager.py:477} INFO - [base] :::: ERRORS
+[2025-05-22T12:55:21.678+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/commons/commons-text/1.8/commons-text-1.8.pom (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575854300Z 
+
+[2025-05-22T12:55:21.678+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/commons/commons-text/1.8/commons-text-1.8.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575856384Z 
+
+[2025-05-22T12:55:21.679+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.pom (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575858175Z 
+
+[2025-05-22T12:55:21.679+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575861717Z 
+
+[2025-05-22T12:55:21.679+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575863925Z 
+
+[2025-05-22T12:55:21.680+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575865592Z 
+
+[2025-05-22T12:55:21.680+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575867175Z 
+
+[2025-05-22T12:55:21.680+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575868717Z 
+
+[2025-05-22T12:55:21.680+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/com/crealytics/spark-excel_2.12/0.13.7/spark-excel_2.12-0.13.7.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575870300Z 
+
+[2025-05-22T12:55:21.681+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/poi/poi/4.1.2/poi-4.1.2.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575871842Z 
+
+[2025-05-22T12:55:21.681+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/poi/poi-ooxml/4.1.2/poi-ooxml-4.1.2.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575873425Z 
+
+[2025-05-22T12:55:21.681+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/com/norbitltd/spoiwo_2.12/1.8.0/spoiwo_2.12-1.8.0.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575874967Z 
+
+[2025-05-22T12:55:21.682+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/com/github/pjfanning/excel-streaming-reader/2.3.6/excel-streaming-reader-2.3.6.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575877342Z 
+
+[2025-05-22T12:55:21.682+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/com/github/pjfanning/poi-shared-strings/1.0.4/poi-shared-strings-1.0.4.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575879009Z 
+
+[2025-05-22T12:55:21.682+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/commons-codec/commons-codec/1.13/commons-codec-1.13.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575880592Z 
+
+[2025-05-22T12:55:21.683+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575882134Z 
+
+[2025-05-22T12:55:21.683+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575885884Z 
+
+[2025-05-22T12:55:21.683+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575887675Z 
+
+[2025-05-22T12:55:21.683+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/poi/poi-ooxml-schemas/4.1.2/poi-ooxml-schemas-4.1.2.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575889259Z 
+
+[2025-05-22T12:55:21.684+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575890884Z 
+
+[2025-05-22T12:55:21.697+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans/3.1.0/xmlbeans-3.1.0.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575892967Z 
+
+[2025-05-22T12:55:21.697+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.3.0/scala-xml_2.12-1.3.0.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575894592Z 
+
+[2025-05-22T12:55:21.697+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/com/h2database/h2/1.4.200/h2-1.4.200.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575896217Z 
+
+2025-05-22T12:55:21.575896842Z 
+
+[2025-05-22T12:55:21.698+0000] {pod_manager.py:477} INFO - [base] :: USE VERBOSE OR DEBUG MESSAGE LEVEL FOR MORE DETAILS
+[2025-05-22T12:55:21.698+0000] {pod_manager.py:477} INFO - [base] Exception in thread "main" java.lang.RuntimeException: [unresolved dependency: org.apache.commons#commons-text;1.8: not found, unresolved dependency: xml-apis#xml-apis;1.4.01: not found, unresolved dependency: org.slf4j#slf4j-api;1.7.30: not found, unresolved dependency: org.apache.commons#commons-compress;1.20: not found, download failed: com.crealytics#spark-excel_2.12;0.13.7!spark-excel_2.12.jar, download failed: org.apache.poi#poi;4.1.2!poi.jar, download failed: commons-codec#commons-codec;1.13!commons-codec.jar, download failed: org.apache.commons#commons-collections4;4.4!commons-collections4.jar, download failed: org.apache.commons#commons-math3;3.6.1!commons-math3.jar, download failed: com.zaxxer#SparseBitSet;1.2!SparseBitSet.jar, download failed: org.apache.poi#poi-ooxml;4.1.2!poi-ooxml.jar, download failed: org.apache.poi#poi-ooxml-schemas;4.1.2!poi-ooxml-schemas.jar, download failed: org.apache.xmlbeans#xmlbeans;3.1.0!xmlbeans.jar, download failed: com.github.virtuald#curvesapi;1.06!curvesapi.jar, download failed: com.norbitltd#spoiwo_2.12;1.8.0!spoiwo_2.12.jar, download failed: org.scala-lang.modules#scala-xml_2.12;1.3.0!scala-xml_2.12.jar(bundle), download failed: com.github.pjfanning#excel-streaming-reader;2.3.6!excel-streaming-reader.jar, download failed: com.github.pjfanning#poi-shared-strings;1.0.4!poi-shared-strings.jar, download failed: com.h2database#h2;1.4.200!h2.jar]
+[2025-05-22T12:55:21.698+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmitUtils$.resolveMavenCoordinates(SparkSubmit.scala:1608)
+[2025-05-22T12:55:21.698+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.util.DependencyUtils$.resolveMavenDependencies(DependencyUtils.scala:185)
+[2025-05-22T12:55:21.698+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit.prepareSubmitEnvironment(SparkSubmit.scala:334)
+[2025-05-22T12:55:21.698+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:964)
+[2025-05-22T12:55:21.698+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:194)
+[2025-05-22T12:55:21.699+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:217)
+[2025-05-22T12:55:21.699+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:91)
+[2025-05-22T12:55:21.699+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1120)
+[2025-05-22T12:55:21.699+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1129)
+[2025-05-22T12:55:21.972+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+[2025-05-22T12:55:21.972+0000] {pod_manager.py:477} INFO - [base] PostgreSQL Config:
+[2025-05-22T12:55:21.972+0000] {pod_manager.py:477} INFO - [base] HOST=postgres-external.default.svc.cluster.local
+[2025-05-22T12:55:21.973+0000] {pod_manager.py:477} INFO - [base] PORT=5433
+[2025-05-22T12:55:21.974+0000] {pod_manager.py:477} INFO - [base] DB=***
+[2025-05-22T12:55:21.975+0000] {pod_manager.py:477} INFO - [base] USER=***
+[2025-05-22T12:55:21.976+0000] {pod_manager.py:477} INFO - [base] ***
+[2025-05-22T12:55:21.977+0000] {pod_manager.py:477} INFO - [base] URL=jdbc:postgresql://postgres-external.default.svc.cluster.local:5433/***
+[2025-05-22T12:55:21.977+0000] {pod_manager.py:477} INFO - [base] Traceback (most recent call last):
+[2025-05-22T12:55:21.978+0000] {pod_manager.py:477} INFO - [base]   File "/tmp/dynamic_file_to_db_transfer.py", line 79, in <module>
+[2025-05-22T12:55:21.979+0000] {pod_manager.py:477} INFO - [base]     main(args.source, args.target)
+[2025-05-22T12:55:21.979+0000] {pod_manager.py:477} INFO - [base]   File "/tmp/dynamic_file_to_db_transfer.py", line 33, in main
+[2025-05-22T12:55:21.980+0000] {pod_manager.py:477} INFO - [base]     .getOrCreate()
+[2025-05-22T12:55:21.981+0000] {pod_manager.py:477} INFO - [base]      ^^^^^^^^^^^^^
+[2025-05-22T12:55:21.981+0000] {pod_manager.py:477} INFO - [base]   File "/usr/local/lib/python3.12/site-packages/pyspark/sql/session.py", line 497, in getOrCreate
+[2025-05-22T12:55:21.982+0000] {pod_manager.py:477} INFO - [base]     sc = SparkContext.getOrCreate(sparkConf)
+[2025-05-22T12:55:21.983+0000] {pod_manager.py:477} INFO - [base]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-05-22T12:55:21.983+0000] {pod_manager.py:477} INFO - [base]   File "/usr/local/lib/python3.12/site-packages/pyspark/context.py", line 515, in getOrCreate
+[2025-05-22T12:55:21.983+0000] {pod_manager.py:477} INFO - [base]     SparkContext(conf=conf or SparkConf())
+[2025-05-22T12:55:21.983+0000] {pod_manager.py:477} INFO - [base]   File "/usr/local/lib/python3.12/site-packages/pyspark/context.py", line 201, in __init__
+[2025-05-22T12:55:21.984+0000] {pod_manager.py:477} INFO - [base]     SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+[2025-05-22T12:55:21.984+0000] {pod_manager.py:477} INFO - [base]   File "/usr/local/lib/python3.12/site-packages/pyspark/context.py", line 436, in _ensure_initialized
+[2025-05-22T12:55:21.984+0000] {pod_manager.py:477} INFO - [base]     SparkContext._gateway = gateway or launch_gateway(conf)
+[2025-05-22T12:55:21.984+0000] {pod_manager.py:477} INFO - [base]                                        ^^^^^^^^^^^^^^^^^^^^
+[2025-05-22T12:55:21.985+0000] {pod_manager.py:477} INFO - [base]   File "/usr/local/lib/python3.12/site-packages/pyspark/java_gateway.py", line 107, in launch_gateway
+[2025-05-22T12:55:21.985+0000] {pod_manager.py:477} INFO - [base]     raise PySparkRuntimeError(
+[2025-05-22T12:55:22.319+0000] {pod_manager.py:496} INFO - [base] pyspark.errors.exceptions.base.PySparkRuntimeError: [JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.
+
+[2025-05-22T12:55:22.339+0000] {pod_manager.py:524} WARNING - Pod excel-to-parquet-sjc0790s log read interrupted but container base still running. Logs generated in the last one second might get duplicated.
+[2025-05-22T12:55:23.370+0000] {pod_manager.py:477} INFO - [base] :: resolution report :: resolve 22995201ms :: artifacts dl 188ms
+[2025-05-22T12:55:23.370+0000] {pod_manager.py:477} INFO - [base] 	:: modules in use:
+[2025-05-22T12:55:23.371+0000] {pod_manager.py:477} INFO - [base] 	com.crealytics#spark-excel_2.12;0.13.7 from central in [default]
+[2025-05-22T12:55:23.371+0000] {pod_manager.py:477} INFO - [base] 	com.github.pjfanning#excel-streaming-reader;2.3.6 from central in [default]
+[2025-05-22T12:55:23.371+0000] {pod_manager.py:477} INFO - [base] 	com.github.pjfanning#poi-shared-strings;1.0.4 from central in [default]
+[2025-05-22T12:55:23.371+0000] {pod_manager.py:477} INFO - [base] 	com.github.virtuald#curvesapi;1.06 from central in [default]
+[2025-05-22T12:55:23.371+0000] {pod_manager.py:477} INFO - [base] 	com.h2database#h2;1.4.200 from central in [default]
+[2025-05-22T12:55:23.371+0000] {pod_manager.py:477} INFO - [base] 	com.norbitltd#spoiwo_2.12;1.8.0 from central in [default]
+[2025-05-22T12:55:23.371+0000] {pod_manager.py:477} INFO - [base] 	com.zaxxer#SparseBitSet;1.2 from central in [default]
+[2025-05-22T12:55:23.372+0000] {pod_manager.py:477} INFO - [base] 	commons-codec#commons-codec;1.13 from central in [default]
+[2025-05-22T12:55:23.372+0000] {pod_manager.py:477} INFO - [base] 	org.apache.commons#commons-collections4;4.4 from central in [default]
+[2025-05-22T12:55:23.372+0000] {pod_manager.py:477} INFO - [base] 	org.apache.commons#commons-math3;3.6.1 from central in [default]
+[2025-05-22T12:55:23.372+0000] {pod_manager.py:477} INFO - [base] 	org.apache.poi#poi;4.1.2 from central in [default]
+[2025-05-22T12:55:23.372+0000] {pod_manager.py:477} INFO - [base] 	org.apache.poi#poi-ooxml;4.1.2 from central in [default]
+[2025-05-22T12:55:23.372+0000] {pod_manager.py:477} INFO - [base] 	org.apache.poi#poi-ooxml-schemas;4.1.2 from central in [default]
+[2025-05-22T12:55:23.372+0000] {pod_manager.py:477} INFO - [base] 	org.apache.xmlbeans#xmlbeans;3.1.0 from central in [default]
+[2025-05-22T12:55:23.373+0000] {pod_manager.py:477} INFO - [base] 	org.scala-lang.modules#scala-xml_2.12;1.3.0 from central in [default]
+[2025-05-22T12:55:23.373+0000] {pod_manager.py:477} INFO - [base] 	:: evicted modules:
+[2025-05-22T12:55:23.373+0000] {pod_manager.py:477} INFO - [base] 	org.apache.commons#commons-compress;1.19 by [org.apache.commons#commons-compress;1.20] in [default]
+[2025-05-22T12:55:23.373+0000] {pod_manager.py:477} INFO - [base] 	---------------------------------------------------------------------
+[2025-05-22T12:55:23.373+0000] {pod_manager.py:477} INFO - [base] 	|                  |            modules            ||   artifacts   |
+[2025-05-22T12:55:23.373+0000] {pod_manager.py:477} INFO - [base] 	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2025-05-22T12:55:23.374+0000] {pod_manager.py:477} INFO - [base] 	---------------------------------------------------------------------
+[2025-05-22T12:55:23.374+0000] {pod_manager.py:477} INFO - [base] 	|      default     |   20  |   15  |   15  |   1   ||   15  |   0   |
+[2025-05-22T12:55:23.374+0000] {pod_manager.py:477} INFO - [base] 	---------------------------------------------------------------------
+2025-05-22T12:55:21.571590842Z 
+
+[2025-05-22T12:55:23.374+0000] {pod_manager.py:477} INFO - [base] :: problems summary ::
+[2025-05-22T12:55:23.374+0000] {pod_manager.py:477} INFO - [base] :::: WARNINGS
+[2025-05-22T12:55:23.374+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/org/apache/commons/commons-text/1.8/commons-text-1.8.pom
+2025-05-22T12:55:21.572006759Z 
+
+[2025-05-22T12:55:23.374+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/org/apache/commons/commons-text/1.8/commons-text-1.8.jar
+2025-05-22T12:55:21.572024967Z 
+
+[2025-05-22T12:55:23.375+0000] {pod_manager.py:477} INFO - [base] 		module not found: org.apache.commons#commons-text;1.8
+2025-05-22T12:55:21.572028175Z 
+
+[2025-05-22T12:55:23.375+0000] {pod_manager.py:477} INFO - [base] 	==== local-m2-cache: tried
+2025-05-22T12:55:21.572031092Z 
+
+[2025-05-22T12:55:23.375+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/org/apache/commons/commons-text/1.8/commons-text-1.8.pom
+2025-05-22T12:55:21.572034009Z 
+
+[2025-05-22T12:55:23.375+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-text;1.8!commons-text.jar:
+2025-05-22T12:55:21.575240217Z 
+
+[2025-05-22T12:55:23.375+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/org/apache/commons/commons-text/1.8/commons-text-1.8.jar
+2025-05-22T12:55:21.575244092Z 
+
+[2025-05-22T12:55:23.375+0000] {pod_manager.py:477} INFO - [base] 	==== local-ivy-cache: tried
+2025-05-22T12:55:21.575247175Z 
+
+[2025-05-22T12:55:23.375+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/org.apache.commons/commons-text/1.8/ivys/ivy.xml
+2025-05-22T12:55:21.575251009Z 
+
+[2025-05-22T12:55:23.375+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-text;1.8!commons-text.jar:
+2025-05-22T12:55:21.575258217Z 
+
+[2025-05-22T12:55:23.376+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/org.apache.commons/commons-text/1.8/jars/commons-text.jar
+2025-05-22T12:55:21.575261800Z 
+
+[2025-05-22T12:55:23.376+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575264550Z 
+
+[2025-05-22T12:55:23.376+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/commons/commons-text/1.8/commons-text-1.8.pom
+2025-05-22T12:55:21.575267467Z 
+
+[2025-05-22T12:55:23.376+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-text;1.8!commons-text.jar:
+2025-05-22T12:55:21.575270300Z 
+
+[2025-05-22T12:55:23.376+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/commons/commons-text/1.8/commons-text-1.8.jar
+2025-05-22T12:55:21.575273092Z 
+
+[2025-05-22T12:55:23.376+0000] {pod_manager.py:477} INFO - [base] 	==== spark-packages: tried
+2025-05-22T12:55:21.575276175Z 
+
+[2025-05-22T12:55:23.376+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/org/apache/commons/commons-text/1.8/commons-text-1.8.pom
+2025-05-22T12:55:21.575278967Z 
+
+[2025-05-22T12:55:23.376+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-text;1.8!commons-text.jar:
+2025-05-22T12:55:21.575281842Z 
+
+[2025-05-22T12:55:23.377+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/org/apache/commons/commons-text/1.8/commons-text-1.8.jar
+2025-05-22T12:55:21.575284592Z 
+
+[2025-05-22T12:55:23.377+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.pom
+2025-05-22T12:55:21.575338300Z 
+
+[2025-05-22T12:55:23.377+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar
+2025-05-22T12:55:21.575341300Z 
+
+[2025-05-22T12:55:23.377+0000] {pod_manager.py:477} INFO - [base] 		module not found: xml-apis#xml-apis;1.4.01
+2025-05-22T12:55:21.575344134Z 
+
+[2025-05-22T12:55:23.377+0000] {pod_manager.py:477} INFO - [base] 	==== local-m2-cache: tried
+2025-05-22T12:55:21.575346842Z 
+
+[2025-05-22T12:55:23.377+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.pom
+2025-05-22T12:55:21.575349592Z 
+
+[2025-05-22T12:55:23.377+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact xml-apis#xml-apis;1.4.01!xml-apis.jar:
+2025-05-22T12:55:21.575352384Z 
+
+[2025-05-22T12:55:23.377+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar
+2025-05-22T12:55:21.575355175Z 
+
+[2025-05-22T12:55:23.377+0000] {pod_manager.py:477} INFO - [base] 	==== local-ivy-cache: tried
+2025-05-22T12:55:21.575417675Z 
+
+[2025-05-22T12:55:23.377+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/xml-apis/xml-apis/1.4.01/ivys/ivy.xml
+2025-05-22T12:55:21.575425759Z 
+
+[2025-05-22T12:55:23.378+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact xml-apis#xml-apis;1.4.01!xml-apis.jar:
+2025-05-22T12:55:21.575428842Z 
+
+[2025-05-22T12:55:23.378+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/xml-apis/xml-apis/1.4.01/jars/xml-apis.jar
+2025-05-22T12:55:21.575466050Z 
+
+[2025-05-22T12:55:23.378+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575497425Z 
+
+[2025-05-22T12:55:23.378+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.pom
+2025-05-22T12:55:21.575506217Z 
+
+[2025-05-22T12:55:23.378+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact xml-apis#xml-apis;1.4.01!xml-apis.jar:
+2025-05-22T12:55:21.575513592Z 
+
+[2025-05-22T12:55:23.378+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar
+2025-05-22T12:55:21.575516550Z 
+
+[2025-05-22T12:55:23.378+0000] {pod_manager.py:477} INFO - [base] 	==== spark-packages: tried
+2025-05-22T12:55:21.575523425Z 
+
+[2025-05-22T12:55:23.378+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.pom
+2025-05-22T12:55:21.575528842Z 
+
+[2025-05-22T12:55:23.378+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact xml-apis#xml-apis;1.4.01!xml-apis.jar:
+2025-05-22T12:55:21.575532009Z 
+
+[2025-05-22T12:55:23.379+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar
+2025-05-22T12:55:21.575539009Z 
+
+[2025-05-22T12:55:23.379+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom
+2025-05-22T12:55:21.575597259Z 
+
+[2025-05-22T12:55:23.379+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar
+2025-05-22T12:55:21.575599425Z 
+
+[2025-05-22T12:55:23.379+0000] {pod_manager.py:477} INFO - [base] 		module not found: org.slf4j#slf4j-api;1.7.30
+2025-05-22T12:55:21.575601175Z 
+
+[2025-05-22T12:55:23.379+0000] {pod_manager.py:477} INFO - [base] 	==== local-m2-cache: tried
+2025-05-22T12:55:21.575602800Z 
+
+[2025-05-22T12:55:23.379+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom
+2025-05-22T12:55:21.575604300Z 
+
+[2025-05-22T12:55:23.379+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.slf4j#slf4j-api;1.7.30!slf4j-api.jar:
+2025-05-22T12:55:21.575605759Z 
+
+[2025-05-22T12:55:23.379+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar
+2025-05-22T12:55:21.575607217Z 
+
+[2025-05-22T12:55:23.379+0000] {pod_manager.py:477} INFO - [base] 	==== local-ivy-cache: tried
+2025-05-22T12:55:21.575608925Z 
+
+[2025-05-22T12:55:23.379+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/org.slf4j/slf4j-api/1.7.30/ivys/ivy.xml
+2025-05-22T12:55:21.575610384Z 
+
+[2025-05-22T12:55:23.380+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.slf4j#slf4j-api;1.7.30!slf4j-api.jar:
+2025-05-22T12:55:21.575612300Z 
+
+[2025-05-22T12:55:23.380+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/org.slf4j/slf4j-api/1.7.30/jars/slf4j-api.jar
+2025-05-22T12:55:21.575613800Z 
+
+[2025-05-22T12:55:23.380+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575618717Z 
+
+[2025-05-22T12:55:23.380+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom
+2025-05-22T12:55:21.575620175Z 
+
+[2025-05-22T12:55:23.380+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.slf4j#slf4j-api;1.7.30!slf4j-api.jar:
+2025-05-22T12:55:21.575621592Z 
+
+[2025-05-22T12:55:23.380+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar
+2025-05-22T12:55:21.575623092Z 
+
+[2025-05-22T12:55:23.380+0000] {pod_manager.py:477} INFO - [base] 	==== spark-packages: tried
+2025-05-22T12:55:21.575624467Z 
+
+[2025-05-22T12:55:23.380+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom
+2025-05-22T12:55:21.575629217Z 
+
+[2025-05-22T12:55:23.380+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.slf4j#slf4j-api;1.7.30!slf4j-api.jar:
+2025-05-22T12:55:21.575631134Z 
+
+[2025-05-22T12:55:23.380+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar
+2025-05-22T12:55:21.575632634Z 
+
+[2025-05-22T12:55:23.380+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom
+2025-05-22T12:55:21.575652009Z 
+
+[2025-05-22T12:55:23.381+0000] {pod_manager.py:477} INFO - [base] 	Host repos.spark-packages.org not found. url=https://repos.spark-packages.org/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar
+2025-05-22T12:55:21.575654925Z 
+
+[2025-05-22T12:55:23.381+0000] {pod_manager.py:477} INFO - [base] 		module not found: org.apache.commons#commons-compress;1.20
+2025-05-22T12:55:21.575656384Z 
+
+[2025-05-22T12:55:23.381+0000] {pod_manager.py:477} INFO - [base] 	==== local-m2-cache: tried
+2025-05-22T12:55:21.575657759Z 
+
+[2025-05-22T12:55:23.381+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom
+2025-05-22T12:55:21.575659259Z 
+
+[2025-05-22T12:55:23.381+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-compress;1.20!commons-compress.jar:
+2025-05-22T12:55:21.575660675Z 
+
+[2025-05-22T12:55:23.381+0000] {pod_manager.py:477} INFO - [base] 	  file:/root/.m2/repository/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar
+2025-05-22T12:55:21.575663009Z 
+
+[2025-05-22T12:55:23.381+0000] {pod_manager.py:477} INFO - [base] 	==== local-ivy-cache: tried
+2025-05-22T12:55:21.575664384Z 
+
+[2025-05-22T12:55:23.381+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/org.apache.commons/commons-compress/1.20/ivys/ivy.xml
+2025-05-22T12:55:21.575665842Z 
+
+[2025-05-22T12:55:23.382+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-compress;1.20!commons-compress.jar:
+2025-05-22T12:55:21.575667259Z 
+
+[2025-05-22T12:55:23.382+0000] {pod_manager.py:477} INFO - [base] 	  /root/.ivy2/local/org.apache.commons/commons-compress/1.20/jars/commons-compress.jar
+2025-05-22T12:55:21.575668717Z 
+
+[2025-05-22T12:55:23.382+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575670050Z 
+
+[2025-05-22T12:55:23.382+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom
+2025-05-22T12:55:21.575671550Z 
+
+[2025-05-22T12:55:23.382+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-compress;1.20!commons-compress.jar:
+2025-05-22T12:55:21.575673009Z 
+
+[2025-05-22T12:55:23.382+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar
+2025-05-22T12:55:21.575674550Z 
+
+[2025-05-22T12:55:23.382+0000] {pod_manager.py:477} INFO - [base] 	==== spark-packages: tried
+2025-05-22T12:55:21.575675925Z 
+
+[2025-05-22T12:55:23.382+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom
+2025-05-22T12:55:21.575677800Z 
+
+[2025-05-22T12:55:23.383+0000] {pod_manager.py:477} INFO - [base] 	  -- artifact org.apache.commons#commons-compress;1.20!commons-compress.jar:
+2025-05-22T12:55:21.575680842Z 
+
+[2025-05-22T12:55:23.383+0000] {pod_manager.py:477} INFO - [base] 	  https://repos.spark-packages.org/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar
+2025-05-22T12:55:21.575682592Z 
+
+[2025-05-22T12:55:23.383+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] com.crealytics#spark-excel_2.12;0.13.7!spark-excel_2.12.jar (4ms)
+2025-05-22T12:55:21.575686425Z 
+
+[2025-05-22T12:55:23.383+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575688300Z 
+
+[2025-05-22T12:55:23.383+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/com/crealytics/spark-excel_2.12/0.13.7/spark-excel_2.12-0.13.7.jar
+2025-05-22T12:55:21.575689842Z 
+
+[2025-05-22T12:55:23.383+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] org.apache.poi#poi;4.1.2!poi.jar (3ms)
+2025-05-22T12:55:21.575691259Z 
+
+[2025-05-22T12:55:23.383+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575693134Z 
+
+[2025-05-22T12:55:23.383+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/poi/poi/4.1.2/poi-4.1.2.jar
+2025-05-22T12:55:21.575696759Z 
+
+[2025-05-22T12:55:23.384+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] org.apache.poi#poi-ooxml;4.1.2!poi-ooxml.jar (9ms)
+2025-05-22T12:55:21.575700384Z 
+
+[2025-05-22T12:55:23.384+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575701800Z 
+
+[2025-05-22T12:55:23.384+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/poi/poi-ooxml/4.1.2/poi-ooxml-4.1.2.jar
+2025-05-22T12:55:21.575706717Z 
+
+[2025-05-22T12:55:23.384+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] com.norbitltd#spoiwo_2.12;1.8.0!spoiwo_2.12.jar (4ms)
+2025-05-22T12:55:21.575708925Z 
+
+[2025-05-22T12:55:23.384+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575710259Z 
+
+[2025-05-22T12:55:23.384+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/com/norbitltd/spoiwo_2.12/1.8.0/spoiwo_2.12-1.8.0.jar
+2025-05-22T12:55:21.575715175Z 
+
+[2025-05-22T12:55:23.385+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] com.github.pjfanning#excel-streaming-reader;2.3.6!excel-streaming-reader.jar (5ms)
+2025-05-22T12:55:21.575716717Z 
+
+[2025-05-22T12:55:23.385+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575718009Z 
+
+[2025-05-22T12:55:23.385+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/com/github/pjfanning/excel-streaming-reader/2.3.6/excel-streaming-reader-2.3.6.jar
+2025-05-22T12:55:21.575719509Z 
+
+[2025-05-22T12:55:23.385+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] com.github.pjfanning#poi-shared-strings;1.0.4!poi-shared-strings.jar (4ms)
+2025-05-22T12:55:21.575720925Z 
+
+[2025-05-22T12:55:23.385+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575722259Z 
+
+[2025-05-22T12:55:23.385+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/com/github/pjfanning/poi-shared-strings/1.0.4/poi-shared-strings-1.0.4.jar
+2025-05-22T12:55:21.575724634Z 
+
+[2025-05-22T12:55:23.386+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] commons-codec#commons-codec;1.13!commons-codec.jar (2ms)
+2025-05-22T12:55:21.575726634Z 
+
+[2025-05-22T12:55:23.386+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575733467Z 
+
+[2025-05-22T12:55:23.386+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/commons-codec/commons-codec/1.13/commons-codec-1.13.jar
+2025-05-22T12:55:21.575735967Z 
+
+[2025-05-22T12:55:23.386+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] org.apache.commons#commons-collections4;4.4!commons-collections4.jar (3ms)
+2025-05-22T12:55:21.575737717Z 
+
+[2025-05-22T12:55:23.386+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575739092Z 
+
+[2025-05-22T12:55:23.386+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar
+2025-05-22T12:55:21.575740592Z 
+
+[2025-05-22T12:55:23.386+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] org.apache.commons#commons-math3;3.6.1!commons-math3.jar (3ms)
+2025-05-22T12:55:21.575742009Z 
+
+[2025-05-22T12:55:23.386+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575743342Z 
+
+[2025-05-22T12:55:23.387+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar
+2025-05-22T12:55:21.575744800Z 
+
+[2025-05-22T12:55:23.387+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] com.zaxxer#SparseBitSet;1.2!SparseBitSet.jar (4ms)
+2025-05-22T12:55:21.575746259Z 
+
+[2025-05-22T12:55:23.387+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575747675Z 
+
+[2025-05-22T12:55:23.387+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar
+2025-05-22T12:55:21.575749634Z 
+
+[2025-05-22T12:55:23.387+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] org.apache.poi#poi-ooxml-schemas;4.1.2!poi-ooxml-schemas.jar (3ms)
+2025-05-22T12:55:21.575751675Z 
+
+[2025-05-22T12:55:23.387+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575753592Z 
+
+[2025-05-22T12:55:23.387+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/poi/poi-ooxml-schemas/4.1.2/poi-ooxml-schemas-4.1.2.jar
+2025-05-22T12:55:21.575755092Z 
+
+[2025-05-22T12:55:23.387+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] com.github.virtuald#curvesapi;1.06!curvesapi.jar (3ms)
+2025-05-22T12:55:21.575756592Z 
+
+[2025-05-22T12:55:23.388+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575758509Z 
+
+[2025-05-22T12:55:23.388+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.jar
+2025-05-22T12:55:21.575760009Z 
+
+[2025-05-22T12:55:23.388+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] org.apache.xmlbeans#xmlbeans;3.1.0!xmlbeans.jar (60ms)
+2025-05-22T12:55:21.575761800Z 
+
+[2025-05-22T12:55:23.388+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575763300Z 
+
+[2025-05-22T12:55:23.388+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans/3.1.0/xmlbeans-3.1.0.jar
+2025-05-22T12:55:21.575766800Z 
+
+[2025-05-22T12:55:23.388+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] org.scala-lang.modules#scala-xml_2.12;1.3.0!scala-xml_2.12.jar(bundle) (2ms)
+2025-05-22T12:55:21.575768342Z 
+
+[2025-05-22T12:55:23.388+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575769717Z 
+
+[2025-05-22T12:55:23.388+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.3.0/scala-xml_2.12-1.3.0.jar
+2025-05-22T12:55:21.575771759Z 
+
+[2025-05-22T12:55:23.389+0000] {pod_manager.py:477} INFO - [base] 		[NOT FOUND  ] com.h2database#h2;1.4.200!h2.jar (3ms)
+2025-05-22T12:55:21.575773175Z 
+
+[2025-05-22T12:55:23.389+0000] {pod_manager.py:477} INFO - [base] 	==== central: tried
+2025-05-22T12:55:21.575774675Z 
+
+[2025-05-22T12:55:23.389+0000] {pod_manager.py:477} INFO - [base] 	  https://repo1.maven.org/maven2/com/h2database/h2/1.4.200/h2-1.4.200.jar
+2025-05-22T12:55:21.575776134Z 
+
+[2025-05-22T12:55:23.389+0000] {pod_manager.py:477} INFO - [base] 		::::::::::::::::::::::::::::::::::::::::::::::
+2025-05-22T12:55:21.575781217Z 
+
+[2025-05-22T12:55:23.389+0000] {pod_manager.py:477} INFO - [base] 		::          UNRESOLVED DEPENDENCIES         ::
+2025-05-22T12:55:21.575782800Z 
+
+[2025-05-22T12:55:23.389+0000] {pod_manager.py:477} INFO - [base] 		::::::::::::::::::::::::::::::::::::::::::::::
+2025-05-22T12:55:21.575784675Z 
+
+[2025-05-22T12:55:23.389+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.commons#commons-text;1.8: not found
+2025-05-22T12:55:21.575786217Z 
+
+[2025-05-22T12:55:23.389+0000] {pod_manager.py:477} INFO - [base] 		:: xml-apis#xml-apis;1.4.01: not found
+2025-05-22T12:55:21.575788009Z 
+
+[2025-05-22T12:55:23.390+0000] {pod_manager.py:477} INFO - [base] 		:: org.slf4j#slf4j-api;1.7.30: not found
+2025-05-22T12:55:21.575790009Z 
+
+[2025-05-22T12:55:23.390+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.commons#commons-compress;1.20: not found
+2025-05-22T12:55:21.575795009Z 
+
+[2025-05-22T12:55:23.390+0000] {pod_manager.py:477} INFO - [base] 		::::::::::::::::::::::::::::::::::::::::::::::
+2025-05-22T12:55:21.575797509Z 
+
+2025-05-22T12:55:21.575802217Z 
+
+[2025-05-22T12:55:23.390+0000] {pod_manager.py:477} INFO - [base] 		::::::::::::::::::::::::::::::::::::::::::::::
+2025-05-22T12:55:21.575808884Z 
+
+[2025-05-22T12:55:23.390+0000] {pod_manager.py:477} INFO - [base] 		::              FAILED DOWNLOADS            ::
+2025-05-22T12:55:21.575810300Z 
+
+[2025-05-22T12:55:23.390+0000] {pod_manager.py:477} INFO - [base] 		:: ^ see resolution messages for details  ^ ::
+2025-05-22T12:55:21.575815467Z 
+
+[2025-05-22T12:55:23.390+0000] {pod_manager.py:477} INFO - [base] 		::::::::::::::::::::::::::::::::::::::::::::::
+2025-05-22T12:55:21.575817300Z 
+
+[2025-05-22T12:55:23.390+0000] {pod_manager.py:477} INFO - [base] 		:: com.crealytics#spark-excel_2.12;0.13.7!spark-excel_2.12.jar
+2025-05-22T12:55:21.575818717Z 
+
+[2025-05-22T12:55:23.391+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.poi#poi;4.1.2!poi.jar
+2025-05-22T12:55:21.575822300Z 
+
+[2025-05-22T12:55:23.391+0000] {pod_manager.py:477} INFO - [base] 		:: commons-codec#commons-codec;1.13!commons-codec.jar
+2025-05-22T12:55:21.575823925Z 
+
+[2025-05-22T12:55:23.391+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.commons#commons-collections4;4.4!commons-collections4.jar
+2025-05-22T12:55:21.575825342Z 
+
+[2025-05-22T12:55:23.391+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.commons#commons-math3;3.6.1!commons-math3.jar
+2025-05-22T12:55:21.575829675Z 
+
+[2025-05-22T12:55:23.391+0000] {pod_manager.py:477} INFO - [base] 		:: com.zaxxer#SparseBitSet;1.2!SparseBitSet.jar
+2025-05-22T12:55:21.575832175Z 
+
+[2025-05-22T12:55:23.391+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.poi#poi-ooxml;4.1.2!poi-ooxml.jar
+2025-05-22T12:55:21.575833842Z 
+
+[2025-05-22T12:55:23.391+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.poi#poi-ooxml-schemas;4.1.2!poi-ooxml-schemas.jar
+2025-05-22T12:55:21.575835300Z 
+
+[2025-05-22T12:55:23.392+0000] {pod_manager.py:477} INFO - [base] 		:: org.apache.xmlbeans#xmlbeans;3.1.0!xmlbeans.jar
+2025-05-22T12:55:21.575836717Z 
+
+[2025-05-22T12:55:23.392+0000] {pod_manager.py:477} INFO - [base] 		:: com.github.virtuald#curvesapi;1.06!curvesapi.jar
+2025-05-22T12:55:21.575838092Z 
+
+[2025-05-22T12:55:23.392+0000] {pod_manager.py:477} INFO - [base] 		:: com.norbitltd#spoiwo_2.12;1.8.0!spoiwo_2.12.jar
+2025-05-22T12:55:21.575843217Z 
+
+[2025-05-22T12:55:23.392+0000] {pod_manager.py:477} INFO - [base] 		:: org.scala-lang.modules#scala-xml_2.12;1.3.0!scala-xml_2.12.jar(bundle)
+2025-05-22T12:55:21.575845092Z 
+
+[2025-05-22T12:55:23.392+0000] {pod_manager.py:477} INFO - [base] 		:: com.github.pjfanning#excel-streaming-reader;2.3.6!excel-streaming-reader.jar
+2025-05-22T12:55:21.575846509Z 
+
+[2025-05-22T12:55:23.392+0000] {pod_manager.py:477} INFO - [base] 		:: com.github.pjfanning#poi-shared-strings;1.0.4!poi-shared-strings.jar
+2025-05-22T12:55:21.575848467Z 
+
+[2025-05-22T12:55:23.392+0000] {pod_manager.py:477} INFO - [base] 		:: com.h2database#h2;1.4.200!h2.jar
+2025-05-22T12:55:21.575849925Z 
+
+[2025-05-22T12:55:23.393+0000] {pod_manager.py:477} INFO - [base] 		::::::::::::::::::::::::::::::::::::::::::::::
+2025-05-22T12:55:21.575851342Z 
+
+2025-05-22T12:55:21.575852009Z 
+
+[2025-05-22T12:55:23.393+0000] {pod_manager.py:477} INFO - [base] :::: ERRORS
+[2025-05-22T12:55:23.393+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/commons/commons-text/1.8/commons-text-1.8.pom (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575854300Z 
+
+[2025-05-22T12:55:23.393+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/commons/commons-text/1.8/commons-text-1.8.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575856384Z 
+
+[2025-05-22T12:55:23.393+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.pom (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575858175Z 
+
+[2025-05-22T12:55:23.393+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575861717Z 
+
+[2025-05-22T12:55:23.393+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.pom (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575863925Z 
+
+[2025-05-22T12:55:23.393+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575865592Z 
+
+[2025-05-22T12:55:23.394+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.pom (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575867175Z 
+
+[2025-05-22T12:55:23.394+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575868717Z 
+
+[2025-05-22T12:55:23.394+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/com/crealytics/spark-excel_2.12/0.13.7/spark-excel_2.12-0.13.7.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575870300Z 
+
+[2025-05-22T12:55:23.394+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/poi/poi/4.1.2/poi-4.1.2.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575871842Z 
+
+[2025-05-22T12:55:23.394+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/poi/poi-ooxml/4.1.2/poi-ooxml-4.1.2.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575873425Z 
+
+[2025-05-22T12:55:23.394+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/com/norbitltd/spoiwo_2.12/1.8.0/spoiwo_2.12-1.8.0.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575874967Z 
+
+[2025-05-22T12:55:23.394+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/com/github/pjfanning/excel-streaming-reader/2.3.6/excel-streaming-reader-2.3.6.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575877342Z 
+
+[2025-05-22T12:55:23.394+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/com/github/pjfanning/poi-shared-strings/1.0.4/poi-shared-strings-1.0.4.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575879009Z 
+
+[2025-05-22T12:55:23.395+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/commons-codec/commons-codec/1.13/commons-codec-1.13.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575880592Z 
+
+[2025-05-22T12:55:23.395+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575882134Z 
+
+[2025-05-22T12:55:23.395+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575885884Z 
+
+[2025-05-22T12:55:23.395+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575887675Z 
+
+[2025-05-22T12:55:23.395+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/poi/poi-ooxml-schemas/4.1.2/poi-ooxml-schemas-4.1.2.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575889259Z 
+
+[2025-05-22T12:55:23.395+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575890884Z 
+
+[2025-05-22T12:55:23.395+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans/3.1.0/xmlbeans-3.1.0.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575892967Z 
+
+[2025-05-22T12:55:23.395+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/1.3.0/scala-xml_2.12-1.3.0.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575894592Z 
+
+[2025-05-22T12:55:23.396+0000] {pod_manager.py:477} INFO - [base] 	Server access error at url https://repo1.maven.org/maven2/com/h2database/h2/1.4.200/h2-1.4.200.jar (java.net.ConnectException: Connection refused)
+2025-05-22T12:55:21.575896217Z 
+
+2025-05-22T12:55:21.575896842Z 
+
+[2025-05-22T12:55:23.396+0000] {pod_manager.py:477} INFO - [base] :: USE VERBOSE OR DEBUG MESSAGE LEVEL FOR MORE DETAILS
+[2025-05-22T12:55:23.396+0000] {pod_manager.py:477} INFO - [base] Exception in thread "main" java.lang.RuntimeException: [unresolved dependency: org.apache.commons#commons-text;1.8: not found, unresolved dependency: xml-apis#xml-apis;1.4.01: not found, unresolved dependency: org.slf4j#slf4j-api;1.7.30: not found, unresolved dependency: org.apache.commons#commons-compress;1.20: not found, download failed: com.crealytics#spark-excel_2.12;0.13.7!spark-excel_2.12.jar, download failed: org.apache.poi#poi;4.1.2!poi.jar, download failed: commons-codec#commons-codec;1.13!commons-codec.jar, download failed: org.apache.commons#commons-collections4;4.4!commons-collections4.jar, download failed: org.apache.commons#commons-math3;3.6.1!commons-math3.jar, download failed: com.zaxxer#SparseBitSet;1.2!SparseBitSet.jar, download failed: org.apache.poi#poi-ooxml;4.1.2!poi-ooxml.jar, download failed: org.apache.poi#poi-ooxml-schemas;4.1.2!poi-ooxml-schemas.jar, download failed: org.apache.xmlbeans#xmlbeans;3.1.0!xmlbeans.jar, download failed: com.github.virtuald#curvesapi;1.06!curvesapi.jar, download failed: com.norbitltd#spoiwo_2.12;1.8.0!spoiwo_2.12.jar, download failed: org.scala-lang.modules#scala-xml_2.12;1.3.0!scala-xml_2.12.jar(bundle), download failed: com.github.pjfanning#excel-streaming-reader;2.3.6!excel-streaming-reader.jar, download failed: com.github.pjfanning#poi-shared-strings;1.0.4!poi-shared-strings.jar, download failed: com.h2database#h2;1.4.200!h2.jar]
+[2025-05-22T12:55:23.396+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmitUtils$.resolveMavenCoordinates(SparkSubmit.scala:1608)
+[2025-05-22T12:55:23.396+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.util.DependencyUtils$.resolveMavenDependencies(DependencyUtils.scala:185)
+[2025-05-22T12:55:23.396+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit.prepareSubmitEnvironment(SparkSubmit.scala:334)
+[2025-05-22T12:55:23.396+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:964)
+[2025-05-22T12:55:23.396+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:194)
+[2025-05-22T12:55:23.397+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:217)
+[2025-05-22T12:55:23.397+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:91)
+[2025-05-22T12:55:23.397+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1120)
+[2025-05-22T12:55:23.397+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1129)
+[2025-05-22T12:55:23.397+0000] {pod_manager.py:477} INFO - [base] 	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+[2025-05-22T12:55:23.397+0000] {pod_manager.py:477} INFO - [base] PostgreSQL Config:
+[2025-05-22T12:55:23.397+0000] {pod_manager.py:477} INFO - [base] HOST=postgres-external.default.svc.cluster.local
+[2025-05-22T12:55:23.398+0000] {pod_manager.py:477} INFO - [base] PORT=5433
+[2025-05-22T12:55:23.398+0000] {pod_manager.py:477} INFO - [base] DB=***
+[2025-05-22T12:55:23.398+0000] {pod_manager.py:477} INFO - [base] USER=***
+[2025-05-22T12:55:23.398+0000] {pod_manager.py:477} INFO - [base] ***
+[2025-05-22T12:55:23.398+0000] {pod_manager.py:477} INFO - [base] URL=jdbc:postgresql://postgres-external.default.svc.cluster.local:5433/***
+[2025-05-22T12:55:23.398+0000] {pod_manager.py:477} INFO - [base] Traceback (most recent call last):
+[2025-05-22T12:55:23.398+0000] {pod_manager.py:477} INFO - [base]   File "/tmp/dynamic_file_to_db_transfer.py", line 79, in <module>
+[2025-05-22T12:55:23.398+0000] {pod_manager.py:477} INFO - [base]     main(args.source, args.target)
+[2025-05-22T12:55:23.399+0000] {pod_manager.py:477} INFO - [base]   File "/tmp/dynamic_file_to_db_transfer.py", line 33, in main
+[2025-05-22T12:55:23.399+0000] {pod_manager.py:477} INFO - [base]     .getOrCreate()
+[2025-05-22T12:55:23.399+0000] {pod_manager.py:477} INFO - [base]      ^^^^^^^^^^^^^
+[2025-05-22T12:55:23.399+0000] {pod_manager.py:477} INFO - [base]   File "/usr/local/lib/python3.12/site-packages/pyspark/sql/session.py", line 497, in getOrCreate
+[2025-05-22T12:55:23.399+0000] {pod_manager.py:477} INFO - [base]     sc = SparkContext.getOrCreate(sparkConf)
+[2025-05-22T12:55:23.399+0000] {pod_manager.py:477} INFO - [base]          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-05-22T12:55:23.399+0000] {pod_manager.py:477} INFO - [base]   File "/usr/local/lib/python3.12/site-packages/pyspark/context.py", line 515, in getOrCreate
+[2025-05-22T12:55:23.399+0000] {pod_manager.py:477} INFO - [base]     SparkContext(conf=conf or SparkConf())
+[2025-05-22T12:55:23.400+0000] {pod_manager.py:477} INFO - [base]   File "/usr/local/lib/python3.12/site-packages/pyspark/context.py", line 201, in __init__
+[2025-05-22T12:55:23.400+0000] {pod_manager.py:477} INFO - [base]     SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+[2025-05-22T12:55:23.400+0000] {pod_manager.py:477} INFO - [base]   File "/usr/local/lib/python3.12/site-packages/pyspark/context.py", line 436, in _ensure_initialized
+[2025-05-22T12:55:23.400+0000] {pod_manager.py:477} INFO - [base]     SparkContext._gateway = gateway or launch_gateway(conf)
+[2025-05-22T12:55:23.400+0000] {pod_manager.py:477} INFO - [base]                                        ^^^^^^^^^^^^^^^^^^^^
+[2025-05-22T12:55:23.400+0000] {pod_manager.py:477} INFO - [base]   File "/usr/local/lib/python3.12/site-packages/pyspark/java_gateway.py", line 107, in launch_gateway
+[2025-05-22T12:55:23.400+0000] {pod_manager.py:477} INFO - [base]     raise PySparkRuntimeError(
+[2025-05-22T12:55:23.400+0000] {pod_manager.py:496} INFO - [base] pyspark.errors.exceptions.base.PySparkRuntimeError: [JAVA_GATEWAY_EXITED] Java gateway process exited before sending its port number.
+
+[2025-05-22T12:55:23.413+0000] {pod_manager.py:654} INFO - Pod excel-to-parquet-sjc0790s has phase Running
+[2025-05-22T12:55:25.674+0000] {pod.py:997} INFO - Deleting pod: excel-to-parquet-sjc0790s
+[2025-05-22T12:55:25.727+0000] {taskinstance.py:3313} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 583, in execute
+    return self.execute_sync(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 636, in execute_sync
+    self.cleanup(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 928, in cleanup
+    raise AirflowException(
+airflow.exceptions.AirflowException: Pod excel-to-parquet-sjc0790s returned a failure.
+remote_pod: {'api_version': 'v1',
+ 'kind': 'Pod',
+ 'metadata': {'annotations': None,
+              'creation_timestamp': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal()),
+              'deletion_grace_period_seconds': None,
+              'deletion_timestamp': None,
+              'finalizers': None,
+              'generate_name': None,
+              'generation': None,
+              'labels': {'***_kpo_in_cluster': 'False',
+                         '***_version': '2.10.5',
+                         'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER',
+                         'kubernetes_pod_operator': 'True',
+                         'map_index': '1',
+                         'run_id': 'scheduled__2025-05-22T0600000000-7c7246905',
+                         'task_id': 'transfer_files',
+                         'try_number': '1'},
+              'managed_fields': [{'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:metadata': {'f:labels': {'.': {},
+                                                                            'f:***_kpo_in_cluster': {},
+                                                                            'f:***_version': {},
+                                                                            'f:dag_id': {},
+                                                                            'f:kubernetes_pod_operator': {},
+                                                                            'f:map_index': {},
+                                                                            'f:run_id': {},
+                                                                            'f:task_id': {},
+                                                                            'f:try_number': {}}},
+                                                'f:spec': {'f:affinity': {},
+                                                           'f:containers': {'k:{"name":"base"}': {'.': {},
+                                                                                                  'f:args': {},
+                                                                                                  'f:command': {},
+                                                                                                  'f:envFrom': {},
+                                                                                                  'f:image': {},
+                                                                                                  'f:imagePullPolicy': {},
+                                                                                                  'f:name': {},
+                                                                                                  'f:resources': {},
+                                                                                                  'f:terminationMessagePath': {},
+                                                                                                  'f:terminationMessagePolicy': {}}},
+                                                           'f:dnsPolicy': {},
+                                                           'f:enableServiceLinks': {},
+                                                           'f:restartPolicy': {},
+                                                           'f:schedulerName': {},
+                                                           'f:securityContext': {},
+                                                           'f:terminationGracePeriodSeconds': {}}},
+                                  'manager': 'OpenAPI-Generator',
+                                  'operation': 'Update',
+                                  'subresource': None,
+                                  'time': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal())},
+                                 {'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:status': {'f:conditions': {'k:{"type":"ContainersReady"}': {'.': {},
+                                                                                                               'f:lastProbeTime': {},
+                                                                                                               'f:lastTransitionTime': {},
+                                                                                                               'f:reason': {},
+                                                                                                               'f:status': {},
+                                                                                                               'f:type': {}},
+                                                                              'k:{"type":"Initialized"}': {'.': {},
+                                                                                                           'f:lastProbeTime': {},
+                                                                                                           'f:lastTransitionTime': {},
+                                                                                                           'f:status': {},
+                                                                                                           'f:type': {}},
+                                                                              'k:{"type":"PodReadyToStartContainers"}': {'.': {},
+                                                                                                                         'f:lastProbeTime': {},
+                                                                                                                         'f:lastTransitionTime': {},
+                                                                                                                         'f:status': {},
+                                                                                                                         'f:type': {}},
+                                                                              'k:{"type":"Ready"}': {'.': {},
+                                                                                                     'f:lastProbeTime': {},
+                                                                                                     'f:lastTransitionTime': {},
+                                                                                                     'f:reason': {},
+                                                                                                     'f:status': {},
+                                                                                                     'f:type': {}}},
+                                                             'f:containerStatuses': {},
+                                                             'f:hostIP': {},
+                                                             'f:hostIPs': {},
+                                                             'f:phase': {},
+                                                             'f:podIP': {},
+                                                             'f:podIPs': {'.': {},
+                                                                          'k:{"ip":"10.244.1.166"}': {'.': {},
+                                                                                                      'f:ip': {}}},
+                                                             'f:startTime': {}}},
+                                  'manager': 'kubelet',
+                                  'operation': 'Update',
+                                  'subresource': 'status',
+                                  'time': datetime.datetime(2025, 5, 22, 12, 55, 24, tzinfo=tzlocal())}],
+              'name': 'excel-to-parquet-sjc0790s',
+              'namespace': 'default',
+              'owner_references': None,
+              'resource_version': '249162',
+              'self_link': None,
+              'uid': 'de659697-8f08-4103-aa9d-46401d185738'},
+ 'spec': {'active_deadline_seconds': None,
+          'affinity': {'node_affinity': None,
+                       'pod_affinity': None,
+                       'pod_anti_affinity': None},
+          'automount_service_account_token': None,
+          'containers': [{'args': ['mc alias set s3-local '
+                                   'http://minio-external.default.svc.cluster.local:9000 '
+                                   'adminic adminic123 && mc cp '
+                                   's3-local/ahajiyev/dynamic_file_to_db_transfer.py '
+                                   '/tmp/dynamic_file_to_db_transfer.py && '
+                                   'python /tmp/dynamic_file_to_db_transfer.py '
+                                   '--source xyz.xlsx --target ahajiyev/xyz'],
+                          'command': ['sh', '-c'],
+                          'env': None,
+                          'env_from': [{'config_map_ref': None,
+                                        'prefix': None,
+                                        'secret_ref': {'name': 'postgres-secret',
+                                                       'optional': None}}],
+                          'image': 'ahajiyev/pyspark-with-awscli',
+                          'image_pull_policy': 'Always',
+                          'lifecycle': None,
+                          'liveness_probe': None,
+                          'name': 'base',
+                          'ports': None,
+                          'readiness_probe': None,
+                          'resize_policy': None,
+                          'resources': {'claims': None,
+                                        'limits': None,
+                                        'requests': None},
+                          'restart_policy': None,
+                          'security_context': None,
+                          'startup_probe': None,
+                          'stdin': None,
+                          'stdin_once': None,
+                          'termination_message_path': '/dev/termination-log',
+                          'termination_message_policy': 'File',
+                          'tty': None,
+                          'volume_devices': None,
+                          'volume_mounts': [{'mount_path': '/var/run/secrets/kubernetes.io/serviceaccount',
+                                             'mount_propagation': None,
+                                             'name': 'kube-api-access-lnkh6',
+                                             'read_only': True,
+                                             'recursive_read_only': None,
+                                             'sub_path': None,
+                                             'sub_path_expr': None}],
+                          'working_dir': None}],
+          'dns_config': None,
+          'dns_policy': 'ClusterFirst',
+          'enable_service_links': True,
+          'ephemeral_containers': None,
+          'host_aliases': None,
+          'host_ipc': None,
+          'host_network': None,
+          'host_pid': None,
+          'host_users': None,
+          'hostname': None,
+          'image_pull_secrets': None,
+          'init_containers': None,
+          'node_name': 'minikube',
+          'node_selector': None,
+          'os': None,
+          'overhead': None,
+          'preemption_policy': 'PreemptLowerPriority',
+          'priority': 0,
+          'priority_class_name': None,
+          'readiness_gates': None,
+          'resource_claims': None,
+          'restart_policy': 'Never',
+          'runtime_class_name': None,
+          'scheduler_name': 'default-scheduler',
+          'scheduling_gates': None,
+          'security_context': {'app_armor_profile': None,
+                               'fs_group': None,
+                               'fs_group_change_policy': None,
+                               'run_as_group': None,
+                               'run_as_non_root': None,
+                               'run_as_user': None,
+                               'se_linux_options': None,
+                               'seccomp_profile': None,
+                               'supplemental_groups': None,
+                               'sysctls': None,
+                               'windows_options': None},
+          'service_account': 'default',
+          'service_account_name': 'default',
+          'set_hostname_as_fqdn': None,
+          'share_process_namespace': None,
+          'subdomain': None,
+          'termination_grace_period_seconds': 30,
+          'tolerations': [{'effect': 'NoExecute',
+                           'key': 'node.kubernetes.io/not-ready',
+                           'operator': 'Exists',
+                           'toleration_seconds': 300,
+                           'value': None},
+                          {'effect': 'NoExecute',
+                           'key': 'node.kubernetes.io/unreachable',
+                           'operator': 'Exists',
+                           'toleration_seconds': 300,
+                           'value': None}],
+          'topology_spread_constraints': None,
+          'volumes': [{'aws_elastic_block_store': None,
+                       'azure_disk': None,
+                       'azure_file': None,
+                       'cephfs': None,
+                       'cinder': None,
+                       'config_map': None,
+                       'csi': None,
+                       'downward_api': None,
+                       'empty_dir': None,
+                       'ephemeral': None,
+                       'fc': None,
+                       'flex_volume': None,
+                       'flocker': None,
+                       'gce_persistent_disk': None,
+                       'git_repo': None,
+                       'glusterfs': None,
+                       'host_path': None,
+                       'iscsi': None,
+                       'name': 'kube-api-access-lnkh6',
+                       'nfs': None,
+                       'persistent_volume_claim': None,
+                       'photon_persistent_disk': None,
+                       'portworx_volume': None,
+                       'projected': {'default_mode': 420,
+                                     'sources': [{'cluster_trust_bundle': None,
+                                                  'config_map': None,
+                                                  'downward_api': None,
+                                                  'secret': None,
+                                                  'service_account_token': {'audience': None,
+                                                                            'expiration_seconds': 3607,
+                                                                            'path': 'token'}},
+                                                 {'cluster_trust_bundle': None,
+                                                  'config_map': {'items': [{'key': 'ca.crt',
+                                                                            'mode': None,
+                                                                            'path': 'ca.crt'}],
+                                                                 'name': 'kube-root-ca.crt',
+                                                                 'optional': None},
+                                                  'downward_api': None,
+                                                  'secret': None,
+                                                  'service_account_token': None},
+                                                 {'cluster_trust_bundle': None,
+                                                  'config_map': None,
+                                                  'downward_api': {'items': [{'field_ref': {'api_version': 'v1',
+                                                                                            'field_path': 'metadata.namespace'},
+                                                                              'mode': None,
+                                                                              'path': 'namespace',
+                                                                              'resource_field_ref': None}]},
+                                                  'secret': None,
+                                                  'service_account_token': None}]},
+                       'quobyte': None,
+                       'rbd': None,
+                       'scale_io': None,
+                       'secret': None,
+                       'storageos': None,
+                       'vsphere_volume': None}]},
+ 'status': {'conditions': [{'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 12, 55, 24, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'False',
+                            'type': 'PodReadyToStartContainers'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'True',
+                            'type': 'Initialized'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 12, 55, 23, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': 'PodFailed',
+                            'status': 'False',
+                            'type': 'Ready'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 12, 55, 23, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': 'PodFailed',
+                            'status': 'False',
+                            'type': 'ContainersReady'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'True',
+                            'type': 'PodScheduled'}],
+            'container_statuses': [{'allocated_resources': None,
+                                    'container_id': 'docker://ec85e04fcf5497bf18693e783a81cbeed2ca07c92120a7994228fc8b2349c2a8',
+                                    'image': 'ahajiyev/pyspark-with-awscli:latest',
+                                    'image_id': 'docker-pullable://ahajiyev/pyspark-with-awscli@sha256:3e8a2152030adf16486088206ee57b70bfbc7542a06d52836099113d2efa6e18',
+                                    'last_state': {'running': None,
+                                                   'terminated': None,
+                                                   'waiting': None},
+                                    'name': 'base',
+                                    'ready': False,
+                                    'resources': None,
+                                    'restart_count': 0,
+                                    'started': False,
+                                    'state': {'running': None,
+                                              'terminated': {'container_id': 'docker://ec85e04fcf5497bf18693e783a81cbeed2ca07c92120a7994228fc8b2349c2a8',
+                                                             'exit_code': 1,
+                                                             'finished_at': datetime.datetime(2025, 5, 22, 12, 55, 22, tzinfo=tzlocal()),
+                                                             'message': None,
+                                                             'reason': 'Error',
+                                                             'signal': None,
+                                                             'started_at': datetime.datetime(2025, 5, 22, 6, 32, tzinfo=tzlocal())},
+                                              'waiting': None},
+                                    'volume_mounts': [{'mount_path': '/var/run/secrets/kubernetes.io/serviceaccount',
+                                                       'name': 'kube-api-access-lnkh6',
+                                                       'read_only': True,
+                                                       'recursive_read_only': 'Disabled'}]}],
+            'ephemeral_container_statuses': None,
+            'host_i_ps': [{'ip': '192.168.49.2'}],
+            'host_ip': '192.168.49.2',
+            'init_container_statuses': None,
+            'message': None,
+            'nominated_node_name': None,
+            'phase': 'Failed',
+            'pod_i_ps': [{'ip': '10.244.1.166'}],
+            'pod_ip': '10.244.1.166',
+            'qos_class': 'BestEffort',
+            'reason': None,
+            'resize': None,
+            'resource_claim_statuses': None,
+            'start_time': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal())}}
+[2025-05-22T12:55:25.735+0000] {taskinstance.py:1226} INFO - Marking task as FAILED. dag_id=DYNAMIC_FILE_TO_DB_LOADER, task_id=transfer_files, run_id=scheduled__2025-05-22T06:00:00+00:00, map_index=1, execution_date=20250522T060000, start_date=20250522T063158, end_date=20250522T125525
+[2025-05-22T12:55:25.735+0000] {taskinstance.py:1564} INFO - Executing callback at index 0: task_failure_callback
+[2025-05-22T12:55:25.736+0000] {logging_mixin.py:190} INFO - 
+        UPDATE ***_daily_log
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    
+[2025-05-22T12:55:25.741+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-22T12:55:25.748+0000] {sql.py:511} INFO - Running statement: 
+        UPDATE ***_daily_log
+        SET status = %(status)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and try_number = %(try_number)s
+          AND source_name = %(source)s
+          AND target_name = %(target)s
+    , parameters: {'status': 'failed', 'try_number': 1, 'source': 'xyz.xlsx', 'target': 'ahajiyev/xyz'}
+[2025-05-22T12:55:25.749+0000] {sql.py:520} INFO - Rows affected: 5
+[2025-05-22T12:55:25.751+0000] {logging_mixin.py:190} INFO - 
+        UPDATE ***_daily_log
+        SET end_time = %(end_time)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and end_time is null
+        AND source_name = %(source)s
+        AND target_name = %(target)s
+    
+[2025-05-22T12:55:25.758+0000] {base.py:84} INFO - Retrieving connection 'postgres_conn'
+[2025-05-22T12:55:25.762+0000] {sql.py:511} INFO - Running statement: 
+        UPDATE ***_daily_log
+        SET end_time = %(end_time)s
+        WHERE date(log_time) = date(CURRENT_DATE)
+        and end_time is null
+        AND source_name = %(source)s
+        AND target_name = %(target)s
+    , parameters: {'end_time': datetime.datetime(2025, 5, 22, 12, 55, 25, 733506, tzinfo=Timezone('UTC')), 'source': 'xyz.xlsx', 'target': 'ahajiyev/xyz'}
+[2025-05-22T12:55:25.763+0000] {sql.py:520} INFO - Rows affected: 2
+[2025-05-22T12:55:25.782+0000] {taskinstance.py:341} INFO - ::group::Post task execution logs
+[2025-05-22T12:55:25.783+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 1949 for task transfer_files (Pod excel-to-parquet-sjc0790s returned a failure.
+remote_pod: {'api_version': 'v1',
+ 'kind': 'Pod',
+ 'metadata': {'annotations': None,
+              'creation_timestamp': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal()),
+              'deletion_grace_period_seconds': None,
+              'deletion_timestamp': None,
+              'finalizers': None,
+              'generate_name': None,
+              'generation': None,
+              'labels': {'***_kpo_in_cluster': 'False',
+                         '***_version': '2.10.5',
+                         'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER',
+                         'kubernetes_pod_operator': 'True',
+                         'map_index': '1',
+                         'run_id': 'scheduled__2025-05-22T0600000000-7c7246905',
+                         'task_id': 'transfer_files',
+                         'try_number': '1'},
+              'managed_fields': [{'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:metadata': {'f:labels': {'.': {},
+                                                                            'f:***_kpo_in_cluster': {},
+                                                                            'f:***_version': {},
+                                                                            'f:dag_id': {},
+                                                                            'f:kubernetes_pod_operator': {},
+                                                                            'f:map_index': {},
+                                                                            'f:run_id': {},
+                                                                            'f:task_id': {},
+                                                                            'f:try_number': {}}},
+                                                'f:spec': {'f:affinity': {},
+                                                           'f:containers': {'k:{"name":"base"}': {'.': {},
+                                                                                                  'f:args': {},
+                                                                                                  'f:command': {},
+                                                                                                  'f:envFrom': {},
+                                                                                                  'f:image': {},
+                                                                                                  'f:imagePullPolicy': {},
+                                                                                                  'f:name': {},
+                                                                                                  'f:resources': {},
+                                                                                                  'f:terminationMessagePath': {},
+                                                                                                  'f:terminationMessagePolicy': {}}},
+                                                           'f:dnsPolicy': {},
+                                                           'f:enableServiceLinks': {},
+                                                           'f:restartPolicy': {},
+                                                           'f:schedulerName': {},
+                                                           'f:securityContext': {},
+                                                           'f:terminationGracePeriodSeconds': {}}},
+                                  'manager': 'OpenAPI-Generator',
+                                  'operation': 'Update',
+                                  'subresource': None,
+                                  'time': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal())},
+                                 {'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:status': {'f:conditions': {'k:{"type":"ContainersReady"}': {'.': {},
+                                                                                                               'f:lastProbeTime': {},
+                                                                                                               'f:lastTransitionTime': {},
+                                                                                                               'f:reason': {},
+                                                                                                               'f:status': {},
+                                                                                                               'f:type': {}},
+                                                                              'k:{"type":"Initialized"}': {'.': {},
+                                                                                                           'f:lastProbeTime': {},
+                                                                                                           'f:lastTransitionTime': {},
+                                                                                                           'f:status': {},
+                                                                                                           'f:type': {}},
+                                                                              'k:{"type":"PodReadyToStartContainers"}': {'.': {},
+                                                                                                                         'f:lastProbeTime': {},
+                                                                                                                         'f:lastTransitionTime': {},
+                                                                                                                         'f:status': {},
+                                                                                                                         'f:type': {}},
+                                                                              'k:{"type":"Ready"}': {'.': {},
+                                                                                                     'f:lastProbeTime': {},
+                                                                                                     'f:lastTransitionTime': {},
+                                                                                                     'f:reason': {},
+                                                                                                     'f:status': {},
+                                                                                                     'f:type': {}}},
+                                                             'f:containerStatuses': {},
+                                                             'f:hostIP': {},
+                                                             'f:hostIPs': {},
+                                                             'f:phase': {},
+                                                             'f:podIP': {},
+                                                             'f:podIPs': {'.': {},
+                                                                          'k:{"ip":"10.244.1.166"}': {'.': {},
+                                                                                                      'f:ip': {}}},
+                                                             'f:startTime': {}}},
+                                  'manager': 'kubelet',
+                                  'operation': 'Update',
+                                  'subresource': 'status',
+                                  'time': datetime.datetime(2025, 5, 22, 12, 55, 24, tzinfo=tzlocal())}],
+              'name': 'excel-to-parquet-sjc0790s',
+              'namespace': 'default',
+              'owner_references': None,
+              'resource_version': '249162',
+              'self_link': None,
+              'uid': 'de659697-8f08-4103-aa9d-46401d185738'},
+ 'spec': {'active_deadline_seconds': None,
+          'affinity': {'node_affinity': None,
+                       'pod_affinity': None,
+                       'pod_anti_affinity': None},
+          'automount_service_account_token': None,
+          'containers': [{'args': ['mc alias set s3-local '
+                                   'http://minio-external.default.svc.cluster.local:9000 '
+                                   'adminic adminic123 && mc cp '
+                                   's3-local/ahajiyev/dynamic_file_to_db_transfer.py '
+                                   '/tmp/dynamic_file_to_db_transfer.py && '
+                                   'python /tmp/dynamic_file_to_db_transfer.py '
+                                   '--source xyz.xlsx --target ahajiyev/xyz'],
+                          'command': ['sh', '-c'],
+                          'env': None,
+                          'env_from': [{'config_map_ref': None,
+                                        'prefix': None,
+                                        'secret_ref': {'name': 'postgres-secret',
+                                                       'optional': None}}],
+                          'image': 'ahajiyev/pyspark-with-awscli',
+                          'image_pull_policy': 'Always',
+                          'lifecycle': None,
+                          'liveness_probe': None,
+                          'name': 'base',
+                          'ports': None,
+                          'readiness_probe': None,
+                          'resize_policy': None,
+                          'resources': {'claims': None,
+                                        'limits': None,
+                                        'requests': None},
+                          'restart_policy': None,
+                          'security_context': None,
+                          'startup_probe': None,
+                          'stdin': None,
+                          'stdin_once': None,
+                          'termination_message_path': '/dev/termination-log',
+                          'termination_message_policy': 'File',
+                          'tty': None,
+                          'volume_devices': None,
+                          'volume_mounts': [{'mount_path': '/var/run/secrets/kubernetes.io/serviceaccount',
+                                             'mount_propagation': None,
+                                             'name': 'kube-api-access-lnkh6',
+                                             'read_only': True,
+                                             'recursive_read_only': None,
+                                             'sub_path': None,
+                                             'sub_path_expr': None}],
+                          'working_dir': None}],
+          'dns_config': None,
+          'dns_policy': 'ClusterFirst',
+          'enable_service_links': True,
+          'ephemeral_containers': None,
+          'host_aliases': None,
+          'host_ipc': None,
+          'host_network': None,
+          'host_pid': None,
+          'host_users': None,
+          'hostname': None,
+          'image_pull_secrets': None,
+          'init_containers': None,
+          'node_name': 'minikube',
+          'node_selector': None,
+          'os': None,
+          'overhead': None,
+          'preemption_policy': 'PreemptLowerPriority',
+          'priority': 0,
+          'priority_class_name': None,
+          'readiness_gates': None,
+          'resource_claims': None,
+          'restart_policy': 'Never',
+          'runtime_class_name': None,
+          'scheduler_name': 'default-scheduler',
+          'scheduling_gates': None,
+          'security_context': {'app_armor_profile': None,
+                               'fs_group': None,
+                               'fs_group_change_policy': None,
+                               'run_as_group': None,
+                               'run_as_non_root': None,
+                               'run_as_user': None,
+                               'se_linux_options': None,
+                               'seccomp_profile': None,
+                               'supplemental_groups': None,
+                               'sysctls': None,
+                               'windows_options': None},
+          'service_account': 'default',
+          'service_account_name': 'default',
+          'set_hostname_as_fqdn': None,
+          'share_process_namespace': None,
+          'subdomain': None,
+          'termination_grace_period_seconds': 30,
+          'tolerations': [{'effect': 'NoExecute',
+                           'key': 'node.kubernetes.io/not-ready',
+                           'operator': 'Exists',
+                           'toleration_seconds': 300,
+                           'value': None},
+                          {'effect': 'NoExecute',
+                           'key': 'node.kubernetes.io/unreachable',
+                           'operator': 'Exists',
+                           'toleration_seconds': 300,
+                           'value': None}],
+          'topology_spread_constraints': None,
+          'volumes': [{'aws_elastic_block_store': None,
+                       'azure_disk': None,
+                       'azure_file': None,
+                       'cephfs': None,
+                       'cinder': None,
+                       'config_map': None,
+                       'csi': None,
+                       'downward_api': None,
+                       'empty_dir': None,
+                       'ephemeral': None,
+                       'fc': None,
+                       'flex_volume': None,
+                       'flocker': None,
+                       'gce_persistent_disk': None,
+                       'git_repo': None,
+                       'glusterfs': None,
+                       'host_path': None,
+                       'iscsi': None,
+                       'name': 'kube-api-access-lnkh6',
+                       'nfs': None,
+                       'persistent_volume_claim': None,
+                       'photon_persistent_disk': None,
+                       'portworx_volume': None,
+                       'projected': {'default_mode': 420,
+                                     'sources': [{'cluster_trust_bundle': None,
+                                                  'config_map': None,
+                                                  'downward_api': None,
+                                                  'secret': None,
+                                                  'service_account_token': {'audience': None,
+                                                                            'expiration_seconds': 3607,
+                                                                            'path': 'token'}},
+                                                 {'cluster_trust_bundle': None,
+                                                  'config_map': {'items': [{'key': 'ca.crt',
+                                                                            'mode': None,
+                                                                            'path': 'ca.crt'}],
+                                                                 'name': 'kube-root-ca.crt',
+                                                                 'optional': None},
+                                                  'downward_api': None,
+                                                  'secret': None,
+                                                  'service_account_token': None},
+                                                 {'cluster_trust_bundle': None,
+                                                  'config_map': None,
+                                                  'downward_api': {'items': [{'field_ref': {'api_version': 'v1',
+                                                                                            'field_path': 'metadata.namespace'},
+                                                                              'mode': None,
+                                                                              'path': 'namespace',
+                                                                              'resource_field_ref': None}]},
+                                                  'secret': None,
+                                                  'service_account_token': None}]},
+                       'quobyte': None,
+                       'rbd': None,
+                       'scale_io': None,
+                       'secret': None,
+                       'storageos': None,
+                       'vsphere_volume': None}]},
+ 'status': {'conditions': [{'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 12, 55, 24, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'False',
+                            'type': 'PodReadyToStartContainers'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'True',
+                            'type': 'Initialized'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 12, 55, 23, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': 'PodFailed',
+                            'status': 'False',
+                            'type': 'Ready'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 12, 55, 23, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': 'PodFailed',
+                            'status': 'False',
+                            'type': 'ContainersReady'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'True',
+                            'type': 'PodScheduled'}],
+            'container_statuses': [{'allocated_resources': None,
+                                    'container_id': 'docker://ec85e04fcf5497bf18693e783a81cbeed2ca07c92120a7994228fc8b2349c2a8',
+                                    'image': 'ahajiyev/pyspark-with-awscli:latest',
+                                    'image_id': 'docker-pullable://ahajiyev/pyspark-with-awscli@sha256:3e8a2152030adf16486088206ee57b70bfbc7542a06d52836099113d2efa6e18',
+                                    'last_state': {'running': None,
+                                                   'terminated': None,
+                                                   'waiting': None},
+                                    'name': 'base',
+                                    'ready': False,
+                                    'resources': None,
+                                    'restart_count': 0,
+                                    'started': False,
+                                    'state': {'running': None,
+                                              'terminated': {'container_id': 'docker://ec85e04fcf5497bf18693e783a81cbeed2ca07c92120a7994228fc8b2349c2a8',
+                                                             'exit_code': 1,
+                                                             'finished_at': datetime.datetime(2025, 5, 22, 12, 55, 22, tzinfo=tzlocal()),
+                                                             'message': None,
+                                                             'reason': 'Error',
+                                                             'signal': None,
+                                                             'started_at': datetime.datetime(2025, 5, 22, 6, 32, tzinfo=tzlocal())},
+                                              'waiting': None},
+                                    'volume_mounts': [{'mount_path': '/var/run/secrets/kubernetes.io/serviceaccount',
+                                                       'name': 'kube-api-access-lnkh6',
+                                                       'read_only': True,
+                                                       'recursive_read_only': 'Disabled'}]}],
+            'ephemeral_container_statuses': None,
+            'host_i_ps': [{'ip': '192.168.49.2'}],
+            'host_ip': '192.168.49.2',
+            'init_container_statuses': None,
+            'message': None,
+            'nominated_node_name': None,
+            'phase': 'Failed',
+            'pod_i_ps': [{'ip': '10.244.1.166'}],
+            'pod_ip': '10.244.1.166',
+            'qos_class': 'BestEffort',
+            'reason': None,
+            'resize': None,
+            'resource_claim_statuses': None,
+            'start_time': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal())}}; 15455)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3006, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 274, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3161, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3185, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 768, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 734, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 424, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 583, in execute
+    return self.execute_sync(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 636, in execute_sync
+    self.cleanup(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/cncf/kubernetes/operators/pod.py", line 928, in cleanup
+    raise AirflowException(
+airflow.exceptions.AirflowException: Pod excel-to-parquet-sjc0790s returned a failure.
+remote_pod: {'api_version': 'v1',
+ 'kind': 'Pod',
+ 'metadata': {'annotations': None,
+              'creation_timestamp': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal()),
+              'deletion_grace_period_seconds': None,
+              'deletion_timestamp': None,
+              'finalizers': None,
+              'generate_name': None,
+              'generation': None,
+              'labels': {'***_kpo_in_cluster': 'False',
+                         '***_version': '2.10.5',
+                         'dag_id': 'DYNAMIC_FILE_TO_DB_LOADER',
+                         'kubernetes_pod_operator': 'True',
+                         'map_index': '1',
+                         'run_id': 'scheduled__2025-05-22T0600000000-7c7246905',
+                         'task_id': 'transfer_files',
+                         'try_number': '1'},
+              'managed_fields': [{'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:metadata': {'f:labels': {'.': {},
+                                                                            'f:***_kpo_in_cluster': {},
+                                                                            'f:***_version': {},
+                                                                            'f:dag_id': {},
+                                                                            'f:kubernetes_pod_operator': {},
+                                                                            'f:map_index': {},
+                                                                            'f:run_id': {},
+                                                                            'f:task_id': {},
+                                                                            'f:try_number': {}}},
+                                                'f:spec': {'f:affinity': {},
+                                                           'f:containers': {'k:{"name":"base"}': {'.': {},
+                                                                                                  'f:args': {},
+                                                                                                  'f:command': {},
+                                                                                                  'f:envFrom': {},
+                                                                                                  'f:image': {},
+                                                                                                  'f:imagePullPolicy': {},
+                                                                                                  'f:name': {},
+                                                                                                  'f:resources': {},
+                                                                                                  'f:terminationMessagePath': {},
+                                                                                                  'f:terminationMessagePolicy': {}}},
+                                                           'f:dnsPolicy': {},
+                                                           'f:enableServiceLinks': {},
+                                                           'f:restartPolicy': {},
+                                                           'f:schedulerName': {},
+                                                           'f:securityContext': {},
+                                                           'f:terminationGracePeriodSeconds': {}}},
+                                  'manager': 'OpenAPI-Generator',
+                                  'operation': 'Update',
+                                  'subresource': None,
+                                  'time': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal())},
+                                 {'api_version': 'v1',
+                                  'fields_type': 'FieldsV1',
+                                  'fields_v1': {'f:status': {'f:conditions': {'k:{"type":"ContainersReady"}': {'.': {},
+                                                                                                               'f:lastProbeTime': {},
+                                                                                                               'f:lastTransitionTime': {},
+                                                                                                               'f:reason': {},
+                                                                                                               'f:status': {},
+                                                                                                               'f:type': {}},
+                                                                              'k:{"type":"Initialized"}': {'.': {},
+                                                                                                           'f:lastProbeTime': {},
+                                                                                                           'f:lastTransitionTime': {},
+                                                                                                           'f:status': {},
+                                                                                                           'f:type': {}},
+                                                                              'k:{"type":"PodReadyToStartContainers"}': {'.': {},
+                                                                                                                         'f:lastProbeTime': {},
+                                                                                                                         'f:lastTransitionTime': {},
+                                                                                                                         'f:status': {},
+                                                                                                                         'f:type': {}},
+                                                                              'k:{"type":"Ready"}': {'.': {},
+                                                                                                     'f:lastProbeTime': {},
+                                                                                                     'f:lastTransitionTime': {},
+                                                                                                     'f:reason': {},
+                                                                                                     'f:status': {},
+                                                                                                     'f:type': {}}},
+                                                             'f:containerStatuses': {},
+                                                             'f:hostIP': {},
+                                                             'f:hostIPs': {},
+                                                             'f:phase': {},
+                                                             'f:podIP': {},
+                                                             'f:podIPs': {'.': {},
+                                                                          'k:{"ip":"10.244.1.166"}': {'.': {},
+                                                                                                      'f:ip': {}}},
+                                                             'f:startTime': {}}},
+                                  'manager': 'kubelet',
+                                  'operation': 'Update',
+                                  'subresource': 'status',
+                                  'time': datetime.datetime(2025, 5, 22, 12, 55, 24, tzinfo=tzlocal())}],
+              'name': 'excel-to-parquet-sjc0790s',
+              'namespace': 'default',
+              'owner_references': None,
+              'resource_version': '249162',
+              'self_link': None,
+              'uid': 'de659697-8f08-4103-aa9d-46401d185738'},
+ 'spec': {'active_deadline_seconds': None,
+          'affinity': {'node_affinity': None,
+                       'pod_affinity': None,
+                       'pod_anti_affinity': None},
+          'automount_service_account_token': None,
+          'containers': [{'args': ['mc alias set s3-local '
+                                   'http://minio-external.default.svc.cluster.local:9000 '
+                                   'adminic adminic123 && mc cp '
+                                   's3-local/ahajiyev/dynamic_file_to_db_transfer.py '
+                                   '/tmp/dynamic_file_to_db_transfer.py && '
+                                   'python /tmp/dynamic_file_to_db_transfer.py '
+                                   '--source xyz.xlsx --target ahajiyev/xyz'],
+                          'command': ['sh', '-c'],
+                          'env': None,
+                          'env_from': [{'config_map_ref': None,
+                                        'prefix': None,
+                                        'secret_ref': {'name': 'postgres-secret',
+                                                       'optional': None}}],
+                          'image': 'ahajiyev/pyspark-with-awscli',
+                          'image_pull_policy': 'Always',
+                          'lifecycle': None,
+                          'liveness_probe': None,
+                          'name': 'base',
+                          'ports': None,
+                          'readiness_probe': None,
+                          'resize_policy': None,
+                          'resources': {'claims': None,
+                                        'limits': None,
+                                        'requests': None},
+                          'restart_policy': None,
+                          'security_context': None,
+                          'startup_probe': None,
+                          'stdin': None,
+                          'stdin_once': None,
+                          'termination_message_path': '/dev/termination-log',
+                          'termination_message_policy': 'File',
+                          'tty': None,
+                          'volume_devices': None,
+                          'volume_mounts': [{'mount_path': '/var/run/secrets/kubernetes.io/serviceaccount',
+                                             'mount_propagation': None,
+                                             'name': 'kube-api-access-lnkh6',
+                                             'read_only': True,
+                                             'recursive_read_only': None,
+                                             'sub_path': None,
+                                             'sub_path_expr': None}],
+                          'working_dir': None}],
+          'dns_config': None,
+          'dns_policy': 'ClusterFirst',
+          'enable_service_links': True,
+          'ephemeral_containers': None,
+          'host_aliases': None,
+          'host_ipc': None,
+          'host_network': None,
+          'host_pid': None,
+          'host_users': None,
+          'hostname': None,
+          'image_pull_secrets': None,
+          'init_containers': None,
+          'node_name': 'minikube',
+          'node_selector': None,
+          'os': None,
+          'overhead': None,
+          'preemption_policy': 'PreemptLowerPriority',
+          'priority': 0,
+          'priority_class_name': None,
+          'readiness_gates': None,
+          'resource_claims': None,
+          'restart_policy': 'Never',
+          'runtime_class_name': None,
+          'scheduler_name': 'default-scheduler',
+          'scheduling_gates': None,
+          'security_context': {'app_armor_profile': None,
+                               'fs_group': None,
+                               'fs_group_change_policy': None,
+                               'run_as_group': None,
+                               'run_as_non_root': None,
+                               'run_as_user': None,
+                               'se_linux_options': None,
+                               'seccomp_profile': None,
+                               'supplemental_groups': None,
+                               'sysctls': None,
+                               'windows_options': None},
+          'service_account': 'default',
+          'service_account_name': 'default',
+          'set_hostname_as_fqdn': None,
+          'share_process_namespace': None,
+          'subdomain': None,
+          'termination_grace_period_seconds': 30,
+          'tolerations': [{'effect': 'NoExecute',
+                           'key': 'node.kubernetes.io/not-ready',
+                           'operator': 'Exists',
+                           'toleration_seconds': 300,
+                           'value': None},
+                          {'effect': 'NoExecute',
+                           'key': 'node.kubernetes.io/unreachable',
+                           'operator': 'Exists',
+                           'toleration_seconds': 300,
+                           'value': None}],
+          'topology_spread_constraints': None,
+          'volumes': [{'aws_elastic_block_store': None,
+                       'azure_disk': None,
+                       'azure_file': None,
+                       'cephfs': None,
+                       'cinder': None,
+                       'config_map': None,
+                       'csi': None,
+                       'downward_api': None,
+                       'empty_dir': None,
+                       'ephemeral': None,
+                       'fc': None,
+                       'flex_volume': None,
+                       'flocker': None,
+                       'gce_persistent_disk': None,
+                       'git_repo': None,
+                       'glusterfs': None,
+                       'host_path': None,
+                       'iscsi': None,
+                       'name': 'kube-api-access-lnkh6',
+                       'nfs': None,
+                       'persistent_volume_claim': None,
+                       'photon_persistent_disk': None,
+                       'portworx_volume': None,
+                       'projected': {'default_mode': 420,
+                                     'sources': [{'cluster_trust_bundle': None,
+                                                  'config_map': None,
+                                                  'downward_api': None,
+                                                  'secret': None,
+                                                  'service_account_token': {'audience': None,
+                                                                            'expiration_seconds': 3607,
+                                                                            'path': 'token'}},
+                                                 {'cluster_trust_bundle': None,
+                                                  'config_map': {'items': [{'key': 'ca.crt',
+                                                                            'mode': None,
+                                                                            'path': 'ca.crt'}],
+                                                                 'name': 'kube-root-ca.crt',
+                                                                 'optional': None},
+                                                  'downward_api': None,
+                                                  'secret': None,
+                                                  'service_account_token': None},
+                                                 {'cluster_trust_bundle': None,
+                                                  'config_map': None,
+                                                  'downward_api': {'items': [{'field_ref': {'api_version': 'v1',
+                                                                                            'field_path': 'metadata.namespace'},
+                                                                              'mode': None,
+                                                                              'path': 'namespace',
+                                                                              'resource_field_ref': None}]},
+                                                  'secret': None,
+                                                  'service_account_token': None}]},
+                       'quobyte': None,
+                       'rbd': None,
+                       'scale_io': None,
+                       'secret': None,
+                       'storageos': None,
+                       'vsphere_volume': None}]},
+ 'status': {'conditions': [{'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 12, 55, 24, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'False',
+                            'type': 'PodReadyToStartContainers'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'True',
+                            'type': 'Initialized'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 12, 55, 23, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': 'PodFailed',
+                            'status': 'False',
+                            'type': 'Ready'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 12, 55, 23, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': 'PodFailed',
+                            'status': 'False',
+                            'type': 'ContainersReady'},
+                           {'last_probe_time': None,
+                            'last_transition_time': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal()),
+                            'message': None,
+                            'reason': None,
+                            'status': 'True',
+                            'type': 'PodScheduled'}],
+            'container_statuses': [{'allocated_resources': None,
+                                    'container_id': 'docker://ec85e04fcf5497bf18693e783a81cbeed2ca07c92120a7994228fc8b2349c2a8',
+                                    'image': 'ahajiyev/pyspark-with-awscli:latest',
+                                    'image_id': 'docker-pullable://ahajiyev/pyspark-with-awscli@sha256:3e8a2152030adf16486088206ee57b70bfbc7542a06d52836099113d2efa6e18',
+                                    'last_state': {'running': None,
+                                                   'terminated': None,
+                                                   'waiting': None},
+                                    'name': 'base',
+                                    'ready': False,
+                                    'resources': None,
+                                    'restart_count': 0,
+                                    'started': False,
+                                    'state': {'running': None,
+                                              'terminated': {'container_id': 'docker://ec85e04fcf5497bf18693e783a81cbeed2ca07c92120a7994228fc8b2349c2a8',
+                                                             'exit_code': 1,
+                                                             'finished_at': datetime.datetime(2025, 5, 22, 12, 55, 22, tzinfo=tzlocal()),
+                                                             'message': None,
+                                                             'reason': 'Error',
+                                                             'signal': None,
+                                                             'started_at': datetime.datetime(2025, 5, 22, 6, 32, tzinfo=tzlocal())},
+                                              'waiting': None},
+                                    'volume_mounts': [{'mount_path': '/var/run/secrets/kubernetes.io/serviceaccount',
+                                                       'name': 'kube-api-access-lnkh6',
+                                                       'read_only': True,
+                                                       'recursive_read_only': 'Disabled'}]}],
+            'ephemeral_container_statuses': None,
+            'host_i_ps': [{'ip': '192.168.49.2'}],
+            'host_ip': '192.168.49.2',
+            'init_container_statuses': None,
+            'message': None,
+            'nominated_node_name': None,
+            'phase': 'Failed',
+            'pod_i_ps': [{'ip': '10.244.1.166'}],
+            'pod_ip': '10.244.1.166',
+            'qos_class': 'BestEffort',
+            'reason': None,
+            'resize': None,
+            'resource_claim_statuses': None,
+            'start_time': datetime.datetime(2025, 5, 22, 6, 31, 58, tzinfo=tzlocal())}}
+[2025-05-22T12:55:25.793+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-05-22T12:55:25.816+0000] {taskinstance.py:3901} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-05-22T12:55:25.817+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
